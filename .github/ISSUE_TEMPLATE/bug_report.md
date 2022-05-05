@@ -25,8 +25,11 @@ If applicable, add screenshots to help explain your problem.
 
 **Environment**
  - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+<!-- Add if Applicable -->
+ <!-- - Browser [e.g. chrome, safari] -->
+ <!-- - NPM [e.g. 22] -->
+ <!-- - Node [e.g. 22] -->
+ <!-- - DotNet [e.g. 22] -->
 
 **Additional context**
 Add any other context about the problem here.
