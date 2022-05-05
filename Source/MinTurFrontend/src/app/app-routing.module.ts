@@ -35,7 +35,7 @@ import { ReservationReportComponent } from './feature-modules/reservation-report
 import { ReservationReportModule } from './feature-modules/reservation-report/reservation-report.module';
 import { ImportingComponent } from './feature-modules/importing/importing.component';
 import { ImportingModule } from './feature-modules/importing/importing.module';
-// tslint:disable-next-line:max-line-length
+// eslint-disable-next-line max-len
 import { AdminSpecificRoutes, ImporterRoutes, RegionRoutes, ReservationRoutes, ResortRoutes, ReviewRoutes, SessionRoutes, TouristPointRoutes } from './core/routes';
 
 const routes: Routes = [
