@@ -35,7 +35,7 @@ El tamaño de los commits debería mantenerse pequeño de manera que posibles er
 
 ### Criterios de Pull Request
 
-Consideramos que para facilitar y evitar pérdidas de tiempo a la hora de mergear podría ser útil el uso de [template](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/blob/main/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md) para pull request. Estos evitarían falta de información importante cuando se pida una review por parte de otra persona.
+Consideramos que para facilitar y evitar pérdidas de tiempo a la hora de mergear podría ser útil el uso de [template](/.github/pull_request_template.md) para pull request. Estos evitarían falta de información importante cuando se pida una review por parte de otra persona.
 
 Para realizar merge a la rama principal debe pasar este por un pull request y no por otro medio como la consola de git.
 
@@ -47,7 +47,7 @@ Los Code Reviews lo consideramos una herramienta para circumstancias especiales 
 
 ### Criterios de issues
 
-Al igual que para los pull requests, consideramos que el crear un issue debería ser sencillo para favorecer el reporte constante de los problemas que se encuentren. Por lo tanto también utilizamos un [template](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/blob/main/.github/ISSUE_TEMPLATE/bug_report.md) para los issues, basado en el template de github con modificaciones realizadas por nosotros.
+Al igual que para los pull requests, consideramos que el crear un issue debería ser sencillo para favorecer el reporte constante de los problemas que se encuentren. Por lo tanto también utilizamos un [template](/.github/ISSUE_TEMPLATE/bug_report.md) para los issues, basado en el template de github con modificaciones realizadas por nosotros.
 
 
 ###  Labels
