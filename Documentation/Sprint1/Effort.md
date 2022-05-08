@@ -120,7 +120,7 @@ Testing exploratorio
    </td>
   </tr>
   <tr>
-   <td>Domingo 08/05/22 10:00 - 12:10 13:10 - 
+   <td>Domingo 08/05/22 10:00 - 12:10 13:10 - 15:10
    </td>
    <td>Todos
    </td>
