@@ -17,13 +17,13 @@
 - Mantener uso de herramientas que faciliten los procesos 
     - Ej: Commitizen facilita el estándar de commits
 - Trabajar juntos para la documentación
-    -  Evidenciado en la [documentación del esfuerzo]()
+    -  Evidenciado en la [documentación del esfuerzo](/Documentation/Sprint1/Effort.md)
 - Hacer reuniones frecuentes
-    - Evidenciado en la [documentación del esfuerzo]()
+    - Evidenciado en la [documentación del esfuerzo](/Documentation/Sprint1/Effort.md)
 - Mantener estándares definidos:
-    -  [Proceso de ingeniería]()
-    -  [Issue template]()
-    -  [Pull request template]()
+    -  [Proceso de ingeniería](/Documentation/EngineeringProcess.md)
+    -  [Issue template](/.github/ISSUE_TEMPLATE/bug_report.md)
+    -  [Pull request template](/.github/pull_request_template.md)
 - Mantener el uso de issues para reportar bugs o problemas 
     - Llegamos a 20 en el sprint 1
 
