@@ -56,7 +56,7 @@ Análisis de deuda técnica
    </td>
    <td>Joaquín
    </td>
-   <td>Analisis de codigo con NDepend
+   <td>Análisis de código con NDepend
    </td>
   </tr>
   <tr>
@@ -92,7 +92,7 @@ Análisis de deuda técnica
    </td>
    <td>Finalización de Proceso de ingeniería
 <p>
-Arreglar problemas con Linters
+Arreglar problemas con linters
 <p>
 Creación de labels para issues
 <p>
@@ -120,7 +120,7 @@ Testing exploratorio
    </td>
   </tr>
   <tr>
-   <td>Domingo 08/05/22 10:00 - 
+   <td>Domingo 08/05/22 10:00 - 12:10 13:10 - 
    </td>
    <td>Todos
    </td>

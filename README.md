@@ -37,7 +37,7 @@ Tools and test data for our code
    - [Sprint 1](./Documentation/Sprint1/)
         - [Planning meeting](./Documentation/Sprint1/PlanningMeeting.md)
         - [Retrospective](./Documentation/Sprint1/Retrospective.md)
-        - [Report](./Documentation/Sprint1/Report.md)
+        - [Report](./Documentation/Sprint1/Report.pdf)
 - [Source code](./Source)
     - [Backend](./Source/MinTurBackend/)
     - [Frontend](./Source/MinTurFrontend/)
@@ -116,7 +116,7 @@ The first sprint consisted on repository creation, use and definition of enginee
    - [Sprint 1](./Documentation/Sprint1/)
         - [Planning meeting](./Documentation/Sprint1/PlanningMeeting.md)
         - [Retrospective](./Documentation/Sprint1/Retrospective.md)
-        - [Report](./Documentation/Sprint1/Report.md)
+        - [Report](./Documentation/Sprint1/Report.pdf)
 - [Pull request template](/.github/pull_request_template.md)
 - [Issue template](/.github/ISSUE_TEMPLATE/bug_report.md)
 
