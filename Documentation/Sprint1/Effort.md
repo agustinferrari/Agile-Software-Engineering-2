@@ -106,7 +106,7 @@ Reporte de deuda técnica
    </td>
    <td>Todos
    </td>
-   <td> Reporte de deuda tecnica
+   <td> Reporte de deuda técnica
    </td>
   </tr>
   <tr>
@@ -117,6 +117,20 @@ Reporte de deuda técnica
    <td>Configuración de conexiones de app y extensión de templates
 <p>
 Testing exploratorio 
+   </td>
+  </tr>
+  <tr>
+   <td>Domingo 08/05/22 10:00 - 
+   </td>
+   <td>Todos
+   </td>
+   <td>Subir esfuerzo
+<p>
+Readme
+<p>
+Retrospective
+<p>
+Reporte
    </td>
   </tr>
 </table>
