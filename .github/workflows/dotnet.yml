@@ -1,0 +1,53 @@
+name: .NET
+
+on:
+  push:
+    branches: [main, "feature/**", "fix/**"]
+  pull_request:
+    branches: [main, "feature/**", "fix/**"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 3.1.x
+      - name: Dotnet coverage
+        run: dotnet tool install --global dotnet-coverage
+      - name: Restore dependencies
+        working-directory: ./Source/MinTurBackend/
+        run: dotnet restore
+      - name: Build
+        working-directory: ./Source/MinTurBackend/
+        run: dotnet build --no-restore
+
+      - name: coverage
+        working-directory: ./Source/MinTurBackend/
+        run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage" --settings SettingsCoverage.xml --logger trx --results-directory coverage
+      - name: Combine coverage files
+        working-directory: ./Source/MinTurBackend/
+        run: dotnet-coverage merge --remove-input-files -r --output-format cobertura ./coverage/*/coverage.cobertura.xml
+      - name: Upload combined coverage files
+        run: ls Source/MinTurBackend/
+        uses: actions/upload-artifact@v3
+        with:
+          name: Combined_Test_Coverage
+          path: ./Source/MinTurBackend/output.cobertura.xml
+      - name: Code coverage summary report test
+        uses: agustinferrari/CodeSummaryReportTemp@v1.3.0
+        with:
+          filename: ./Source/MinTurBackend/output.cobertura.xml
+          badge: true
+          format: markdown
+          output: both
+      - name: Add coverage PR comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-results.md
