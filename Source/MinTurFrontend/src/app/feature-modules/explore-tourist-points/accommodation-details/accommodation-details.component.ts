@@ -93,7 +93,7 @@ export class AccommodationDetailsComponent implements OnInit {
       validAccommodation = false;
       this.accommodationValidationErrorMessage = 'Debe eligir las fechas de su estadia';
     }
-    if (this.checkIn < this.minDate){
+    if (this.checkIn.getDate() < this.minDate.getDate()){
       validAccommodation = false;
       this.accommodationValidationErrorMessage = 'No se puede resevar para un dia anterior al dia de hoy';
     }
