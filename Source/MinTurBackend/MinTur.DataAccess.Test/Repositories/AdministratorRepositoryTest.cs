@@ -99,7 +99,7 @@ namespace MinTur.DataAccess.Test.Repositories
         }
 
         [TestMethod]
-        public void GetAdministratorByIdReturnsAsExpected() 
+        public void GetAdministratorByIdReturnsAsExpected()
         {
             int administratorId = 2;
             Administrator administrator = CreateAdministratorWithSpecificId(administratorId);
@@ -157,14 +157,56 @@ namespace MinTur.DataAccess.Test.Repositories
             Administrator administrator = CreateAdministratorWithSpecificId(administratorId);
             InsertAdministratorIntoDb(administrator);
 
-            Administrator newAdministrator = new Administrator()
+            int administratorToChangeId = 8;
+            Administrator administratorToChange = new Administrator()
             {
-                Id = administratorId,
+                Id = administratorToChangeId,
+                Email = "test@gmail.com",
+                Password = "Password2"
+            };
+            InsertAdministratorIntoDb(administratorToChange);
+
+            Administrator administratorUpdater = new Administrator()
+            {
+                Id = administratorToChangeId,
                 Email = administrator.Email,
                 Password = "Password2"
             };
 
-            _repository.UpdateAdministrator(newAdministrator);
+
+            _repository.UpdateAdministrator(administratorUpdater);
+        }
+
+        [TestMethod]
+        public void UpdateAdministratorWhichEmailAlreadyExistsWithSameId()
+        {
+            int administratorId = 7;
+            Administrator administrator = CreateAdministratorWithSpecificId(administratorId);
+            InsertAdministratorIntoDb(administrator);
+
+            int administratorToChangeId = 8;
+            Administrator administratorToChange = new Administrator()
+            {
+                Id = administratorToChangeId,
+                Email = "test@gmail.com",
+                Password = "Password2"
+            };
+            InsertAdministratorIntoDb(administratorToChange);
+
+            Administrator administratorUpdater = new Administrator()
+            {
+                Id = administratorToChangeId,
+                Email = administratorToChange.Email,
+                Password = "Password3"
+            };
+
+
+            _repository.UpdateAdministrator(administratorUpdater);
+            Administrator retrievedAdministrator = _context.Administrators.AsNoTracking().Where(a => a.Id == administratorToChangeId).FirstOrDefault();
+
+            Assert.AreEqual(retrievedAdministrator, administratorUpdater);
+            Assert.AreEqual(retrievedAdministrator.Password, administratorUpdater.Password);
+            Assert.AreEqual(retrievedAdministrator.Email, administratorUpdater.Email);
         }
 
         [TestMethod]
