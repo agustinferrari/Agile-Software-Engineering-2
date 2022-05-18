@@ -46,7 +46,8 @@ namespace MinTur.DataAccess.Repositories
         {
             if (!AdministratorExists(newAdministrator.Id))
                 throw new ResourceNotFoundException("Could not find specified administrator");
-            if (EmailAlreadyExists(newAdministrator.Email))
+            Administrator oldAdministrator = GetAdministratorById(newAdministrator.Id);
+            if (oldAdministrator.Email!=newAdministrator.Email && EmailAlreadyExists(newAdministrator.Email))
                 throw new InvalidOperationException("Administrator with same email already registered");
 
             Administrator retrievedAdministrator = Context.Set<Administrator>().Where(a => a.Id == newAdministrator.Id).FirstOrDefault();
