@@ -1,8 +1,7 @@
 ﻿Feature: ChargingSpot
 
-A short summary of the feature
-
 @mytag
+@ignore
 Scenario: Add charging spot without being logged in.
 	Given a Region already registered:
 	| Id | Name                 | TouristPoints  |

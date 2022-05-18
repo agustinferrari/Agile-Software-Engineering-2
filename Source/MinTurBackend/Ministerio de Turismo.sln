@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.XMLImporter.Test", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.ImporterInterface", "MinTur.ImporterInterface\MinTur.ImporterInterface.csproj", "{28CA7422-461F-47A0-A504-859832AB6C91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.ChargingSpotBDD.Test", "MinTur.ChargingSpot.Test\MinTur.ChargingSpotBDD.Test.csproj", "{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.ChargingSpotBDD.Test", "MinTur.ChargingSpotBDD.Test\MinTur.ChargingSpotBDD.Test.csproj", "{60C981AA-95EB-4984-9C97-F7E9012890A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -295,18 +295,18 @@ Global
 		{28CA7422-461F-47A0-A504-859832AB6C91}.Release|x64.Build.0 = Release|Any CPU
 		{28CA7422-461F-47A0-A504-859832AB6C91}.Release|x86.ActiveCfg = Release|Any CPU
 		{28CA7422-461F-47A0-A504-859832AB6C91}.Release|x86.Build.0 = Release|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Debug|x64.Build.0 = Debug|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Debug|x86.Build.0 = Debug|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Release|x64.ActiveCfg = Release|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Release|x64.Build.0 = Release|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Release|x86.ActiveCfg = Release|Any CPU
-		{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}.Release|x86.Build.0 = Release|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Debug|x64.Build.0 = Debug|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Debug|x86.Build.0 = Debug|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Release|x64.ActiveCfg = Release|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Release|x64.Build.0 = Release|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Release|x86.ActiveCfg = Release|Any CPU
+		{60C981AA-95EB-4984-9C97-F7E9012890A7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
