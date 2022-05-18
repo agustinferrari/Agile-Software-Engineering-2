@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.XMLImporter.Test", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.ImporterInterface", "MinTur.ImporterInterface\MinTur.ImporterInterface.csproj", "{28CA7422-461F-47A0-A504-859832AB6C91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.ChargingSpot.Test", "MinTur.ChargingSpot.Test\MinTur.ChargingSpot.Test.csproj", "{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.ChargingSpotBDD.Test", "MinTur.ChargingSpot.Test\MinTur.ChargingSpotBDD.Test.csproj", "{A22B2641-B62C-478B-B133-2E1DF8CFEFE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

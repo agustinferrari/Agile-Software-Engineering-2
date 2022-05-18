@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace MinTur.ChargingSpot.Test.Features
+namespace MinTur.ChargingSpotBDD.Test.Features
 {
     using TechTalk.SpecFlow;
     using System;

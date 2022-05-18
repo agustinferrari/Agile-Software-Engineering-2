@@ -1,10 +1,13 @@
 using MinTur.Domain.BusinessEntities;
+using MinTur.Domain.BusinessEntities;
+using MinTur.Models.In;
+using MinTur.WebApi.Controllers;
 using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
-namespace MinTur.ChargingSpot.Test
+namespace MinTur.ChargingSpotBDD.Test
 {
     [Binding]
     public class ChargingSpotStepDefinitions
@@ -35,13 +38,12 @@ namespace MinTur.ChargingSpot.Test
         [When(@"the user tries to add the new charging spot")]
         public void WhenTheUserTriesToAddTheNewChargingSpot()
         {
-            ChargingSpot chargingSpot = _scenarioContext.Get<IEnumerable<ChargingSpot>>();
+            ChargingSpot chargingSpot = _scenarioContext.Get<ChargingSpot>();
             ChargingSpotIntentModel newModel = new ChargingSpotIntentModel()
             {
-                Id = chargingSpot.Id,
                 Name = chargingSpot.Name,
                 Address = chargingSpot.Address,
-                Region = chargingSpot.Region,
+                RegionId = chargingSpot.Region.Id,
                 Description = chargingSpot.Description
             };
             try
