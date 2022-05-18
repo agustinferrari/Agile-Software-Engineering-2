@@ -33,7 +33,6 @@ jobs:
         working-directory: ./Source/MinTurBackend/
         run: dotnet-coverage merge --remove-input-files -r --output-format cobertura ./coverage/*/coverage.cobertura.xml
       - name: Upload combined coverage files
-        run: ls Source/MinTurBackend/
         uses: actions/upload-artifact@v3
         with:
           name: Combined_Test_Coverage
