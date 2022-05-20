@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
 using MinTur.BusinessLogic.ResourceManagers;
+using MinTur.BusinessLogicInterface.ResourceManagers;
 using MinTur.BusinessLogicInterface.Security;
+using MinTur.DataAccess.Contexts;
+using MinTur.DataAccess.Facades;
+using MinTur.DataAccessInterface.Facades;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Models.In;
@@ -24,14 +28,16 @@ namespace MinTur.ChargingSpotBDD.Test
 
         private readonly ScenarioContext _scenarioContext;
         private ChargingSpotController _chargingSpotController;
-        private ChargingSpotManager _chargingSpotManager;
+        private IChargingSpotManager _chargingSpotManager;
+        private IRepositoryFacade _chargingSpotRepository;
 
         private Exception _actualException;
 
         public RemoveChargingSpotNotLoggedInStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
-            _chargingSpotManager = new ChargingSpotManager();
+            _chargingSpotRepository = new RepositoryFacade(ContextFactory.GetNewContext(ContextType.Memory));
+            _chargingSpotManager = new ChargingSpotManager(_chargingSpotRepository);
             _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
         }
 

@@ -157,5 +157,9 @@ namespace MinTur.DataAccess.Facades
         {
             return _reviewRepository.GetReviewById(reviewId);
         }
+
+        public void DeleteChargingSpotById(int chargingSpotId){
+            throw new NotImplementedException();
+        }
     }
 }
