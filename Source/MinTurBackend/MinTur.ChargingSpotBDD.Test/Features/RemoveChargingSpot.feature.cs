@@ -76,11 +76,13 @@ namespace MinTur.ChargingSpotBDD.Test.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Delete charging spot without being logged in.")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void DeleteChargingSpotWithoutBeingLoggedIn_()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "mytag",
+                    "ignore"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot without being logged in.", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
@@ -103,30 +105,25 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             else
             {
                 this.ScenarioStart();
-#line 7
-  testRunner.Given("a not logged in user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
                             "Address",
                             "Region",
-                            "Description",
-                            "Error"});
+                            "Description"});
                 table3.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
                             "SurOeste",
-                            "Punto de carga",
-                            "Can not delete charging spot without being logged in as an administrator"});
-#line 8
-  testRunner.And("an existing ChargingSpot:", ((string)(null)), table3, "And ");
+                            "Punto de carga"});
+#line 7
+  testRunner.Given("an existing ChargingSpot:", ((string)(null)), table3, "Given ");
+#line hidden
+#line 10
+  testRunner.When("the user tries to delete the existing charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
-  testRunner.When("the user tries to delete the new charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 12
   testRunner.Then("an error \'You must be logged in to delete a charging spot\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
