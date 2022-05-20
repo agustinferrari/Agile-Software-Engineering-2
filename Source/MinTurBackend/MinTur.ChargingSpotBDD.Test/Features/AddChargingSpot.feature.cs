@@ -20,22 +20,22 @@ namespace MinTur.ChargingSpotBDD.Test.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ChargingSpot")]
-    public partial class ChargingSpotFeature
+    [NUnit.Framework.DescriptionAttribute("AddChargingSpot")]
+    public partial class AddChargingSpotFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "ChargingSpot.feature"
+#line 1 "AddChargingSpot.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ChargingSpot", "A short summary of the feature", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AddChargingSpot", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,14 +75,16 @@ namespace MinTur.ChargingSpotBDD.Test.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add charging spot without being logged in.")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void AddChargingSpotWithoutBeingLoggedIn_()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "mytag",
+                    "ignore"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot without being logged in.", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -110,7 +112,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "1",
                             "SurOeste",
                             "[]"});
-#line 7
+#line 6
  testRunner.Given("a Region already registered:", ((string)(null)), table1, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -125,13 +127,13 @@ this.ScenarioInitialize(scenarioInfo);
                             "General Flores",
                             "SurOeste",
                             "Punto de carga"});
-#line 10
+#line 9
  testRunner.And("a new ChargingSpot:", ((string)(null)), table2, "And ");
 #line hidden
-#line 13
+#line 12
  testRunner.When("the user tries to add the new charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 14
+#line 13
  testRunner.Then("an error \'You must be logged in to create a charging spot\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

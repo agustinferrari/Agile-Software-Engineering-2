@@ -10,14 +10,14 @@ using TechTalk.SpecFlow.Assist;
 namespace MinTur.ChargingSpotBDD.Test
 {
     [Binding]
-    public class ChargingSpotStepDefinitions
+    public class AddChargingSpotStepDefinitions
     {
 
         private readonly ScenarioContext _scenarioContext;
         private ChargingSpotController _chargingSpotController;
         private Exception _actualException;
 
-        public ChargingSpotStepDefinitions(ScenarioContext context, ChargingSpotController chargingSpotController)
+        public AddChargingSpotStepDefinitions(ScenarioContext context, ChargingSpotController chargingSpotController)
         {
             _scenarioContext = context;
             _chargingSpotController = chargingSpotController;

@@ -1,4 +1,4 @@
-﻿Feature: ChargingSpot
+﻿Feature: AddChargingSpot
 
 @mytag
 @ignore
