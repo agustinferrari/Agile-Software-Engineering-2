@@ -43,6 +43,21 @@ namespace MinTur.WebApi.Test.Controllers
             Assert.IsTrue(createdResult.Value.Equals(new ChargingSpotConfirmationModel(createdChargingSpot)));
         }
 
+        [TestMethod]
+        public void DeleteChargingSpotOkTest()
+        {
+            int existingChargingSpotId = 1;
+            _chargingSpotManagerMock.Setup(r => r.DeleteChargingSpotById(It.IsAny<int>()));
+            ChargingSpotController chargingSpotController = new ChargingSpotController(_chargingSpotManagerMock.Object);
+
+            IActionResult result = chargingSpotController.DeleteChargingSpot(existingChargingSpotId);
+            CreatedResult createdResult = result as CreatedResult;
+
+            _chargingSpotManagerMock.VerifyAll();
+            JsonResult parsedResult = createdResult.Value as JsonResult;
+            Assert.IsTrue(parsedResult.Value.Equals( $"Administrator {existingChargingSpotId} succesfuly deleted"));
+        }
+
         #region Helpers
         private ChargingSpotIntentModel CreateChargingSpotIntentModel()
         {
