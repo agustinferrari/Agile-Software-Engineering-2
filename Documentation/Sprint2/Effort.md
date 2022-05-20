@@ -17,11 +17,4 @@
 | Viernes 20/05/22 13:00-14:00   | Agustín           | Proyecto BDD Add Charging Spot escenario 1                                                                                                                 |
 | Viernes 20/05/22 17:17-18:35   | Agustín y Sofía   | Proyecto BDD Add Charging Spot escenario 1                                                                                                                 |
 | Viernes 20/05/22 17:17-18:50   | Joaquín           | Proyecto BDD Remove Charging Spot escenario 1                                                                                                              |
-
-
-
-
-
-
-
-
+| Viernes 20/05/22 18:50-20:30   | Joaquín           | Proyecto BDD Remove Charging Spot escenario 2                                                                                                              |
