@@ -28,7 +28,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "RemoveChargingSpot.feature"
+#line 1 "DeleteChargingSpot.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -76,16 +76,14 @@ namespace MinTur.ChargingSpotBDD.Test.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Delete charging spot without being logged in.")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void DeleteChargingSpotWithoutBeingLoggedIn_()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag",
-                    "ignore"};
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot without being logged in.", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+#line 5
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -117,14 +115,14 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                             "General Flores",
                             "SurOeste",
                             "Punto de carga"});
-#line 7
+#line 6
   testRunner.Given("an existing ChargingSpot:", ((string)(null)), table3, "Given ");
 #line hidden
-#line 10
+#line 9
   testRunner.When("the user tries to delete the existing charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
-  testRunner.Then("an error \'You must be logged in to delete a charging spot\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 10
+  testRunner.Then("the error \'You must be logged in to delete a charging spot\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
