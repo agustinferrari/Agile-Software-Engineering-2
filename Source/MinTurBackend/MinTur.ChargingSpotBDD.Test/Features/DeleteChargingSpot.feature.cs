@@ -103,20 +103,20 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
                             "Address",
                             "Region",
                             "Description"});
-                table3.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
                             "SurOeste",
                             "Punto de carga"});
 #line 6
-  testRunner.Given("an existing ChargingSpot:", ((string)(null)), table3, "Given ");
+  testRunner.Given("an existing ChargingSpot:", ((string)(null)), table2, "Given ");
 #line hidden
 #line 9
   testRunner.When("the user tries to delete the existing charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

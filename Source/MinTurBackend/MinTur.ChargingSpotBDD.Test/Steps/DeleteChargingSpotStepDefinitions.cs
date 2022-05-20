@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
+using MinTur.BusinessLogic.ResourceManagers;
 using MinTur.BusinessLogicInterface.Security;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Domain.BusinessEntities;
@@ -23,11 +24,15 @@ namespace MinTur.ChargingSpotBDD.Test
 
         private readonly ScenarioContext _scenarioContext;
         private ChargingSpotController _chargingSpotController;
+        private ChargingSpotManager _chargingSpotManager;
+
         private Exception _actualException;
 
         public RemoveChargingSpotStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
+            _chargingSpotManager = new ChargingSpotManager();
+            _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
         }
 
         [Given(@"an existing ChargingSpot:")]

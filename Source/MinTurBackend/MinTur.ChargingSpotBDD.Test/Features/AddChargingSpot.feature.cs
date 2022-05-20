@@ -75,16 +75,14 @@ namespace MinTur.ChargingSpotBDD.Test.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add charging spot without being logged in.")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
         [NUnit.Framework.CategoryAttribute("mytag")]
         public virtual void AddChargingSpotWithoutBeingLoggedIn_()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag",
-                    "ignore"};
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot without being logged in.", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+#line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -107,34 +105,23 @@ this.ScenarioInitialize(scenarioInfo);
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
-                            "TouristPoints"});
-                table1.AddRow(new string[] {
-                            "1",
-                            "SurOeste",
-                            "[]"});
-#line 6
- testRunner.Given("a Region already registered:", ((string)(null)), table1, "Given ");
-#line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Id",
-                            "Name",
                             "Address",
-                            "Region",
+                            "RegionId",
                             "Description"});
-                table2.AddRow(new string[] {
+                table1.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
-                            "SurOeste",
+                            "1",
                             "Punto de carga"});
-#line 9
- testRunner.And("a new ChargingSpot:", ((string)(null)), table2, "And ");
+#line 5
+ testRunner.Given("a new ChargingSpot:", ((string)(null)), table1, "Given ");
 #line hidden
-#line 12
+#line 8
  testRunner.When("the user tries to add the new charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 13
- testRunner.Then("an error \'You must be logged in to create a charging spot\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 9
+ testRunner.Then("an error \'Please send your authorization token\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

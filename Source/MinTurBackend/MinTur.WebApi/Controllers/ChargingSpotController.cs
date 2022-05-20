@@ -12,15 +12,15 @@ namespace MinTur.WebApi.Controllers
 {
     [EnableCors("AllowEverything")]
     [Route("api/chargingSpots")]
-    [ApiController]
     [ServiceFilter(typeof(AdministratorAuthorizationFilter))]
+    [ApiController]
     public class ChargingSpotController : ControllerBase
     {
         private readonly IChargingSpotManager _chargingSpotManager;
 
-        public ChargingSpotController(IChargingSpotManager regionManager)
+        public ChargingSpotController(IChargingSpotManager chargingSpotManager)
         {
-            _chargingSpotManager = regionManager;
+            _chargingSpotManager = chargingSpotManager;
         }
 
         [HttpPost]

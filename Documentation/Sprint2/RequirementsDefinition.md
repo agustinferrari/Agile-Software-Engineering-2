@@ -30,12 +30,12 @@
 **Para** que turistas con autos eléctricos sepan de la presencia de estos
 ### Escenarios (Criterios de aceptacion)
 1. #### Agregar punto de carga sin estar logueado
-    * **Dado** un usuario no logueado y region SurOeste cargada
-        **Punto de carga**
-        | Id  | Nombre               | Dirección      | Región   | Descripción    |
+    * **Dado** un usuario no logueado
+    - **Y** un punto de carga:
+        | Id  | Nombre               | Dirección      | RegionId   | Descripción    |
         |:--- |:-------------------- |:-------------- |:-------- |:-------------- |
-        | 1   | Cargar frente al mar | General Flores | SurOeste | Punto de carga |
-    - **Cuando** intenta agregar un punto de carga con los datos:
+        | 1   | Cargar frente al mar | General Flores | 1 | Punto de carga |
+    - **Cuando** intenta agregar el nuevo punto de carga
     - **Entonces** debería mostrarse un mensaje de error, que diga que es necesario estar logueado como administrador para agregar un punto de carga.
 2. #### Agregar punto de carga con datos invalidos
     * **Dado** un usuario logueado como administrador
