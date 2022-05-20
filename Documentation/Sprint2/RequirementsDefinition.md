@@ -90,6 +90,7 @@
 ### Escenarios (Criterios de aceptacion)
 1. #### Eliminar punto de carga sin estar logueado
     * **Dado** un usuario no logueado
+    
         **Datos de Prueba**
         | Id punto de carga | Error                                                |
         |:----------------- |:-----------------------------------------------------|

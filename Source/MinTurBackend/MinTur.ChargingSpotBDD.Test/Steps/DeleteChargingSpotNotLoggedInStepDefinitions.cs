@@ -19,7 +19,7 @@ using TechTalk.SpecFlow.Assist;
 namespace MinTur.ChargingSpotBDD.Test
 {
     [Binding]
-    public class RemoveChargingSpotStepDefinitions
+    public class RemoveChargingSpotNotLoggedInStepDefinitions
     {
 
         private readonly ScenarioContext _scenarioContext;
@@ -28,7 +28,7 @@ namespace MinTur.ChargingSpotBDD.Test
 
         private Exception _actualException;
 
-        public RemoveChargingSpotStepDefinitions(ScenarioContext context)
+        public RemoveChargingSpotNotLoggedInStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
             _chargingSpotManager = new ChargingSpotManager();
@@ -56,14 +56,14 @@ namespace MinTur.ChargingSpotBDD.Test
         }
 
 
-        [Then(@"the error 'You must be logged in to delete a charging spot' should be raised")]
-        public void ThenTheErrorYouMustNeLoggedIntoDeleteAChargingSpotShouldBeRaised()
+        [Then(@"the error 'Then the error 'Please send your authorization token' should be raised' should be raised")]
+        public void ThenTheErrorYouMustNeLoggedIntoDeleteAChargingSpotShouldBeRaised(string expectedErrorMessage)
         {
             IActionResult authFilterResult = _scenarioContext.Get<IActionResult>();
             JsonResult parsedResult = authFilterResult as JsonResult;
             Assert.IsNotNull(parsedResult, "No error was raised");
             Assert.IsTrue(parsedResult.StatusCode == StatusCodes.Status401Unauthorized);
-            Assert.IsTrue(parsedResult.Value == "Please send your authorization token");
+            Assert.AreEqual(parsedResult.Value, expectedErrorMessage);
 
             _actualException = null;
         }
