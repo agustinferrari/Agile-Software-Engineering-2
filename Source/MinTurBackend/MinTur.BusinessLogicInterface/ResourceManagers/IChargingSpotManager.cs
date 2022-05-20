@@ -8,5 +8,7 @@ namespace MinTur.BusinessLogicInterface.ResourceManagers
     public interface IChargingSpotManager
     {
         ChargingSpot RegisterChargingSpot(ChargingSpot chargingSpot);
+        void DeleteChargingSpotById(int id);
+
     }
 }

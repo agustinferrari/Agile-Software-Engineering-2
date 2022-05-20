@@ -8,6 +8,11 @@ namespace MinTur.BusinessLogic.ResourceManagers
 {
     public class ChargingSpotManager : IChargingSpotManager
     {
+        public void DeleteChargingSpotById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public ChargingSpot RegisterChargingSpot(ChargingSpot chargingSpot)
         {
             return new ChargingSpot();

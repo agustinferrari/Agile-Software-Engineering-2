@@ -91,9 +91,9 @@
 1. #### Eliminar punto de carga sin estar logueado
     * **Dado** un usuario no logueado
         **Datos de Prueba**
-        | Id punto de carga | Error                                                                             |
-        |:----------------- |:--------------------------------------------------------------------------------- |
-        | 1                 | No se puede eliminar el punto de carga porque no existe punto para el id recibido |
+        | Id punto de carga | Error                                                |
+        |:----------------- |:-----------------------------------------------------|
+        | 1                 | Debes estar logueado para eliminar un punto de carga |
     * **Cuando** intenta eliminar el punto de carga para {Id punto de carga}
     * **Entonces** debería mostrarse el mensaje de error {Error}
 2. #### Eliminar punto de carga con datos incorrectos

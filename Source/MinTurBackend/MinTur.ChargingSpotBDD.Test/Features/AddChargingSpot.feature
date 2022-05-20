@@ -1,4 +1,4 @@
-﻿Feature: ChargingSpot
+﻿Feature: AddChargingSpot
 
 @mytag
 Scenario: Add charging spot without being logged in.

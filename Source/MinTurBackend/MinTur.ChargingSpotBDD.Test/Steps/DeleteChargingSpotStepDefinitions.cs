@@ -19,53 +19,58 @@ using TechTalk.SpecFlow.Assist;
 namespace MinTur.ChargingSpotBDD.Test
 {
     [Binding]
-    public class ChargingSpotStepDefinitions
+    public class RemoveChargingSpotStepDefinitions
     {
 
         private readonly ScenarioContext _scenarioContext;
         private ChargingSpotController _chargingSpotController;
         private ChargingSpotManager _chargingSpotManager;
+
         private Exception _actualException;
 
-        public ChargingSpotStepDefinitions(ScenarioContext context)
+        public RemoveChargingSpotStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
             _chargingSpotManager = new ChargingSpotManager();
             _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
         }
 
-        [Given(@"a new ChargingSpot:")]
-        public void GivenANewChargingSpot(Table table)
+        [Given(@"an existing ChargingSpot:")]
+        public void GivenAnExistingChargingSpot(Table table)
         {
-            _scenarioContext.Set(table.CreateInstance<ChargingSpotIntentModel>());
+            _scenarioContext.Set(table.CreateInstance<ChargingSpot>);
         }
 
-        [When(@"the user tries to add the new charging spot")]
-        public void WhenTheUserTriesToAddTheNewChargingSpot()
+        [When(@"the user tries to delete the existing charging spot")]
+        public void WhenTheUserTriesToDeleteTheExistingChargingSpot()
         {
             RunFilterWithoutAdminToken();
             IActionResult authFilterResult = _scenarioContext.Get<IActionResult>();
 
             if (authFilterResult == null)
             {
-                ChargingSpotIntentModel chargingSpot = _scenarioContext.Get<ChargingSpotIntentModel>();
-                IActionResult result = _chargingSpotController.CreateChargingSpot(chargingSpot);
+                ChargingSpot existing = _scenarioContext.Get<ChargingSpot>();
+                IActionResult result = _chargingSpotController.DeleteChargingSpot(existing.Id);
                 _scenarioContext.Set(result);
             }
         }
 
-        [Then(@"an error '([^']*)' should be raised")]
-        public void ThenAnErrorShouldBeRaised(string expectedErrorMessage)
+
+        [Then(@"the error 'You must be logged in to delete a charging spot' should be raised")]
+        public void ThenTheErrorYouMustNeLoggedIntoDeleteAChargingSpotShouldBeRaised()
         {
-            IActionResult result = _scenarioContext.Get<IActionResult>();
-            JsonResult parsedResult = result as JsonResult;
-            Assert.IsNotNull(parsedResult);
-            Assert.AreEqual(parsedResult.StatusCode, StatusCodes.Status401Unauthorized);
-            Assert.AreEqual(parsedResult.Value,expectedErrorMessage);
+            IActionResult authFilterResult = _scenarioContext.Get<IActionResult>();
+            JsonResult parsedResult = authFilterResult as JsonResult;
+            Assert.IsNotNull(parsedResult, "No error was raised");
+            Assert.IsTrue(parsedResult.StatusCode == StatusCodes.Status401Unauthorized);
+            Assert.IsTrue(parsedResult.Value == "Please send your authorization token");
+
+            _actualException = null;
         }
 
-        #region Helpers
-        private void RunFilterWithoutAdminToken() {
+        #region
+        private void RunFilterWithoutAdminToken()
+        {
             Mock<IAuthenticationManager> authenticationManagerMock = new Mock<IAuthenticationManager>();
             AdministratorAuthorizationFilter filter = new AdministratorAuthorizationFilter(authenticationManagerMock.Object);
 
