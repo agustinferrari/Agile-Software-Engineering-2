@@ -23,30 +23,33 @@ namespace MinTur.ChargingSpotBDD.Test
             _chargingSpotController = chargingSpotController;
         }
 
-
-        [Given(@"a not logged in user")]
-        public void GivenANotLoggedInuser()
-        {
-            _scenarioContext.Pending();
-        }
-
         [Given(@"an existing ChargingSpot:")]
         public void GivenAnExistingChargingSpot(Table table)
         {
-            _scenarioContext.Pending();
+            _scenarioContext.Set(table.CreateInstance<ChargingSpot>);
         }
 
-        [When(@"the user tries to delete the new charging spot")]
-        public void WhenTheUserTriesToDeleteTheNewChargingSpot()
+        [When(@"the user tries to delete the existing charging spot")]
+        public void WhenTheUserTriesToDeleteTheExistingChargingSpot()
         {
-            _scenarioContext.Pending();
+            ChargingSpot existing = _scenarioContext.Get<ChargingSpot>();
+            try
+            {
+                _chargingSpotController.DeleteChargingSpot(existing.Id);
+            }
+            catch (Exception ex)
+            {
+                _actualException = ex;
+            }
         }
 
         [Then(@"an error '([^']*)' should be raised")]
         public void ThenAnErrorShouldBeRaised(string expectedErrorMessage)
         {
-            _scenarioContext.Pending();
-        }
+            Assert.IsNotNull(_actualException, "No error was raised");
+            Assert.AreEqual(expectedErrorMessage, _actualException.Message);
 
+            _actualException = null;
+        }
     }
 }
