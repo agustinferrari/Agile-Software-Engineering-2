@@ -20,6 +20,7 @@ namespace MinTur.ServiceRegistration.ServiceRegistrators
             serviceCollection.AddScoped<IRegionManager, RegionManager>();
             serviceCollection.AddScoped<ITouristPointManager, TouristPointManager>();
             serviceCollection.AddScoped<ICategoryManager, CategoryManager>();
+            serviceCollection.AddScoped<IChargingSpotManager, ChargingSpotManager>();
             serviceCollection.AddScoped<IResortManager, ResortManager>();
             serviceCollection.AddScoped<IReservationManager, ReservationManager>();
             serviceCollection.AddScoped<IReviewManager, ReviewManager>();
