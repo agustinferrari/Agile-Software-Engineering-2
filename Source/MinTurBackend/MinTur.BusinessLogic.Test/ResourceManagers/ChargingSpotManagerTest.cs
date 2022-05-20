@@ -14,7 +14,6 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
     {
         private List<ChargingSpot> _chargingSpots;
         private Mock<IRepositoryFacade> _repositoryFacadeMock;
-        private Mock<Administrator> _administratorMock;
 
         #region SetUp
         [TestInitialize]
@@ -22,15 +21,14 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
         {
             _chargingSpots = new List<ChargingSpot>();
             _repositoryFacadeMock = new Mock<IRepositoryFacade>(MockBehavior.Strict);
-            _administratorMock = new Mock<Administrator>(MockBehavior.Strict);
 
-            LoadAdministrators();
+            LoadChargingSpots();
         }
 
-        private void LoadAdministrators()
+        private void LoadChargingSpots()
         {
             Region testRegion = new Region() { Id = 1, Name = "TestName" };
-            ChargingSpot administrator1 = new ChargingSpot()
+            ChargingSpot chargingSpot1 = new ChargingSpot()
             {
                 Id = 1,
                 Name = "TestSpotOne",
@@ -39,7 +37,7 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
                 RegionId = 1,
                 Description = "TestChargingSpotDescription"
             };
-            _chargingSpots.Add(administrator1);
+            _chargingSpots.Add(chargingSpot1);
         }
 
         #endregion
@@ -60,13 +58,17 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
 
         #region Helpers
 
-        public Administrator CreateAdministratorWithSpecificId(int id)
+        public ChargingSpot CreateChargingSpotWithSpecificId(int id)
         {
-            return new Administrator()
+            Region testRegion = new Region() { Id = 1, Name = "TestName" };
+            return  new ChargingSpot()
             {
                 Id = id,
-                Email = "email@email.com",
-                Password = "password"
+                Name = "TestSpotOne",
+                Address = "TestAddressOne",
+                Region = testRegion,
+                RegionId = 1,
+                Description = "TestChargingSpotDescription"
             };
         }
 
