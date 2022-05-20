@@ -30,5 +30,12 @@ namespace MinTur.WebApi.Controllers
             ChargingSpotConfirmationModel confirmation = new ChargingSpotConfirmationModel(createdChargingSpot);
             return Created("api/chargingSpots/" + createdChargingSpot.Id, confirmation);
         }
+
+        [HttpDelete]
+        public IActionResult DeleteChargingSpot([FromRoute] int existingChargingSpotId)
+        {
+            _chargingSpotManager.DeleteChargingSpotById(existingChargingSpotId);
+            return Ok(new { ResultMessage = $"Charging spot {existingChargingSpotId} succesfuly deleted" });
+        }
     }
 }
