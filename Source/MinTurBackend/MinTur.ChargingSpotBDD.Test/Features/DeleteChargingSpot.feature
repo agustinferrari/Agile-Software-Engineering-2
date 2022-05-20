@@ -10,6 +10,7 @@
 		Then the error 'You must be logged in to delete a charging spot' should be raised
 
 	@mytag
+	@ignore
 	Scenario: Delete charging spot with invalid data.
 		Given an existing, logged user
 			| Email            | Password |
