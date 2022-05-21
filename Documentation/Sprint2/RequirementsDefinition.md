@@ -113,17 +113,22 @@
     * **Cuando** intenta eliminar el punto de carga con id {Id punto de carga}
     * **Entonces** debería mostrarse el error {Error}
 3. #### Eliminar punto de carga logueado como administrador
-    * **Dado** un usuario logueado como administrador y region SurOeste carga:
+    * **Dado** un usuario logueado como administrador y region SurOeste cargada:
         
         **Usuario**
         | Email            | Contraseña |
         |:---------------- |:---------- |
         | matias@admin.com | admin      |
         
+        **Region**
+        | Id  | Nombre               |
+        |:--- |:-------------------- |
+        | 1   | SurOeste |
+        
         **Punto de carga**
-        | Id  | Nombre               | Dirección      | Región   | Descripción    |
-        |:--- |:-------------------- |:-------------- |:-------- |:-------------- |
-        | 1   | Cargar frente al mar | General Flores | SurOeste | Punto de carga |
+        | Id  | Nombre               | Dirección      | RegionId | Descripción    |
+        |:--- |:-------------------- |:-------------- |:--------:|:-------------- |
+        | 1   | Cargar frente al mar | General Flores |    1     | Punto de carga |
         
     * **Cuando** intenta eliminar el punto de carga para {Id}
     * **Entonces** debería eliminarse de la lista de puntos de carga
