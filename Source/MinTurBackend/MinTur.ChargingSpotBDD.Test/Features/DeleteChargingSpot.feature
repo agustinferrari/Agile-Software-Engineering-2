@@ -7,10 +7,9 @@
 			| Id | Name                 | Address        | Region   | Description    |
 			| 1  | Cargar frente al mar | General Flores | SurOeste | Punto de carga |
 		When the user tries to delete the existing charging spot
-		Then the error 'You must be logged in to delete a charging spot' should be raised
+		Then the error 'Please send your authorization token' should be raised
 
 	@mytag
-	@ignore
 	Scenario: Delete charging spot with invalid data.
 		Given an existing, logged user
 			| Email            | Password |
@@ -30,7 +29,7 @@
 			| Id | Name     |
 			| 1  | SurOeste |
 		And the existing ChargingSpot:
-			| Id | Name                 | Address        | RegionId   | Description    |
-			| 1  | Cargar frente al mar | General Flores | 1 | Punto de carga |
+			| Id | Name                 | Address        | RegionId | Description    |
+			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
 		When the user tries to delete the charging spot
 		Then the charging spot should be deleted from the database

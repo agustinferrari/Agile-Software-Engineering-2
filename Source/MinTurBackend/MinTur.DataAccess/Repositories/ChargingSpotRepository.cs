@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MinTur.DataAccessInterface.Repositories;
 using MinTur.Domain.BusinessEntities;
+using MinTur.Exceptions;
 using System;
 using System.Linq;
 
@@ -18,6 +19,12 @@ namespace MinTur.DataAccess.Repositories
         public void DeleteChargingSpotById(int chargingSpotId)
         {
             ChargingSpot chargingSpotFromDb = Context.Set<ChargingSpot>().FirstOrDefault(c => c.Id == chargingSpotId);
+
+            if (chargingSpotFromDb == null)
+            {
+                throw new ResourceNotFoundException("Could not find specified charging spot");
+            }
+
             Context.Set<ChargingSpot>().Remove(chargingSpotFromDb);
             Context.SaveChanges();
         }
