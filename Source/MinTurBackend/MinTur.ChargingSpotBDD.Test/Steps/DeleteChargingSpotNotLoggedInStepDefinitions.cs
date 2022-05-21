@@ -62,14 +62,15 @@ namespace MinTur.ChargingSpotBDD.Test
         }
 
 
-        [Then(@"the error 'Then the error 'Please send your authorization token' should be raised' should be raised")]
-        public void ThenTheErrorYouMustNeLoggedIntoDeleteAChargingSpotShouldBeRaised(string expectedErrorMessage)
+        [Then(@"the error 'Please send your authorization token' should be raised")]
+        public void ThenTheErrorYouMustNeLoggedIntoDeleteAChargingSpotShouldBeRaised()
         {
+            string expectedAuthErrorMessage = "Please send your authorization token";
             IActionResult authFilterResult = _scenarioContext.Get<IActionResult>();
             JsonResult parsedResult = authFilterResult as JsonResult;
             Assert.IsNotNull(parsedResult, "No error was raised");
             Assert.IsTrue(parsedResult.StatusCode == StatusCodes.Status401Unauthorized);
-            Assert.AreEqual(parsedResult.Value, expectedErrorMessage);
+            Assert.AreEqual(parsedResult.Value, expectedAuthErrorMessage);
 
             _actualException = null;
         }

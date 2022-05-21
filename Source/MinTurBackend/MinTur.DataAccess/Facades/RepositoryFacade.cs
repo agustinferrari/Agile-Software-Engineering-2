@@ -15,6 +15,7 @@ namespace MinTur.DataAccess.Facades
         private RegionRepository _regionRepository;
         private TouristPointRepository _touristPointRepository;
         private CategoryRepository _categoryRepository;
+        private ChargingSpotRepository _chargingSpotRepository;
         private ResortRepository _resortRepository;
         private ReservationRepository _reservationRepository;
         private AuthenticationTokenRepository _authenticationTokenRepository;
@@ -27,6 +28,7 @@ namespace MinTur.DataAccess.Facades
             _regionRepository = new RegionRepository(_context);
             _touristPointRepository = new TouristPointRepository(_context);
             _categoryRepository = new CategoryRepository(_context);
+            _chargingSpotRepository = new ChargingSpotRepository(_context);
             _resortRepository = new ResortRepository(_context);
             _reservationRepository = new ReservationRepository(_context);
             _authenticationTokenRepository = new AuthenticationTokenRepository(_context);
@@ -159,7 +161,7 @@ namespace MinTur.DataAccess.Facades
         }
 
         public void DeleteChargingSpotById(int chargingSpotId){
-            throw new NotImplementedException();
+            _chargingSpotRepository.DeleteChargingSpotById(chargingSpotId);
         }
     }
 }
