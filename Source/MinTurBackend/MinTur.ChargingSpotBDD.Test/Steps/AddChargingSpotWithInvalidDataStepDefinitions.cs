@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.BusinessLogic.ResourceManagers;
+using MinTur.DataAccess.Contexts;
+using MinTur.DataAccess.Facades;
 using MinTur.DataAccessInterface.Facades;
 using MinTur.Models.In;
 using MinTur.WebApi.Controllers;
@@ -19,8 +21,10 @@ namespace MinTur.ChargingSpotBDD.Test.Steps
         public AddChargingSpotWithInvalidDataStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
+            _chargingSpotRepository = new RepositoryFacade(ContextFactory.GetNewContext(ContextType.Memory));
             _chargingSpotManager = new ChargingSpotManager(_chargingSpotRepository);
             _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
+
         }
 
         [Given(@"a new ChargingSpot named (.*)")]
