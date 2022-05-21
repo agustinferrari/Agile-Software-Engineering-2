@@ -3,7 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
 using MinTur.BusinessLogic.ResourceManagers;
+using MinTur.BusinessLogicInterface.ResourceManagers;
 using MinTur.BusinessLogicInterface.Security;
+using MinTur.DataAccess.Contexts;
+using MinTur.DataAccess.Facades;
+using MinTur.DataAccess.Repositories;
+using MinTur.DataAccessInterface.Facades;
+using MinTur.DataAccessInterface.Repositories;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Models.In;
@@ -24,13 +30,15 @@ namespace MinTur.ChargingSpotBDD.Test
 
         private readonly ScenarioContext _scenarioContext;
         private ChargingSpotController _chargingSpotController;
-        private ChargingSpotManager _chargingSpotManager;
+        private IChargingSpotManager _chargingSpotManager;
+        private IRepositoryFacade _chargingSpotRepository;
         private Exception _actualException;
 
         public AddChargingSpotStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
-            _chargingSpotManager = new ChargingSpotManager();
+            _chargingSpotRepository = new RepositoryFacade(ContextFactory.GetNewContext(ContextType.Memory));
+            _chargingSpotManager = new ChargingSpotManager(_chargingSpotRepository);
             _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
         }
 
@@ -61,11 +69,12 @@ namespace MinTur.ChargingSpotBDD.Test
             JsonResult parsedResult = result as JsonResult;
             Assert.IsNotNull(parsedResult);
             Assert.AreEqual(parsedResult.StatusCode, StatusCodes.Status401Unauthorized);
-            Assert.AreEqual(parsedResult.Value,expectedErrorMessage);
+            Assert.AreEqual(parsedResult.Value, expectedErrorMessage);
         }
 
         #region Helpers
-        private void RunFilterWithoutAdminToken() {
+        private void RunFilterWithoutAdminToken()
+        {
             Mock<IAuthenticationManager> authenticationManagerMock = new Mock<IAuthenticationManager>();
             AdministratorAuthorizationFilter filter = new AdministratorAuthorizationFilter(authenticationManagerMock.Object);
 

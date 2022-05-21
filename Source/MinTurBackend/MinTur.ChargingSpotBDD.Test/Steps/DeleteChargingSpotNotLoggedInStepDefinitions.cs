@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
 using MinTur.BusinessLogic.ResourceManagers;
+using MinTur.BusinessLogicInterface.ResourceManagers;
 using MinTur.BusinessLogicInterface.Security;
+using MinTur.DataAccess.Contexts;
+using MinTur.DataAccess.Facades;
+using MinTur.DataAccessInterface.Facades;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Models.In;
@@ -19,19 +23,21 @@ using TechTalk.SpecFlow.Assist;
 namespace MinTur.ChargingSpotBDD.Test
 {
     [Binding]
-    public class RemoveChargingSpotStepDefinitions
+    public class RemoveChargingSpotNotLoggedInStepDefinitions
     {
 
         private readonly ScenarioContext _scenarioContext;
         private ChargingSpotController _chargingSpotController;
-        private ChargingSpotManager _chargingSpotManager;
+        private IChargingSpotManager _chargingSpotManager;
+        private IRepositoryFacade _chargingSpotRepository;
 
         private Exception _actualException;
 
-        public RemoveChargingSpotStepDefinitions(ScenarioContext context)
+        public RemoveChargingSpotNotLoggedInStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
-            _chargingSpotManager = new ChargingSpotManager();
+            _chargingSpotRepository = new RepositoryFacade(ContextFactory.GetNewContext(ContextType.Memory));
+            _chargingSpotManager = new ChargingSpotManager(_chargingSpotRepository);
             _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
         }
 
@@ -56,14 +62,14 @@ namespace MinTur.ChargingSpotBDD.Test
         }
 
 
-        [Then(@"the error 'You must be logged in to delete a charging spot' should be raised")]
-        public void ThenTheErrorYouMustNeLoggedIntoDeleteAChargingSpotShouldBeRaised()
+        [Then(@"the error 'Then the error 'Please send your authorization token' should be raised' should be raised")]
+        public void ThenTheErrorYouMustNeLoggedIntoDeleteAChargingSpotShouldBeRaised(string expectedErrorMessage)
         {
             IActionResult authFilterResult = _scenarioContext.Get<IActionResult>();
             JsonResult parsedResult = authFilterResult as JsonResult;
             Assert.IsNotNull(parsedResult, "No error was raised");
             Assert.IsTrue(parsedResult.StatusCode == StatusCodes.Status401Unauthorized);
-            Assert.IsTrue(parsedResult.Value == "Please send your authorization token");
+            Assert.AreEqual(parsedResult.Value, expectedErrorMessage);
 
             _actualException = null;
         }
