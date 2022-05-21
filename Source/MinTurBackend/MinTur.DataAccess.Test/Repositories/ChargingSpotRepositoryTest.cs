@@ -44,6 +44,13 @@ namespace MinTur.DataAccess.Test.Repositories
             Assert.AreEqual(chargingSpotToBeDeleted.Region, regionInDb);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ResourceNotFoundException))]
+        public void DeleteChargingSpotWhichDoesntExist()
+        {
+            _repository.DeleteChargingSpotById(-4);
+        }
+
         #region Helpers
         private ChargingSpot CreateChargingSpot()
         {

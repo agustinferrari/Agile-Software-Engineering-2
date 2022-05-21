@@ -71,8 +71,9 @@ namespace MinTur.ChargingSpotBDD.Test
         }
 
         [Then(@"the error 'Could not find specified charging spot' should be raised")]
-        public void ThenTheErrorCouldNotDeleteChargingSpotBecauseItDoesNotExistShouldBeRaised(string expectedErrorMessage)
+        public void ThenTheErrorCouldNotDeleteChargingSpotBecauseItDoesNotExistShouldBeRaised()
         {
+            string expectedErrorMessage = "Could not find specified charging spot";
             Assert.IsNotNull(_actualException, "No error was raised");
             Assert.IsInstanceOfType(_actualException, typeof(ResourceNotFoundException));
             Assert.AreEqual(_actualException.Message, expectedErrorMessage);

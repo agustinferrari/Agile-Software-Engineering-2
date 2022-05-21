@@ -131,7 +131,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
   testRunner.When("the user tries to delete the existing charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-  testRunner.Then("the error \'You must be logged in to delete a charging spot\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("the error \'Please send your authorization token\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -140,16 +140,14 @@ namespace MinTur.ChargingSpotBDD.Test.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot with invalid data.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public void DeleteChargingSpotWithInvalidData_()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag",
-                    "ignore"};
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot with invalid data.", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 14
+#line 13
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -165,7 +163,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                 table3.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
-#line 15
+#line 14
   testRunner.Given("an existing, logged user", ((string)(null)), table3, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -180,13 +178,13 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                             "General Flores",
                             "SurOeste",
                             "Punto de carga"});
-#line 18
+#line 17
   testRunner.And("a not existing ChargingSpot:", ((string)(null)), table4, "And ");
 #line hidden
-#line 21
+#line 20
   testRunner.When("the user tries to delete the not existing charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 21
   testRunner.Then("the error \'Could not find specified charging spot\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -203,7 +201,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 25
+#line 24
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -219,7 +217,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                 table5.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
-#line 26
+#line 25
   testRunner.Given("an existing, logged admin", ((string)(null)), table5, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -228,7 +226,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                 table6.AddRow(new string[] {
                             "1",
                             "SurOeste"});
-#line 29
+#line 28
   testRunner.And("the existing Region:", ((string)(null)), table6, "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -243,13 +241,13 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                             "General Flores",
                             "1",
                             "Punto de carga"});
-#line 32
+#line 31
   testRunner.And("the existing ChargingSpot:", ((string)(null)), table7, "And ");
 #line hidden
-#line 35
+#line 34
   testRunner.When("the user tries to delete the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 36
+#line 35
   testRunner.Then("the charging spot should be deleted from the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
