@@ -192,6 +192,69 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             }
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot with valid data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        public void DeleteChargingSpotWithValidData()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "mytag"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 25
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Email",
+                            "Password"});
+                table5.AddRow(new string[] {
+                            "matias@admin.com",
+                            "admin"});
+#line 26
+  testRunner.Given("an existing, logged admin", ((string)(null)), table5, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name"});
+                table6.AddRow(new string[] {
+                            "1",
+                            "SurOeste"});
+#line 29
+  testRunner.And("the existing Region:", ((string)(null)), table6, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name",
+                            "Address",
+                            "RegionId",
+                            "Description"});
+                table7.AddRow(new string[] {
+                            "1",
+                            "Cargar frente al mar",
+                            "General Flores",
+                            "1",
+                            "Punto de carga"});
+#line 32
+  testRunner.And("the existing ChargingSpot:", ((string)(null)), table7, "And ");
+#line hidden
+#line 35
+  testRunner.When("the user tries to delete the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 36
+  testRunner.Then("the charging spot should be deleted from the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
