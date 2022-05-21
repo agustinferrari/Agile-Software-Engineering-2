@@ -1,4 +1,7 @@
 ﻿Feature: AddChargingSpot
+	As an administrator
+	I Want to add a charging spot
+	So that turists know where to find the charging spot.
 
 	@mytag
 	Scenario: Add charging spot without being logged in.

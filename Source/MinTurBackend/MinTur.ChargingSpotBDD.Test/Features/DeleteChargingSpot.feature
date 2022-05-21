@@ -1,5 +1,7 @@
 ﻿Feature: DeleteChargingSpot
-	As an administrator I Want to delete a charging spot so that turists don't search a closed charging spot.
+	As an administrator
+	I Want to delete a charging spot
+	So that turists don't search a closed charging spot.
 
 	@mytag
 	Scenario: Delete charging spot without being logged in.
