@@ -303,6 +303,69 @@ namespace MinTur.ChargingSpotBDD.Test.Features
  this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores", "1", "Desc @[][]??", "the description must be alphanumeric with a maximum of 60 characters", ((string[])(null)));
 #line hidden
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with valid data")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        public void AddChargingSpotWithValidData()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "ignore",
+                    "mytag"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 35
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Email",
+                            "Password"});
+                table2.AddRow(new string[] {
+                            "matias@admin.com",
+                            "admin"});
+#line 36
+  testRunner.Given("an existing, logged in admin", ((string)(null)), table2, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name"});
+                table3.AddRow(new string[] {
+                            "2",
+                            "SurOeste"});
+#line 39
+  testRunner.And("the existing region:", ((string)(null)), table3, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Address",
+                            "RegionId",
+                            "Description"});
+                table4.AddRow(new string[] {
+                            "Cargar parada 1",
+                            "General Flores",
+                            "2",
+                            "Punto de carga"});
+#line 42
+  testRunner.Given("a new ChargingSpot with valid data to add:", ((string)(null)), table4, "Given ");
+#line hidden
+#line 45
+  testRunner.When("the user tries to add the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 46
+  testRunner.Then("the charging spot should be added to the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

@@ -112,20 +112,20 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
                             "Address",
                             "Region",
                             "Description"});
-                table2.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
                             "SurOeste",
                             "Punto de carga"});
 #line 8
-  testRunner.Given("an existing ChargingSpot:", ((string)(null)), table2, "Given ");
+  testRunner.Given("an existing ChargingSpot:", ((string)(null)), table5, "Given ");
 #line hidden
 #line 11
   testRunner.When("the user tries to delete the existing charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -157,29 +157,29 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table3.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
 #line 16
-  testRunner.Given("an existing, logged user", ((string)(null)), table3, "Given ");
+  testRunner.Given("an existing, logged user", ((string)(null)), table6, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
                             "Address",
                             "Region",
                             "Description"});
-                table4.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
                             "SurOeste",
                             "Punto de carga"});
 #line 19
-  testRunner.And("a not existing ChargingSpot:", ((string)(null)), table4, "And ");
+  testRunner.And("a not existing ChargingSpot:", ((string)(null)), table7, "And ");
 #line hidden
 #line 22
   testRunner.When("the user tries to delete the not existing charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -211,38 +211,38 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table5.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
 #line 27
-  testRunner.Given("an existing, logged admin", ((string)(null)), table5, "Given ");
+  testRunner.Given("an existing, logged admin", ((string)(null)), table8, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name"});
-                table6.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "1",
                             "SurOeste"});
 #line 30
-  testRunner.And("the existing Region:", ((string)(null)), table6, "And ");
+  testRunner.And("the existing Region:", ((string)(null)), table9, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
                             "Address",
                             "RegionId",
                             "Description"});
-                table7.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
                             "1",
                             "Punto de carga"});
 #line 33
-  testRunner.And("the existing ChargingSpot:", ((string)(null)), table7, "And ");
+  testRunner.And("the existing ChargingSpot:", ((string)(null)), table10, "And ");
 #line hidden
 #line 36
   testRunner.When("the user tries to delete the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
