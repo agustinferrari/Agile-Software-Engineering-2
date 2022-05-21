@@ -28,6 +28,36 @@ namespace MinTur.Domain.Test.BusinessEntities
         {
             ChargingSpot chargingSpot = new ChargingSpot()
             {
+                Name = "Cargar parada!#",
+                Address = "General Flores",
+                RegionId = 1,
+                Description = "Punto de carga",
+            };
+
+            chargingSpot.ValidOrFail();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidRequestDataException))]
+        public void ChargingSpotWithInvalidAddressLengthFails()
+        {
+            ChargingSpot chargingSpot = new ChargingSpot()
+            {
+                Name = "Cargar parada 2",
+                Address = "General Flores General Flores General Flores",
+                RegionId = 1,
+                Description = "Punto de carga",
+            };
+
+            chargingSpot.ValidOrFail();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidRequestDataException))]
+        public void ChargingSpotWithInvalidAddressFormatFails()
+        {
+            ChargingSpot chargingSpot = new ChargingSpot()
+            {
                 Name = "Cargar parada",
                 Address = "General Flores!#",
                 RegionId = 1,
