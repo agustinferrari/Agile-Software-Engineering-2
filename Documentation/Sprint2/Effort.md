@@ -3,7 +3,7 @@
 ###### tags: `Sprint 2`
 
 |             Fecha              | Integrantes       | Actividad                                                                                                                                                  |
-|:------------------------------:|:----------------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :----------------------------: | :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |  Jueves 12/05/22 14:30-16:30   | Todos             | Sprint Planning                                                                                                                                            |
 |  Sábado 14/05/22 14:10-17:00   | Todos             | Sprint Planning, Definición de Requerimientos                                                                                                              |
 |  Sábado 15/05/22 12:40-16:00   | Agustín           | Backend Pipeline Configuration                                                                                                                             |
@@ -19,4 +19,5 @@
 |  Viernes 20/05/22 17:17-18:50  | Joaquín           | Proyecto BDD Delete Charging Spot escenario 1                                                                                                              |
 |  Viernes 20/05/22 18:50-20:30  | Joaquín           | Proyecto BDD Delete Charging Spot escenario 2                                                                                                              |
 |  Viernes 20/05/22 23:00-23:30  | Joaquín           | Conversion a MSTest de Proyecto Specflow                                                                                                                   |
-|  Viernes 21/05/22 11:00-12:15  | Agustín           | Proyecto BDD Delete Charging Spot escenario 2
+|  Sábado 21/05/22 11:00-12:15   | Agustín           | Proyecto BDD Delete Charging Spot escenario 3                                                                                                              |
+|  Sábado 21/05/22 13:00-13:30   | Joaquín           | Proyecto BDD Delete Charging Spot escenario 2                                                                                                              |
