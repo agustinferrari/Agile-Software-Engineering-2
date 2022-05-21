@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
+using MinTur.Exceptions;
 
 namespace MinTur.Domain.BusinessEntities
 {
@@ -12,5 +14,18 @@ namespace MinTur.Domain.BusinessEntities
         public Region Region { get; set; }
         public int RegionId { get; set; }
         public string Description { get; set; }
+
+        public virtual void ValidOrFail()
+        {
+            ValidateName();
+        }
+
+        private void ValidateName(){
+            Regex nameRegex = new Regex("^[a-zA-Z][a-zA-Z0-9]*$");
+
+            if (Name == null || Name.Length > 20 || !nameRegex.IsMatch(Name))
+                throw new InvalidRequestDataException("the name must be alphanumeric with a maximum of 20 characters");
+        }
     }
+
 }

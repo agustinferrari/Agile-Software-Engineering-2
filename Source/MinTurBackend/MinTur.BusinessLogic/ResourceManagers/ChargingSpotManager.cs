@@ -20,6 +20,8 @@ namespace MinTur.BusinessLogic.ResourceManagers
 
         public ChargingSpot RegisterChargingSpot(ChargingSpot chargingSpot)
         {
+            chargingSpot.ValidOrFail();
+            
             return new ChargingSpot();
         }
     }
