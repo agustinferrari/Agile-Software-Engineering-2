@@ -31,11 +31,11 @@ namespace MinTur.WebApi.Controllers
             return Created("api/chargingSpots/" + createdChargingSpot.Id, confirmation);
         }
 
-        [HttpDelete]
-        public IActionResult DeleteChargingSpot([FromRoute] int existingChargingSpotId)
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteChargingSpot([FromRoute] int id)
         {
-            _chargingSpotManager.DeleteChargingSpotById(existingChargingSpotId);
-            return Ok(new { ResultMessage = $"Charging spot {existingChargingSpotId} succesfuly deleted" });
+            _chargingSpotManager.DeleteChargingSpotById(id);
+            return Ok(new { ResultMessage = $"Charging spot {id} succesfuly deleted" });
         }
     }
 }
