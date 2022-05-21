@@ -66,5 +66,35 @@ namespace MinTur.Domain.Test.BusinessEntities
 
             chargingSpot.ValidOrFail();
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidRequestDataException))]
+        public void ChargingSpotWithInvalidDescriptionLengthFails()
+        {
+            ChargingSpot chargingSpot = new ChargingSpot()
+            {
+                Name = "Cargar parada",
+                Address = "General Flores",
+                RegionId = 1,
+                Description = "Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga",
+            };
+
+            chargingSpot.ValidOrFail();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidRequestDataException))]
+        public void ChargingSpotWithInvalidDescriptionFormatFails()
+        {
+            ChargingSpot chargingSpot = new ChargingSpot()
+            {
+                Name = "Cargar parada",
+                Address = "General Flores",
+                RegionId = 1,
+                Description = "Punto de carga#!",
+            };
+
+            chargingSpot.ValidOrFail();
+        }
     }
 }

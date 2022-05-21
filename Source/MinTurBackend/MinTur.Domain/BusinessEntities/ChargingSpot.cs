@@ -19,6 +19,7 @@ namespace MinTur.Domain.BusinessEntities
         {
             ValidateName();
             ValidateAddress();
+            ValidateDescription();
         }
 
         private void ValidateName()
@@ -35,6 +36,14 @@ namespace MinTur.Domain.BusinessEntities
 
             if (Address == null || Address.Length > 30 || !addressRegex.IsMatch(Address))
                 throw new InvalidRequestDataException("the address must be alphanumeric with a maximum of 30 characters");
+        }
+
+        private void ValidateDescription()
+        {
+            Regex descriptionRegex = new Regex("^[a-zA-Z][a-zA-Z0-9]*$");
+
+            if (Description == null || Description.Length > 60 || !descriptionRegex.IsMatch(Description))
+                throw new InvalidRequestDataException("the description must be alphanumeric with a maximum of 60 characters");
         }
     }
 
