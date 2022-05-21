@@ -8,6 +8,7 @@ using TechTalk.SpecFlow;
 
 namespace MinTur.ChargingSpotBDD.Test.Steps
 {
+    [Binding]
     public class AddChargingSpotWithInvalidDataStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
@@ -19,6 +20,7 @@ namespace MinTur.ChargingSpotBDD.Test.Steps
         {
             _scenarioContext = context;
             _chargingSpotManager = new ChargingSpotManager(_chargingSpotRepository);
+            _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
         }
 
         [Given(@"a new ChargingSpot named (.*)")]

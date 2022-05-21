@@ -8,8 +8,8 @@ Scenario: Add charging spot without being logged in.
 	When the user tries to add the new charging spot
 	Then an error 'Please send your authorization token' should be raised
 
-@ignore
 @mytag
+@ignore
 Scenario: Add charging spot with invalid data.
 	Given a new ChargingSpot named <Name>
 	And located in <Address>
@@ -24,6 +24,6 @@ Examples:
 | Cargar parada @$#%# 				| General Flores |     1      | Punto de carga  | the name must be alphanumeric with a maximum of 20 characters |
 | Cargar parada 2 | General Flores General Flores General Flores |     1      | Punto de carga  | the address must be alphanumeric with a maximum of 30 characters |
 | Cargar parada 2 | Direccion @2 !..% |     1      | Punto de carga  | the address must be alphanumeric with a maximum of 30 characters |
-| Cargar parada 2 | General Flores |    0   | Punto de carga  | the region should be previously registered on the system, |
+| Cargar parada 2 | General Flores |    0   | Punto de carga  | the region should be previously registered on the system |
 | Cargar parada 2 | General Flores |     1      | Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga  | the description must be alphanumeric with a maximum of 60 characters |
 | Cargar parada 2 | General Flores |     1      | Desc @[][]??  | the description must be alphanumeric with a maximum of 60 characters |

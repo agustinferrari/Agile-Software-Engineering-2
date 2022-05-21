@@ -139,8 +139,8 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void AddChargingSpotWithInvalidData_(string name, string address, string regionId, string description, string error, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "ignore",
-                    "mytag"};
+                    "mytag",
+                    "ignore"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -231,11 +231,11 @@ this.AddChargingSpotWithInvalidData_("Cargar parada @$#%#", "General Flores", "1
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores General Flores General Flores")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the direction must be alphanumeric with a maximum of 30 characters")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the address must be alphanumeric with a maximum of 30 characters")]
         public void AddChargingSpotWithInvalidData__Variant2()
         {
 #line 13
-this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores General Flores General Flores", "1", "Punto de carga", "the direction must be alphanumeric with a maximum of 30 characters", ((string[])(null)));
+this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores General Flores General Flores", "1", "Punto de carga", "the address must be alphanumeric with a maximum of 30 characters", ((string[])(null)));
 #line hidden
         }
         
@@ -249,11 +249,11 @@ this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores General 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "Direccion @2 !..%")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the direction must be alphanumeric with a maximum of 30 characters")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the address must be alphanumeric with a maximum of 30 characters")]
         public void AddChargingSpotWithInvalidData__Variant3()
         {
 #line 13
-this.AddChargingSpotWithInvalidData_("Cargar parada 2", "Direccion @2 !..%", "1", "Punto de carga", "the direction must be alphanumeric with a maximum of 30 characters", ((string[])(null)));
+this.AddChargingSpotWithInvalidData_("Cargar parada 2", "Direccion @2 !..%", "1", "Punto de carga", "the address must be alphanumeric with a maximum of 30 characters", ((string[])(null)));
 #line hidden
         }
         
@@ -267,11 +267,11 @@ this.AddChargingSpotWithInvalidData_("Cargar parada 2", "Direccion @2 !..%", "1"
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the region should be previously registered on the system,")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the region should be previously registered on the system")]
         public void AddChargingSpotWithInvalidData__Variant4()
         {
 #line 13
-this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores", "0", "Punto de carga", "the region should be previously registered on the system,", ((string[])(null)));
+this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores", "0", "Punto de carga", "the region should be previously registered on the system", ((string[])(null)));
 #line hidden
         }
         
