@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.BusinessLogic.ResourceManagers;
 using MinTur.BusinessLogicInterface.ResourceManagers;
 using MinTur.BusinessLogicInterface.Security;
@@ -14,8 +15,6 @@ using MinTur.Exceptions;
 using MinTur.Models.In;
 using MinTur.WebApi.Controllers;
 using MinTur.WebApi.Filters;
-using Moq;
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
@@ -75,7 +74,7 @@ namespace MinTur.ChargingSpotBDD.Test
         public void ThenTheErrorCouldNotDeleteChargingSpotBecauseItDoesNotExistShouldBeRaised(string expectedErrorMessage)
         {
             Assert.IsNotNull(_actualException, "No error was raised");
-            Assert.IsInstanceOf<ResourceNotFoundException>(_actualException);
+            Assert.IsInstanceOfType(_actualException, typeof(ResourceNotFoundException));
             Assert.AreEqual(_actualException.Message, expectedErrorMessage);
 
             _actualException = null;
