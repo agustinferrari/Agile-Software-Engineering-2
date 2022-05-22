@@ -30,7 +30,6 @@
 			| Cargar parada 2                   | General Flores                               | 1        | Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga | the description must be alphanumeric with a maximum of 60 characters |
 			| Cargar parada 2                   | General Flores                               | 1        | Desc @[][]??                                                               | the description must be alphanumeric with a maximum of 60 characters |
 
-	@ignore
 	@mytag
 	Scenario: Add charging spot with valid data
 		Given an existing, logged in admin
