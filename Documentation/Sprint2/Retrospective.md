@@ -43,9 +43,7 @@
 |:----------- | ---------------- |:------------------ |
 | Planifación | 12 horas persona | 15 horas persona   |
 | Ejecución   | 25 horas persona | 31.5 horas persona |
-| Control     | 13 horas persona | ~10 horas persona* |
-
-> Falta informe de avance, que según estimación estaríamos pasados por una hora.
+| Control     | 13 horas persona | 14.5 horas persona |
 
 **Análisis**
 En esta iteración mejoramos nuestras estimaciones, ya que en la anterior el esfuerzo real fue más del doble del estimado y en esta a pesar de superar el estimado, fue un 25% mayor y no 100%. En particular notamos malas estimaciones en la ejecución por requerir spikes para aprender las herramientas relacionadas a BDD como SpecFlow y Gherkin. En la etapa de planificación no tomamos en cuenta el tiempo que llevaria la definición de requerimientos lo cual vió un esfuerzo real levemente mayor.
