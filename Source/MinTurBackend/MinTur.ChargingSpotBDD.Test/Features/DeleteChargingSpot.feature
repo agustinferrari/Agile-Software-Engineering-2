@@ -6,8 +6,8 @@
 	@mytag
 	Scenario: Delete charging spot without being logged in.
 		Given an existing ChargingSpot:
-			| Id | Name                 | Address        | Region   | Description    |
-			| 1  | Cargar frente al mar | General Flores | SurOeste | Punto de carga |
+			| Id | Name                 | Address        | RegionId | Description    |
+			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
 		When the user tries to delete the existing charging spot
 		Then the error 'Please send your authorization token' should be raised
 
@@ -17,8 +17,8 @@
 			| Email            | Password |
 			| matias@admin.com | admin    |
 		And a not existing ChargingSpot:
-			| Id | Name                 | Address        | Region   | Description    |
-			| 1  | Cargar frente al mar | General Flores | SurOeste | Punto de carga |
+			| Id | Name                 | Address        | RegionId | Description    |
+			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
 		When the user tries to delete the not existing charging spot
 		Then the error 'Could not find specified charging spot' should be raised
 
