@@ -28,5 +28,15 @@ namespace MinTur.DataAccess.Repositories
             Context.Set<ChargingSpot>().Remove(chargingSpotFromDb);
             Context.SaveChanges();
         }
+
+        public int StoreChargingSpot(ChargingSpot chargingSpot)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ChargingSpot GetChargingSpotById(int chargingSpotId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
