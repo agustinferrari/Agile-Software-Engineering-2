@@ -88,6 +88,13 @@ namespace MinTur.ChargingSpotBDD.Test
             Assert.AreEqual(1, chargingSpotsOnDBBeforeDelete.Count);
             List<ChargingSpot> chargingSpotsOnDB = _dbContext.Set<ChargingSpot>().ToList();
             Assert.AreEqual(0, chargingSpotsOnDB.Count);
+            CleanUp();
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+            _dbContext.Database.EnsureDeleted();
         }
 
     }

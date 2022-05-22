@@ -307,16 +307,14 @@ namespace MinTur.ChargingSpotBDD.Test.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with valid data")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public void AddChargingSpotWithValidData()
         {
             string[] tagsOfScenario = new string[] {
-                    "ignore",
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 35
+#line 34
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -332,7 +330,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                 table2.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
-#line 36
+#line 35
   testRunner.Given("an existing, logged in admin", ((string)(null)), table2, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -341,7 +339,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                 table3.AddRow(new string[] {
                             "2",
                             "SurOeste"});
-#line 39
+#line 38
   testRunner.And("the existing region:", ((string)(null)), table3, "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -354,13 +352,13 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                             "General Flores",
                             "2",
                             "Punto de carga"});
-#line 42
+#line 41
   testRunner.Given("a new ChargingSpot with valid data to add:", ((string)(null)), table4, "Given ");
 #line hidden
-#line 45
+#line 44
   testRunner.When("the user tries to add the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 46
+#line 45
   testRunner.Then("the charging spot should be added to the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

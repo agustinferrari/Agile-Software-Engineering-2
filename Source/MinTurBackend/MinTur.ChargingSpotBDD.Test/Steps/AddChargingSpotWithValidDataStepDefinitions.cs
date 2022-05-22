@@ -73,6 +73,13 @@ namespace MyNamespace
             Assert.AreEqual(0, chargingSpotsOnDBBeforAddition.Count);
             List<ChargingSpot> chargingSpotsOnDB = _dbContext.Set<ChargingSpot>().ToList();
             Assert.AreEqual(1, chargingSpotsOnDB.Count);
+            CleanUp();
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+            _dbContext.Database.EnsureDeleted();
         }
 
     }
