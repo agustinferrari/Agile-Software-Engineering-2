@@ -166,12 +166,12 @@ namespace MinTur.DataAccess.Facades
 
         public int StoreChargingSpot(ChargingSpot chargingSpot)
         {
-            throw new NotImplementedException();
+            return _chargingSpotRepository.StoreChargingSpot(chargingSpot);
         }
 
         public ChargingSpot GetChargingSpotById(int chargingSpotId)
         {
-            throw new NotImplementedException();
+            return _chargingSpotRepository.GetChargingSpotById(chargingSpotId);
         }
     }
 }
