@@ -116,13 +116,13 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                             "Id",
                             "Name",
                             "Address",
-                            "Region",
+                            "RegionId",
                             "Description"});
                 table5.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
-                            "SurOeste",
+                            "1",
                             "Punto de carga"});
 #line 8
   testRunner.Given("an existing ChargingSpot:", ((string)(null)), table5, "Given ");
@@ -170,13 +170,13 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                             "Id",
                             "Name",
                             "Address",
-                            "Region",
+                            "RegionId",
                             "Description"});
                 table7.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
-                            "SurOeste",
+                            "1",
                             "Punto de carga"});
 #line 19
   testRunner.And("a not existing ChargingSpot:", ((string)(null)), table7, "And ");
