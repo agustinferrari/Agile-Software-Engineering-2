@@ -82,7 +82,7 @@ namespace MinTur.ChargingSpotBDD.Test
         }
 
         [Then(@"the charging spot should be deleted from the database")]
-        public void ThenTheErrorCouldNotDeleteChargingSpotBecauseItDoesNotExistShouldBeRaised()
+        public void ThenChargingSpotShouldBeDeletedFromTheDatabase()
         {
             List<ChargingSpot> chargingSpotsOnDBBeforeDelete = _scenarioContext.Get<List<ChargingSpot>>();
             Assert.AreEqual(1, chargingSpotsOnDBBeforeDelete.Count);
