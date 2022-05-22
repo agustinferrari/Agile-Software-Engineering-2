@@ -51,6 +51,44 @@ namespace MinTur.DataAccess.Test.Repositories
             _repository.DeleteChargingSpotById(-4);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ResourceNotFoundException))]
+        public void GetChargingSpotByIdWhichDoesntExistThrowsException()
+        {
+            _repository.GetChargingSpotById(-3);
+        }
+
+        [TestMethod]
+        public void GetChargingSpotByIdReturnsAsExpected()
+        {
+            ChargingSpot expectedChargingSpot = CreateChargingSpot();
+            _context.ChargingSpots.Add(expectedChargingSpot);
+            _context.SaveChanges();
+
+            ChargingSpot retrievedChargingSpot = _repository.GetChargingSpotById(expectedChargingSpot.Id);
+            Assert.IsTrue(expectedChargingSpot.Equals(retrievedChargingSpot));
+        }
+
+        [TestMethod]
+        public void StoreChargingSpotReturnsAsExpected()
+        {
+            ChargingSpot chargingSpot = LoadRelatedEntitiesAndCreateChargingSpot();
+            int newChargingSpot= _repository.StoreChargingSpot(chargingSpot);
+
+            Assert.AreEqual(chargingSpot.Id, newChargingSpot);
+            Assert.IsNotNull(_context.ChargingSpots.Where(cs => cs.Id == newChargingSpot).FirstOrDefault());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ResourceNotFoundException))]
+        public void StoreChargingSpotNonExistentRegion()
+        {
+            ChargingSpot chargingSpot = LoadRelatedEntitiesAndCreateChargingSpot();
+            chargingSpot.RegionId = -4;
+
+            _repository.StoreChargingSpot(chargingSpot);
+        }
+
         #region Helpers
         private ChargingSpot CreateChargingSpot()
         {
@@ -64,6 +102,25 @@ namespace MinTur.DataAccess.Test.Repositories
                     Name = "SurOeste"
                 }
             };
+        }
+
+        public ChargingSpot LoadRelatedEntitiesAndCreateChargingSpot()
+        {
+            Region region = new Region() { Name = "Metropolitana" };
+
+            _context.Regions.Add(region);
+            _context.SaveChanges();
+            _context.Entry(region).State = EntityState.Detached;
+
+            ChargingSpot newChargingSpot = new ChargingSpot()
+            {
+                Address = "Direccion",
+                Description = "Descripcion ....",
+                Name = "Punto carga",
+                RegionId = region.Id
+            };
+
+            return newChargingSpot;
         }
 
         #endregion

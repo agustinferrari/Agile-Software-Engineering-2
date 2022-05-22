@@ -25,3 +25,5 @@
 | Sábado 21/05/22 16:00-16:30    | Agustín y Sofía   | Proyecto BDD Add Charging Spot escenario 2                                                                                                                 |
 | Sábado 21/05/22 16:30-18:00    | Sofía             | Proyecto BDD Add Charging Spot escenario 2                                                                                                                 |
 | Sábado 21/05/22 17:00-18:00    | Joaquín y Agustín | Guia desarrollo con BDD, Guía configuración pipeline                                                                                                       |
+| Sábado 21/05/22 21:00-23:00    | Sofía             | Proyecto BDD Add Charging Spot escenario 3                                                                                                       |
+

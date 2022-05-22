@@ -21,9 +21,10 @@ namespace MinTur.BusinessLogic.ResourceManagers
         public ChargingSpot RegisterChargingSpot(ChargingSpot chargingSpot)
         {
             chargingSpot.ValidOrFail();
-            Region relatedRegion = _repositoryFacade.GetRegionById(chargingSpot.RegionId);
-            
-            return new ChargingSpot();
+            int newChargingSpotId = _repositoryFacade.StoreChargingSpot(chargingSpot);
+            ChargingSpot createdChargingSpot = _repositoryFacade.GetChargingSpotById(newChargingSpotId);
+
+            return createdChargingSpot;
         }
     }
 }

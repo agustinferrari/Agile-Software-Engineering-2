@@ -45,6 +45,15 @@ namespace MinTur.Domain.BusinessEntities
             if (Description == null || Description.Length > 60 || !descriptionRegex.IsMatch(Description))
                 throw new InvalidRequestDataException("the description must be alphanumeric with a maximum of 60 characters");
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || obj.GetType() != GetType())
+                return false;
+
+            var chargingSpot = obj as ChargingSpot;
+            return Id == chargingSpot.Id;
+        }
     }
 
 }

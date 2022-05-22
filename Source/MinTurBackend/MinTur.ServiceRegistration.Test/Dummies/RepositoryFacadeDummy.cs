@@ -154,5 +154,15 @@ namespace MinTur.ServiceRegistration.Test.Dummies
         {
             throw new NotImplementedException();
         }
+
+        public int StoreChargingSpot(ChargingSpot chargingSpot)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ChargingSpot GetChargingSpotById(int chargingSpotId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

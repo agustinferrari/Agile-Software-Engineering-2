@@ -163,5 +163,15 @@ namespace MinTur.DataAccess.Facades
         public void DeleteChargingSpotById(int chargingSpotId){
             _chargingSpotRepository.DeleteChargingSpotById(chargingSpotId);
         }
+
+        public int StoreChargingSpot(ChargingSpot chargingSpot)
+        {
+            return _chargingSpotRepository.StoreChargingSpot(chargingSpot);
+        }
+
+        public ChargingSpot GetChargingSpotById(int chargingSpotId)
+        {
+            return _chargingSpotRepository.GetChargingSpotById(chargingSpotId);
+        }
     }
 }

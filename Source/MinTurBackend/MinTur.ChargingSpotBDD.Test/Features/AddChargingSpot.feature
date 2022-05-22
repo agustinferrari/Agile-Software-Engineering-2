@@ -29,3 +29,18 @@
 			| Cargar parada 2                   | General Flores                               | 0        | Punto de carga                                                             | Could not find specified region                                      |
 			| Cargar parada 2                   | General Flores                               | 1        | Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga | the description must be alphanumeric with a maximum of 60 characters |
 			| Cargar parada 2                   | General Flores                               | 1        | Desc @[][]??                                                               | the description must be alphanumeric with a maximum of 60 characters |
+
+	@ignore
+	@mytag
+	Scenario: Add charging spot with valid data
+		Given an existing, logged in admin
+			| Email            | Password |
+			| matias@admin.com | admin    |
+		And the existing region:
+			| Id | Name     |
+			| 2  | SurOeste |
+		Given a new ChargingSpot with valid data to add:
+			| Name            | Address        | RegionId | Description    |
+			| Cargar parada 1 | General Flores | 2        | Punto de carga |
+		When the user tries to add the charging spot
+		Then the charging spot should be added to the database
