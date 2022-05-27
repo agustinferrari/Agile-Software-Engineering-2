@@ -84,7 +84,7 @@
 		And an existing region
 			| Id | Name     |
 			| 1  | SurOeste |
-		Given a new ChargingSpot
+		And a new ChargingSpot
 			| Name            | Address        | RegionId | Description    |
 			| Cargar parada 1 | General Flores | 1        | Punto de carga |
 		When the user tries to add the new charging spot
