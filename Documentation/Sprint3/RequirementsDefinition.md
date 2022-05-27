@@ -18,7 +18,7 @@
 1. #### Agregar punto de carga sin estar logueado
 
     + **Dado** un usuario no logueado
-    + **Y** un punto de carga con los datos {Punto de carga}
+    + **Y** un punto de carga con los datos
         **Punto de carga**
         | Nombre               | Dirección      | RegionId | Descripción    |
         |:-------------------- |:-------------- |:-------- |:-------------- |
@@ -39,10 +39,10 @@
         | --- | -------- |
         | 1   | SurOeste |
     
-    - **Y** un punto de carga con nombre <Nombre>
-    - **Y** una dirección <Direccion>
-    - **Y** una Región de id <RegionId>
-    - **Y** una descripción <Descripcion>
+    - **Y** un punto de carga con nombre {Nombre}
+    - **Y** una dirección {Direccion}
+    - **Y** una Región de id {RegionId}
+    - **Y** una descripción {Descripcion}
         **Punto de carga**
         | Nombre                            |          Dirección           | RegiónId |         Descripción          | Error                                                            |
         |:--------------------------------- |:----------------------------:|:-------- |:----------------------------:|:---------------------------------------------------------------- |
@@ -66,10 +66,10 @@
         | --- | -------- |
         | 1   | SurOeste |
 
-    - **Y** un punto de carga con Nombre <Nombre>
-    - **Y** una dirección <Direccion>
-    - **Y** una Región de id <RegionId>
-    - **Y** una descripción <Descripcion>
+    - **Y** un punto de carga con Nombre {Nombre}
+    - **Y** una dirección {Direccion}
+    - **Y** una Región de id {RegionId}
+    - **Y** una descripción {Descripcion}
         **Punto de carga**
         | Nombre                            |          Dirección           |        Región        |         Descripción          | Error                                                                                                     |
         |:--------------------------------- |:----------------------------:|:--------------------:|:----------------------------:|:--------------------------------------------------------------------------------------------------------- |
@@ -92,10 +92,10 @@
         | --- | -------- |
         | 1   | SurOeste |
 
-    - **Y** un punto de carga con Nombre <Nombre>
-    - **Y** una dirección <Direccion>
-    - **Y** una Región de id <RegionId>
-    - **Y** una descripción <Descripcion>
+    - **Y** un punto de carga con Nombre {Nombre}
+    - **Y** una dirección {Direccion}
+    - **Y** una Región de id {RegionId}
+    - **Y** una descripción {Descripcion}
         **Punto de carga**
         | Nombre                            |          Dirección           | RegiónId |         Descripción          | Error                                                            |
         |:--------------------------------- |:----------------------------:|:-------- |:----------------------------:|:---------------------------------------------------------------- |
@@ -116,7 +116,7 @@
         | --- | -------- |
         | 1   | SurOeste |
     
-    + **Y** un punto de carga con los datos {Punto de carga}
+    + **Y** un punto de carga con los datos
         **Punto de carga**
         | Nombre               | Dirección      | Región   | Descripción    |
         |:-------------------- |:-------------- |:-------- |:-------------- |
@@ -147,13 +147,13 @@
         | --- | -------- |
         | 1   | SurOeste |
     
-    + **Y** un punto de carga existente con datos <Punto de Carga>
+    + **Y** un punto de carga existente con datos
         **Punto de carga**
         | Id  | Nombre               | Dirección      | RegionId | Descripción    |
         |:--- |:-------------------- |:-------------- |:--------:|:-------------- |
         | 1   | Cargar frente al mar | General Flores |    1     | Punto de carga |
     
-    - **Y** un punto de carga con id <Id>
+    - **Y** un punto de carga con id {Id}
         **Datos de Prueba**
         | Id  | Error                                                |
         |:--- |:---------------------------------------------------- |
@@ -162,7 +162,7 @@
     - **Entonces** debería mostrarse el mensaje de error {Error}
 
 2. #### Eliminar punto de carga con datos incorrectos
-    * **Dado** un usuario logueado como administrador:
+    * **Dado** un usuario logueado como administrador
         
         **Usuario**
         | Email            | Contraseña |
@@ -176,19 +176,19 @@
         | --- | -------- |
         | 1   | SurOeste |
         
-    + **Y** un punto de carga existente con datos <Punto de Carga>
+    + **Y** un punto de carga existente con datos
         **Punto de carga**
         | Id  | Nombre               | Dirección      | RegionId | Descripción    |
         |:--- |:-------------------- |:-------------- |:--------:|:-------------- |
         | 1   | Cargar frente al mar | General Flores |    1     | Punto de carga |
         
-    + **Y** un punto de carga a borrar de id <Id>
+    + **Y** un punto de carga a borrar de id {Id}
         **Datos de Prueba**
         | Id  | Error                                                                             |
         |:--- |:--------------------------------------------------------------------------------- |
         | 2   | No se puede eliminar el punto de carga porque no existe punto para el id recibido |
      
-    * **Cuando** intenta eliminar el punto de carga con id {Id}
+    * **Cuando** intenta eliminar el punto de carga
     - **Entonces** debería mostrarse el mensaje de error {Error}
 
 3. #### Eliminar punto de carga logueado como administrador
@@ -206,19 +206,19 @@
         | --- | -------- |
         | 1   | SurOeste |
     
-    + **Y** un punto de carga existente con datos <Punto de Carga>
+    + **Y** un punto de carga existente con datos
         **Punto de carga**
         | Id  | Nombre               | Dirección      | RegionId | Descripción    |
         |:--- |:-------------------- |:-------------- |:--------:|:-------------- |
         | 1   | Cargar frente al mar | General Flores |    1     | Punto de carga |
         
-    + **Y** un punto de carga a borrar con id <Id>
+    + **Y** un punto de carga a borrar con id {Id}
         **Datos de Prueba**
         | Id  |
         |:--- |
         | 1   |
         
-    * **Cuando** intenta eliminar el punto de carga para {Id}
+    * **Cuando** intenta eliminar el punto de carga
     * **Entonces** debería eliminarse de la lista de puntos de carga
 ---
 
