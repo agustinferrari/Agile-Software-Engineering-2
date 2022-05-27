@@ -218,7 +218,7 @@
         |:--- |
         | 1   |
         
-    * **Cuando** intenta eliminar el punto de carga para {Id}
+    * **Cuando** intenta eliminar el punto de carga
     * **Entonces** debería eliminarse de la lista de puntos de carga
 ---
 
