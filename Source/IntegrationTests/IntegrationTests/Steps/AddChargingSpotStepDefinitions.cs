@@ -1,6 +1,8 @@
 using System;
 using TechTalk.SpecFlow;
-
+using IntegrationTests.Utils;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 namespace IntegrationTests.Steps
 {
     [Binding]
@@ -11,6 +13,7 @@ namespace IntegrationTests.Steps
         public AddChargingSpotStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
+            _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
         }
 
         [Then(@"the charging spot should be added successfully")]
@@ -29,7 +32,7 @@ namespace IntegrationTests.Steps
 
         #region ChargingSpot_by_Steps
 
-        [Given(@"a new ChargingSpot named (.*))")]
+        [Given(@"a new ChargingSpot named (.*)")]
         public void GivenANewChargingSpotNamed(string name)
         {
             _scenarioContext.Pending();

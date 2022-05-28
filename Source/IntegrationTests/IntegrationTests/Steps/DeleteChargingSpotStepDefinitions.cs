@@ -1,5 +1,8 @@
 using System;
 using TechTalk.SpecFlow;
+using IntegrationTests.Utils;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 
 namespace IntegrationTests.Steps
 {
@@ -11,6 +14,7 @@ namespace IntegrationTests.Steps
         public DeleteChargingSpotStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
+            _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
         }
 
         [Given(@"an existing ChargingSpot")]
@@ -27,12 +31,6 @@ namespace IntegrationTests.Steps
 
         [When(@"the user tries to delete the charging spot")]
         public void WhenTheUserTriesToDeleteTheChargingSpot()
-        {
-            _scenarioContext.Pending();
-        }
-
-        [Given(@"an existing ChargingSpot")]
-        public void GivenAnExistingChargingSpot(Table chargingSpot)
         {
             _scenarioContext.Pending();
         }
