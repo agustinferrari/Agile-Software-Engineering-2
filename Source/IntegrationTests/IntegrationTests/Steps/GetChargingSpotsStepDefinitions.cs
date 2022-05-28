@@ -53,13 +53,14 @@ namespace IntegrationTests.Steps
 
             List<ChargingSpot> foundChargingSpots = new List<ChargingSpot>();
 
-            foreach(IWebElement row in rows)
+            foreach (IWebElement row in rows)
             {
                 IList<IWebElement> columns = row.FindElements(By.TagName("td"));
                 int idCell = columns[0].Text == "" ? 0 : int.Parse(columns[0].Text);
                 string name = columns[1].Text;
                 string description = columns[2].Text;
-                string regionName = columns[3].Text;
+                string address = columns[3].Text;
+                string regionName = columns[4].Text;
 
                 foundChargingSpots.Add(new ChargingSpot
                 {

@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminListComponent } from './admin-list.component';
-
+import { ChargingSpotListComponent } from './charging-spot-list.component';
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [AdminListComponent]
+  declarations: [ChargingSpotListComponent]
 })
-export class AdminListModule { }
+export class ChargingSpotListModule { }
