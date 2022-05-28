@@ -3,6 +3,7 @@ using MinTur.DataAccessInterface.Repositories;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Exceptions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MinTur.DataAccess.Repositories
@@ -71,6 +72,11 @@ namespace MinTur.DataAccess.Repositories
             Context.SaveChanges();
 
             Context.Entry(chargingSpot.Region).State = EntityState.Detached;
+        }
+
+        public List<ChargingSpot> GetAllChargingSpots()
+        {
+            return Context.Set<ChargingSpot>().AsNoTracking().Include(r => r.Region).ToList();
         }
     }
 }
