@@ -66,12 +66,12 @@
         <div class="mr-3">
           <div *ngIf="!IsLoggedIn()">
             <span class="text-gray-500 mr-2">Eres Administrador?</span>
-            <a routerLink="login/" class="inline-block p-1 border rounded text-white border-white hover:border-transparent hover:text-black hover:bg-white">Iniciar Sesion</a>
+            <a routerLink="login/" id="login-navbar" class="inline-block p-1 border rounded text-white border-white hover:border-transparent hover:text-black hover:bg-white">Iniciar Sesion</a>
           </div>
 
           <div *ngIf="IsLoggedIn()">
             <span class="text-gray-500 mr-2">{{getActiveAdminEmail()}}</span>
-            <button (click)="logout()" class="inline-block p-1 border rounded text-white border-white hover:border-transparent hover:text-black hover:bg-white">
+            <button id="logout-navbar" (click)="logout()" class="inline-block p-1 border rounded text-white border-white hover:border-transparent hover:text-black hover:bg-white">
               Cerrar Sesion
             </button>
           </div>

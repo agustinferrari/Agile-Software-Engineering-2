@@ -4,13 +4,11 @@
 	So that turists don't search a closed charging spot.
 
 	@mytag
+	@ignore
 	Scenario: Delete charging spot without being logged in.
 		Given an existing region
 			| Id | Name     |
 			| 1  | SurOeste |
-		And an existing ChargingSpot
-			| Id | Name                 | Address        | RegionId | Description    |
-			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
 		And a charging spot with id <Id>
 		When the user tries to delete the charging spot
 		Then the error <Error> should be raised
@@ -20,6 +18,7 @@
 			| 1  | Please send your authorization token |
 
 	@mytag
+	@ignore
 	Scenario: Delete charging spot with invalid data.
 		Given a logged in admin
 			| Email            | Password |
@@ -36,13 +35,14 @@
 			| 2  | Could not find specified charging spot |
 
 	@mytag
+	@ignore
 	Scenario: Delete charging spot with valid data
 		Given a logged in admin
 			| Email            | Password |
 			| matias@admin.com | admin    |
 		And an existing Region
-			| Id | Name     |
-			| 1  | SurOeste |
+			| Id | Name                 |
+			| 1  | Región Metropolitana |
 		And an existing ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
 			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |

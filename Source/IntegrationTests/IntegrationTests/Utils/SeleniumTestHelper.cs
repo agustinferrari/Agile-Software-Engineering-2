@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -21,18 +22,30 @@ public class SeleniumTestHelper
         Console.WriteLine("Setup");
         Driver = new ChromeDriver(option);
 
-        Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
+        Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
     }
 
     public IWebElement WaitForElement(By locator)
     {
         return Wait.Until(ExpectedConditions.ElementIsVisible(locator));
-    } 
-
-    public void MaximizeWindow(){
-        Driver.Manage.Window.Maximize();
     }
 
+    public IList<IWebElement> WaitForElements(By locator)
+    {
+        Wait.Until(ExpectedConditions.ElementIsVisible(locator));
+        IList<IWebElement> all = Driver.FindElements(locator);
+        return all;
+    }
+
+    public void MaximizeWindow()
+    {
+        //Driver.Manage().Window.Maximize();
+    }
+
+    public void Url(string url)
+    {
+        Driver.Url = url;
+    }
 
     public void Setup()
     {

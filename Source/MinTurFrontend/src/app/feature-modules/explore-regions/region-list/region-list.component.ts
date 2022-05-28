@@ -17,6 +17,10 @@ export class RegionListComponent implements OnInit {
     this.retrieveComponentData();
   }
 
+  public regionElementId(region: RegionBasicInfoModel): string{
+    return "region-"+region.id;
+  }
+
   public retrieveComponentData(): void{
     this.regionService.allRegions().subscribe(regions => this.loadRegions(regions), (error: HttpErrorResponse) => this.showError(error));
   }
