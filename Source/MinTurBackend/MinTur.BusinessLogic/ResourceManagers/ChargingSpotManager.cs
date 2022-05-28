@@ -26,5 +26,10 @@ namespace MinTur.BusinessLogic.ResourceManagers
 
             return createdChargingSpot;
         }
+
+        public List<ChargingSpot> GetAllChargingSpots()
+        {
+            return _repositoryFacade.GetAllChargingSpots();
+        }
     }
 }

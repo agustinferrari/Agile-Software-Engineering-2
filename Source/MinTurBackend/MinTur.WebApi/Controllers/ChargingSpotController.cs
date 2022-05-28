@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MinTur.WebApi.Filters;
 using MinTur.Models.In;
+using System;
 
 namespace MinTur.WebApi.Controllers
 {
@@ -36,6 +37,14 @@ namespace MinTur.WebApi.Controllers
         {
             _chargingSpotManager.DeleteChargingSpotById(id);
             return Ok(new { ResultMessage = $"Charging spot {id} succesfuly deleted" });
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            List<ChargingSpot> retrievedChargingSpots = _chargingSpotManager.GetAllChargingSpots();
+            List<ChargingSpotDetailsModel> chargingSpotDetails = retrievedChargingSpots.Select(charingSpot => new ChargingSpotDetailsModel(charingSpot)).ToList();
+            return Ok(chargingSpotDetails);
         }
     }
 }

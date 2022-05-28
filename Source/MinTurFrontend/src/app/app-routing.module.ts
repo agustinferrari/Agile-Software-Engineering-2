@@ -36,7 +36,8 @@ import { ReservationReportModule } from './feature-modules/reservation-report/re
 import { ImportingComponent } from './feature-modules/importing/importing.component';
 import { ImportingModule } from './feature-modules/importing/importing.module';
 // eslint-disable-next-line max-len
-import { AdminSpecificRoutes, ImporterRoutes, RegionRoutes, ReservationRoutes, ResortRoutes, ReviewRoutes, SessionRoutes, TouristPointRoutes } from './core/routes';
+import { AdminSpecificRoutes, ChargingSpotRoutes, ImporterRoutes, RegionRoutes, ReservationRoutes, ResortRoutes, ReviewRoutes, SessionRoutes, TouristPointRoutes } from './core/routes';
+import { ChargingSpotList } from './feature-modules/charging-spot/charging-spot-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: RegionRoutes.REGIONS, pathMatch: 'full'},
@@ -58,6 +59,7 @@ const routes: Routes = [
   { path: ImporterRoutes.IMPORT, component: ImportingComponent, canActivate: [AuthGuard]},
   { path: ResortRoutes.RESORT_LIST, component: ResortListComponent, canActivate: [AuthGuard]},
   { path: ResortRoutes.RESORT_CREATE, component: ResortCreateComponent, canActivate: [AuthGuard]},
+  { path: ChargingSpotRoutes.CHARGING_SPOT_LIST, component: ChargingSpotList},
   { path: '**', redirectTo: RegionRoutes.REGIONS, pathMatch: 'full'}
 ];
 

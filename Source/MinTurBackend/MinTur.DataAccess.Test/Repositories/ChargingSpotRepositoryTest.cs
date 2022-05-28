@@ -89,6 +89,25 @@ namespace MinTur.DataAccess.Test.Repositories
             _repository.StoreChargingSpot(chargingSpot);
         }
 
+        [TestMethod]
+        public void GetAllReservationsOnEmptyRepository()
+        {
+            List<ChargingSpot> expectedReservations = new List<ChargingSpot>();
+            List<ChargingSpot> retrievedChargingSpots = _repository.GetAllChargingSpots();
+
+            CollectionAssert.AreEqual(expectedReservations, retrievedChargingSpots);
+        }
+
+        [TestMethod]
+        public void GetAllReservationsReturnsAsExpected()
+        {
+            List<ChargingSpot> expectedChargingSpots = new List<ChargingSpot>();
+            LoadChargingSpots(expectedChargingSpots);
+
+            List<ChargingSpot> retrievedChargingSpots = _repository.GetAllChargingSpots();
+            CollectionAssert.AreEqual(expectedChargingSpots, retrievedChargingSpots);
+        }
+
         #region Helpers
         private ChargingSpot CreateChargingSpot()
         {
@@ -123,6 +142,50 @@ namespace MinTur.DataAccess.Test.Repositories
             return newChargingSpot;
         }
 
+        public List<ChargingSpot> LoadRelatedEntitiesAndCreateChargingSpotsWithRegion()
+        {
+            Region region = new Region() { Name = "Metropolitana" };
+            Region region2 = new Region() { Name = "Centro" };
+
+            _context.Regions.Add(region);
+            _context.Regions.Add(region2);
+            _context.SaveChanges();
+            _context.Entry(region).State = EntityState.Detached;
+            _context.Entry(region2).State = EntityState.Detached;
+
+            ChargingSpot newChargingSpot1 = new ChargingSpot()
+            {
+                Address = "Direccion",
+                Description = "Descripcion ....",
+                Name = "Punto carga 1",
+                Region = region
+            };
+            ChargingSpot newChargingSpot2 = new ChargingSpot()
+            {
+                Address = "Direccion",
+                Description = "Descripcion ....",
+                Name = "Punto carga 2",
+                Region= region2
+            };
+
+            return new List<ChargingSpot>() { newChargingSpot1, newChargingSpot2 };
+        }
+
+
+        private void LoadChargingSpots(List<ChargingSpot> chargingSpots)
+        {
+            List<ChargingSpot> chargingSpotsloaded = LoadRelatedEntitiesAndCreateChargingSpotsWithRegion();
+            foreach (ChargingSpot chargingSpot in chargingSpotsloaded)
+            {
+                Region aux = chargingSpot.Region;
+                chargingSpot.RegionId = chargingSpot.Region.Id;
+                chargingSpot.Region = null;
+                _context.ChargingSpots.Add(chargingSpot);
+                _context.SaveChanges();
+                chargingSpot.Region = aux;
+                chargingSpots.Add(chargingSpot);
+            }
+        }
         #endregion
     }
 }

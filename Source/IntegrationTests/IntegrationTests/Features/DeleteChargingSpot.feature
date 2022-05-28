@@ -8,7 +8,7 @@
 	Scenario: Delete charging spot without being logged in.
 		Given an existing region
 			| Id | Name     |
-			| 1  | SurOeste |
+			| 1  | Región Metropolitana |
 		And a charging spot with id <Id>
 		When the user tries to delete the charging spot
 		Then the error <Error> should be raised

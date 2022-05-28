@@ -18,6 +18,11 @@ export enum ResortRoutes {
   UPDATE_AVAILABILITY = 'admin/update-resort-availability'
 }
 
+export enum ChargingSpotRoutes{
+  CHARGING_SPOT_LIST = 'explore/charging-spots',
+  CHARGING_SPOT_CREATE = 'explore/charging-spots/create',
+}
+
 export enum ReviewRoutes {
   REVIEW = 'submitReview'
 }

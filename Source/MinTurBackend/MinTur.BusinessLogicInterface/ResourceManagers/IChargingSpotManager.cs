@@ -10,5 +10,7 @@ namespace MinTur.BusinessLogicInterface.ResourceManagers
         ChargingSpot RegisterChargingSpot(ChargingSpot chargingSpot);
         void DeleteChargingSpotById(int id);
 
+        List<ChargingSpot> GetAllChargingSpots();
+
     }
 }
