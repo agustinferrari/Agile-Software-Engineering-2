@@ -55,6 +55,17 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
             _repositoryFacadeMock.VerifyAll();
         }
 
+        [TestMethod]
+        public void GetAllChargingSpotsReturnsAsExpected()
+        {
+            _repositoryFacadeMock.Setup(r => r.GetAllChargingSpots()).Returns(_chargingSpots);
+
+            ChargingSpotManager chargingSpotManager = new ChargingSpotManager(_repositoryFacadeMock.Object);
+            List<ChargingSpot> retrievedChargingSpots = chargingSpotManager.GetAllChargingSpots();
+
+            _repositoryFacadeMock.VerifyAll();
+            CollectionAssert.AreEquivalent(retrievedChargingSpots, _chargingSpots);
+        }
 
         #region Helpers
 
