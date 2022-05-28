@@ -41,8 +41,8 @@
 			| Email            | Password |
 			| matias@admin.com | admin    |
 		And an existing Region
-			| Id | Name     |
-			| 1  | SurOeste |
+			| Id | Name                 |
+			| 1  | Región Metropolitana |
 		And an existing ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
 			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
