@@ -17,13 +17,35 @@ namespace MinTur.WebApi.Test.Controllers
     [TestClass]
     public class ChargingSpotControllerTest
     {
+        private List<ChargingSpot> _chargingSpots;
+        private List<ChargingSpotDetailsModel> _chargingSpotDetailsModels;
         private Mock<IChargingSpotManager> _chargingSpotManagerMock;
 
         #region SetUp
         [TestInitialize]
         public void SetUp()
         {
+            _chargingSpots = new List<ChargingSpot>();
+            _chargingSpotDetailsModels = new List<ChargingSpotDetailsModel>();
             _chargingSpotManagerMock = new Mock<IChargingSpotManager>(MockBehavior.Strict);
+            
+            LoadChargingSpots();
+            LoadChargingSpotModels();
+        }
+
+        private void LoadChargingSpots()
+        {
+            List<ChargingSpot> chargingSpots = CreateChargingSpots();
+            _chargingSpots = chargingSpots;
+        }
+
+
+        private void LoadChargingSpotModels()
+        {
+            foreach (ChargingSpot chargingSpot in _chargingSpots)
+            {
+                _chargingSpotDetailsModels.Add(new ChargingSpotDetailsModel(chargingSpot));
+            }
         }
         #endregion
 
@@ -60,6 +82,20 @@ namespace MinTur.WebApi.Test.Controllers
             Assert.AreEqual(succesfulDeletitionMessage, retrievedResultMessage);
         }
 
+        [TestMethod]
+        public void GetAllChargingSpotsOkTest()
+        {
+            _chargingSpotManagerMock.Setup(c => c.GetAllChargingSpots()).Returns(_chargingSpots);
+            ChargingSpotController chargingSpotController = new ChargingSpotController(_chargingSpotManagerMock.Object);
+
+            IActionResult result = chargingSpotController.GetAll();
+            OkObjectResult okResult = result as OkObjectResult;
+            List<ChargingSpotDetailsModel> responseModel = okResult.Value as List<ChargingSpotDetailsModel>;
+
+            _chargingSpotManagerMock.VerifyAll();
+            CollectionAssert.AreEquivalent(responseModel, _chargingSpotDetailsModels);
+        }
+
         #region Helpers
         private ChargingSpotIntentModel CreateChargingSpotIntentModel()
         {
@@ -88,6 +124,29 @@ namespace MinTur.WebApi.Test.Controllers
             };
 
             return chargingSpot;
+        }
+
+        public List<ChargingSpot> CreateChargingSpots()
+        {
+            Region region = new Region() { Name = "Metropolitana" };
+            Region region2 = new Region() { Name = "Centro" };
+
+            ChargingSpot newChargingSpot1 = new ChargingSpot()
+            {
+                Address = "Direccion",
+                Description = "Descripcion ....",
+                Name = "Punto carga 1",
+                Region = region
+            };
+            ChargingSpot newChargingSpot2 = new ChargingSpot()
+            {
+                Address = "Direccion",
+                Description = "Descripcion ....",
+                Name = "Punto carga 2",
+                Region = region2
+            };
+
+            return new List<ChargingSpot>() { newChargingSpot1, newChargingSpot2 };
         }
         #endregion
 
