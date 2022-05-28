@@ -10,7 +10,7 @@ import { TouristPointIntentModel } from 'src/app/shared/models/out/tourist-point
 @Component({
   selector: 'app-create-tourist-point',
   templateUrl: './create-tourist-point.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class CreateTouristPointComponent implements OnInit {
   public explanationTitle: string;
@@ -28,8 +28,11 @@ export class CreateTouristPointComponent implements OnInit {
   public regions: RegionBasicInfoModel[] = [];
   private touristPointIntentModel: TouristPointIntentModel;
 
-  constructor(private touristPointService: TouristPointService, private categoryService: CategoryService,
-              private regionService: RegionService) { }
+  constructor(
+    private touristPointService: TouristPointService,
+    private categoryService: CategoryService,
+    private regionService: RegionService
+  ) {}
 
   ngOnInit(): void {
     this.getCategories();
@@ -37,19 +40,25 @@ export class CreateTouristPointComponent implements OnInit {
     this.populateExplanationParams();
   }
 
+  public regionElementId(region: RegionBasicInfoModel): string {
+    return 'region-' + region.id;
+  }
+
   private getCategories(): void {
-    this.categoryService.allCategories().subscribe(categories => {
+    this.categoryService.allCategories().subscribe(
+      (categories) => {
         this.loadCategories(categories);
       },
-      error => this.showError(error)
+      (error) => this.showError(error)
     );
   }
 
   private getRegions(): void {
-    this.regionService.allRegions().subscribe(regions => {
+    this.regionService.allRegions().subscribe(
+      (regions) => {
         this.loadRegions(regions);
       },
-      error => this.showError(error)
+      (error) => this.showError(error)
     );
   }
 
@@ -61,19 +70,19 @@ export class CreateTouristPointComponent implements OnInit {
     this.regions = regions;
   }
 
-  public setName(name: string): void{
+  public setName(name: string): void {
     this.name = name;
   }
 
-  public setDescription(description: string): void{
+  public setDescription(description: string): void {
     this.description = description;
   }
 
   public selectCategory(categoryId: number): void {
     const indexOfCategory = this.categoriesIds.indexOf(categoryId);
-    if (indexOfCategory === -1){
+    if (indexOfCategory === -1) {
       this.categoriesIds.push(categoryId);
-    }else{
+    } else {
       this.categoriesIds.splice(indexOfCategory, 1);
     }
   }
@@ -86,34 +95,39 @@ export class CreateTouristPointComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = (): void => {
-      this.image = typeof(reader.result) === 'string' ? reader.result.replace(/^data:.+;base64,/, '') : undefined;
+      this.image =
+        typeof reader.result === 'string'
+          ? reader.result.replace(/^data:.+;base64,/, '')
+          : undefined;
     };
-    this.imageName =  file?.name;
+    this.imageName = file?.name;
   }
 
-  public createTouristPoint(): void{
+  public createTouristPoint(): void {
     this.validateInputs();
 
-    if (!this.displayError){
+    if (!this.displayError) {
       this.touristPointIntentModel = {
         name: this.name,
         description: this.description,
         image: this.image,
         regionId: this.regionId,
-        categoriesId: this.categoriesIds
+        categoriesId: this.categoriesIds,
       };
-      this.touristPointService.createTourisPoint(this.touristPointIntentModel).subscribe(
-        touristPointBasicInfoModel => {
-          this.justCreatedTouristPoint = true;
-        },
-        error => this.showError(error)
-      );
-    }else{
+      this.touristPointService
+        .createTourisPoint(this.touristPointIntentModel)
+        .subscribe(
+          (touristPointBasicInfoModel) => {
+            this.justCreatedTouristPoint = true;
+          },
+          (error) => this.showError(error)
+        );
+    } else {
       this.justCreatedTouristPoint = false;
     }
   }
 
-  private validateInputs(): void{
+  private validateInputs(): void {
     this.displayError = false;
     this.errorMessages = [];
     this.validateName();
@@ -124,51 +138,52 @@ export class CreateTouristPointComponent implements OnInit {
   }
 
   private validateName(): void {
-    if (!this.name?.trim()){
+    if (!this.name?.trim()) {
       this.displayError = true;
       this.errorMessages.push('Es necesario especificar un nombre');
     }
   }
 
   private validateDescription(): void {
-    if (!this.description?.trim()){
+    if (!this.description?.trim()) {
       this.displayError = true;
       this.errorMessages.push('Es necesario especificar una descripción');
     }
   }
 
   private validateImage(): void {
-    if (!this.image?.trim()){
+    if (!this.image?.trim()) {
       this.displayError = true;
       this.errorMessages.push('Es necesario especificar una imágen');
     }
   }
 
   private validateRegion(): void {
-    if (!this.regionId){
+    if (!this.regionId) {
       this.displayError = true;
       this.errorMessages.push('Es necesario especificar una región');
     }
   }
 
   private validateCategories(): void {
-    if (this.categoriesIds.length === 0){
+    if (this.categoriesIds.length === 0) {
       this.displayError = true;
-      this.errorMessages.push('Es necesario especificar al menos una categoría');
+      this.errorMessages.push(
+        'Es necesario especificar al menos una categoría'
+      );
     }
   }
 
-  private showError(error: HttpErrorResponse): void{
+  private showError(error: HttpErrorResponse): void {
     console.log(error);
   }
 
-  public closeError(): void{
+  public closeError(): void {
     this.displayError = false;
   }
 
-  private populateExplanationParams(): void{
+  private populateExplanationParams(): void {
     this.explanationTitle = 'Crear un punto turístico';
     this.explanationDescription = 'Aquí puedes crear puntos turísticos!';
   }
-
 }

@@ -39,7 +39,7 @@
       <mat-form-field class="ml-3 self-start w-2/5" >
         <mat-label>ej: Región Metropolitana...</mat-label>
         <mat-select (selectionChange)="selectRegion($event.value)" class="form-select mt-1 block w-full">
-          <mat-option [value]="region.id" *ngFor="let region of regions">{{region.name}}</mat-option>
+          <mat-option [id]="regionElementId(region)" [value]="region.id" *ngFor="let region of regions">{{region.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
