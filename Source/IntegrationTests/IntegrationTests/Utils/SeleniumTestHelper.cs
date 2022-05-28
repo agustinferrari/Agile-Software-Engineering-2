@@ -47,6 +47,22 @@ public class SeleniumTestHelper
         Driver.Url = url;
     }
 
+    public void FillTextBox(IWebElement textBox, string data)
+    {
+        textBox.SendKeys(data);
+    }
+
+    public void SelectDropDownValue(IWebElement dropDown, string id)
+    {
+        Click(dropDown);
+        var selectElement = new SelectElement(Driver.FindElement(By.Id(id)));
+    }
+
+    public void Click(IWebElement webElement)
+    {
+        webElement.Click();
+    }
+
     public void Setup()
     {
 
