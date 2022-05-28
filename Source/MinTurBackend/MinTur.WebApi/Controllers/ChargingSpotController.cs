@@ -13,7 +13,6 @@ namespace MinTur.WebApi.Controllers
 {
     [EnableCors("AllowEverything")]
     [Route("api/chargingSpots")]
-    [ServiceFilter(typeof(AdministratorAuthorizationFilter))]
     [ApiController]
     public class ChargingSpotController : ControllerBase
     {
@@ -25,6 +24,7 @@ namespace MinTur.WebApi.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(AdministratorAuthorizationFilter))]
         public IActionResult CreateChargingSpot([FromBody] ChargingSpotIntentModel chargingSpotIntentModel)
         {
             ChargingSpot createdChargingSpot = _chargingSpotManager.RegisterChargingSpot(chargingSpotIntentModel.ToEntity());
@@ -33,6 +33,7 @@ namespace MinTur.WebApi.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [ServiceFilter(typeof(AdministratorAuthorizationFilter))]
         public IActionResult DeleteChargingSpot([FromRoute] int id)
         {
             _chargingSpotManager.DeleteChargingSpotById(id);
