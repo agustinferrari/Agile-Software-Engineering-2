@@ -197,7 +197,7 @@ namespace IntegrationTests.Features
                             "Name"});
                 table3.AddRow(new string[] {
                             "1",
-                            "SurOeste"});
+                            "Región Metropolitana"});
 #line 26
   testRunner.And("an existing region", ((string)(null)), table3, "And ");
 #line hidden
@@ -318,7 +318,7 @@ namespace IntegrationTests.Features
                             "Name"});
                 table5.AddRow(new string[] {
                             "1",
-                            "SurOeste"});
+                            "Región Metropolitana"});
 #line 48
   testRunner.And("an existing region", ((string)(null)), table5, "And ");
 #line hidden
@@ -439,7 +439,7 @@ namespace IntegrationTests.Features
                             "Name"});
                 table7.AddRow(new string[] {
                             "1",
-                            "SurOeste"});
+                            "Región Metropolitana"});
 #line 70
   testRunner.And("an existing region", ((string)(null)), table7, "And ");
 #line hidden
@@ -519,7 +519,7 @@ namespace IntegrationTests.Features
                             "Name"});
                 table9.AddRow(new string[] {
                             "1",
-                            "SurOeste"});
+                            "Región Metropolitana"});
 #line 90
   testRunner.And("an existing region", ((string)(null)), table9, "And ");
 #line hidden
