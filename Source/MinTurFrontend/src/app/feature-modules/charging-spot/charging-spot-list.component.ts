@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChargingSpotRoutes } from 'src/app/core/routes';
 import { ChargingSpotService } from 'src/app/core/http-services/charging-spot/charging-spot.service';
-import { AdminSpecificRoutes, ChargingSpotRoutes } from 'src/app/core/routes';
 import { ChargingSpotBasicInfoModel } from 'src/app/shared/models/in/charging-spot-basic-info-model';
 
 @Component({

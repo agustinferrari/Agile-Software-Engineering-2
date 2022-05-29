@@ -50,7 +50,6 @@ export enum ChargingSpotEndpoints {
   GET_CHARGING_SPOTS = 'chargingSpots',
 }
 
-
 export enum ImporterEndpoints{
   GET_IMPORTERS = 'importers',
   IMPORT_RESOURCES = 'importers/importResources'

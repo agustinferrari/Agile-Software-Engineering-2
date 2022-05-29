@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { AdminService } from './admin.service';
+import { ChargingSpotService } from './charging-spot.service';
 
-describe('Service: AdminService', () => {
+describe('Service: ChargingSpot', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AdminService]
+      providers: [ChargingSpotService]
     });
   });
 
-  it('should ...', inject([AdminService], (service: AdminService) => {
+  it('should ...', inject([ChargingSpotService], (service: ChargingSpotService) => {
     expect(service).toBeTruthy();
   }));
 });
