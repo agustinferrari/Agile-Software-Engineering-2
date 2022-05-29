@@ -15,4 +15,8 @@ export class ChargingSpotService {
   public createChargingSpot(newChargingSpot: ChargingSpotIntentModel): Observable<ChargingSpotBasicInfoModel[]> {
     return this.http.post<ChargingSpotBasicInfoModel[]>(ChargingSpotEndpoints.GET_CHARGING_SPOTS, newChargingSpot);
   }
+
+  public allChargingSpots(): Observable<ChargingSpotBasicInfoModel[]>{
+    return this.http.get<ChargingSpotBasicInfoModel[]>(ChargingSpotEndpoints.GET_CHARGING_SPOTS);
+  }
 }

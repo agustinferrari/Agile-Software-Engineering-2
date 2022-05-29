@@ -37,9 +37,10 @@ import { ImportingComponent } from './feature-modules/importing/importing.compon
 import { ImportingModule } from './feature-modules/importing/importing.module';
 // eslint-disable-next-line max-len
 import { AdminSpecificRoutes, ChargingSpotRoutes, ImporterRoutes, RegionRoutes, ReservationRoutes, ResortRoutes, ReviewRoutes, SessionRoutes, TouristPointRoutes } from './core/routes';
-import { ChargingSpotList } from './feature-modules/charging-spot/charging-spot-list.component';
 import { CreateChargingSpotModule } from './feature-modules/charging-spot-create/charging-spot-create.module';
 import { CreateChargingSpotComponent } from './feature-modules/charging-spot-create/charging-spot-create.component';
+import { ChargingSpotListComponent } from './feature-modules/charging-spot/charging-spot-list.component';
+import { ChargingSpotListModule } from './feature-modules/charging-spot/charging-spot-list.module';
 
 const routes: Routes = [
   { path: '', redirectTo: RegionRoutes.REGIONS, pathMatch: 'full'},
@@ -61,7 +62,7 @@ const routes: Routes = [
   { path: ImporterRoutes.IMPORT, component: ImportingComponent, canActivate: [AuthGuard]},
   { path: ResortRoutes.RESORT_LIST, component: ResortListComponent, canActivate: [AuthGuard]},
   { path: ResortRoutes.RESORT_CREATE, component: ResortCreateComponent, canActivate: [AuthGuard]},
-  { path: ChargingSpotRoutes.CHARGING_SPOT_LIST, component: ChargingSpotList},
+  { path: ChargingSpotRoutes.CHARGING_SPOT_LIST, component: ChargingSpotListComponent},
   { path: ChargingSpotRoutes.CHARGING_SPOT_CREATE, component: CreateChargingSpotComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: RegionRoutes.REGIONS, pathMatch: 'full'}
 ];
@@ -75,6 +76,7 @@ const routes: Routes = [
     SubmitReviewModule,
     CheckReservationModule,
     LoginModule,
+    ChargingSpotListModule,
     AdminListModule,
     AdminDetailModule,
     AdminCreateModule,

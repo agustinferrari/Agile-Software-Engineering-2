@@ -1,45 +1,42 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from 'src/app/core/http-services/admin/admin.service';
 import { ChargingSpotRoutes } from 'src/app/core/routes';
-import { AdministratorBasicInfoModel } from 'src/app/shared/models/in/administrator-basic-info-model';
+import { ChargingSpotService } from 'src/app/core/http-services/charging-spot/charging-spot.service';
+import { ChargingSpotBasicInfoModel } from 'src/app/shared/models/in/charging-spot-basic-info-model';
 
 @Component({
   selector: 'charging-spot-list',
   templateUrl: './charging-spot-list.component.html',
   styleUrls: []
 })
-export class ChargingSpotList implements OnInit {
+export class ChargingSpotListComponent implements OnInit {
 
-  public administrators: AdministratorBasicInfoModel[];
+  public chargingSpots: ChargingSpotBasicInfoModel[];
   public ownEmail: string;
 
-  constructor(private adminService: AdminService, private router: Router) { }
+  constructor(private chargingSpotService: ChargingSpotService, private router: Router) { }
 
   ngOnInit(): void {
     this.ownEmail = JSON.parse(localStorage.getItem('userInfo'))?.email ?? 'administrador';
-    this.getAdministrators();
+    this.getChargingSpots();
   }
 
-  private getAdministrators(): void{
-    this.adminService.allAdministrators()
-    .subscribe(administratorsInfo => this.loadAdministrators(administratorsInfo),
+  private getChargingSpots(): void{
+    this.chargingSpotService.allChargingSpots()
+    .subscribe(chargingSpotsInfo => this.loadChargingSpots(chargingSpotsInfo),
       (error: HttpErrorResponse) => this.showError(error));
   }
 
-  private loadAdministrators(administratorsInfo: AdministratorBasicInfoModel[]): void {
-    this.administrators = administratorsInfo;
+  private loadChargingSpots(chargingSpotsInfo: ChargingSpotBasicInfoModel[]): void {
+    this.chargingSpots = chargingSpotsInfo;
   }
 
-  public deleteAdministrator(administratorId: number): void {
-    this.adminService.deleteOneAdministrator(administratorId)
-      .subscribe((response) => this.getAdministrators(),
-        (error: HttpErrorResponse) => this.showError(error));
-  }
-
-  public isItMe(email: string): boolean {
-    return this.ownEmail === email;
+  public deleteChargingSpot(chargingSpotId: number): void {
+    console.log("DeleteChargingSPot: " + chargingSpotId);
+    // this.chargingSpotService.deleteOneAdministrator(chargingSpotId)
+    //   .subscribe((response) => this.getAdministrators(),
+    //     (error: HttpErrorResponse) => this.showError(error));
   }
 
   public goToChargingSpotCreate(): void{
