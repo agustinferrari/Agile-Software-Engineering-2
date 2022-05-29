@@ -37,7 +37,7 @@ namespace IntegrationTests.Steps
         public void WhenTheUserTriesToDeleteTheChargingSpot()
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.Url("http://localhost:4200/explore/charging-spot");
+            helper.Url("http://localhost:4200/explore/charging-spots");
             int chargingSpotId = _scenarioContext.Get<int>("chargingSpotId");
 
             IWebElement deleteChargingSpotButton = helper.WaitForElement(By.Id("delete-"+chargingSpotId));

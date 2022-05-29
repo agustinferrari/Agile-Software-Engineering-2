@@ -232,16 +232,14 @@ namespace IntegrationTests.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot with valid data")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public void DeleteChargingSpotWithValidData()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag",
-                    "ignore"};
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 39
+#line 38
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -257,7 +255,7 @@ namespace IntegrationTests.Features
                 table14.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
-#line 40
+#line 39
   testRunner.Given("a logged in admin", ((string)(null)), table14, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -266,8 +264,8 @@ namespace IntegrationTests.Features
                 table15.AddRow(new string[] {
                             "1",
                             "Región Metropolitana"});
-#line 43
-  testRunner.And("an existing Region", ((string)(null)), table15, "And ");
+#line 42
+  testRunner.And("an existing region", ((string)(null)), table15, "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
@@ -281,20 +279,20 @@ namespace IntegrationTests.Features
                             "General Flores",
                             "1",
                             "Punto de carga"});
-#line 46
+#line 45
   testRunner.And("an existing ChargingSpot", ((string)(null)), table16, "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id"});
                 table17.AddRow(new string[] {
                             "1"});
-#line 49
+#line 48
   testRunner.And("a charging spot with id <Id>", ((string)(null)), table17, "And ");
 #line hidden
-#line 52
+#line 51
   testRunner.When("the user tries to delete the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 53
+#line 52
   testRunner.Then("the charging spot should be deleted from the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

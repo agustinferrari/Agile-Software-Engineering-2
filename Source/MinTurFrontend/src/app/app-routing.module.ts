@@ -39,8 +39,8 @@ import { ImportingModule } from './feature-modules/importing/importing.module';
 import { AdminSpecificRoutes, ChargingSpotRoutes, ImporterRoutes, RegionRoutes, ReservationRoutes, ResortRoutes, ReviewRoutes, SessionRoutes, TouristPointRoutes } from './core/routes';
 import { CreateChargingSpotModule } from './feature-modules/charging-spot-create/charging-spot-create.module';
 import { CreateChargingSpotComponent } from './feature-modules/charging-spot-create/charging-spot-create.component';
-import { ChargingSpotListComponent } from './feature-modules/charging-spot/charging-spot-list.component';
-import { ChargingSpotListModule } from './feature-modules/charging-spot/charging-spot-list.module';
+import { ChargingSpotListComponent } from './feature-modules/charging-spot-list/charging-spot-list.component';
+import { ChargingSpotListModule } from './feature-modules/charging-spot-list/charging-spot-list.module';
 
 const routes: Routes = [
   { path: '', redirectTo: RegionRoutes.REGIONS, pathMatch: 'full'},

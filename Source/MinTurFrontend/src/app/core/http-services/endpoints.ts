@@ -48,6 +48,8 @@ export enum AdminEndpoints {
 
 export enum ChargingSpotEndpoints {
   GET_CHARGING_SPOTS = 'chargingSpots',
+  CREATE_CHARGING_SPOT = 'chargingSpots',
+  DELETE_ONE_CHARGING_SPOT = 'chargingSpots/%s',
 }
 
 export enum ImporterEndpoints{

@@ -40,7 +40,7 @@
 		Given a logged in admin
 			| Email            | Password |
 			| matias@admin.com | admin    |
-		And an existing Region
+		And an existing region
 			| Id | Name                 |
 			| 1  | Región Metropolitana |
 		And an existing ChargingSpot
