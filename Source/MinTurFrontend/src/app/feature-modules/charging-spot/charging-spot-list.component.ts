@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/core/http-services/admin/admin.service';
-import { AdminSpecificRoutes } from 'src/app/core/routes';
+import { ChargingSpotRoutes } from 'src/app/core/routes';
 import { AdministratorBasicInfoModel } from 'src/app/shared/models/in/administrator-basic-info-model';
 
 @Component({
@@ -42,12 +42,8 @@ export class ChargingSpotList implements OnInit {
     return this.ownEmail === email;
   }
 
-  public goToAdministratorDetail(administratorId: number): void{
-    this.router.navigate([AdminSpecificRoutes.ADMIN_DETAIL, administratorId], {replaceUrl: true});
-  }
-
-  public goToAdministratorCreate(): void{
-    this.router.navigate([AdminSpecificRoutes.ADMIN_CREATE], {replaceUrl: true});
+  public goToChargingSpotCreate(): void{
+    this.router.navigate([ChargingSpotRoutes.CHARGING_SPOT_CREATE], {replaceUrl: true});
   }
 
   private showError(error: HttpErrorResponse): void {
