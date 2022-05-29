@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegionService } from 'src/app/core/http-services/region/region.service';
 import { ChargingSpotService } from 'src/app/core/http-services/charging-spot/charging-spot.service';
 import { RegionBasicInfoModel } from 'src/app/shared/models/out/region-basic-info-model';
 import { ChargingSpotIntentModel } from 'src/app/shared/models/out/charging-spot-intent-model';
+import { ChargingSpotRoutes } from 'src/app/core/routes';
 
 @Component({
   selector: 'app-charging-spot-create',
@@ -25,7 +27,8 @@ export class CreateChargingSpotComponent implements OnInit {
 
   constructor(
     private chargingSpotService: ChargingSpotService,
-    private regionService: RegionService
+    private regionService: RegionService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -132,6 +135,10 @@ export class CreateChargingSpotComponent implements OnInit {
 
   public closeError(): void {
     this.displayError = false;
+  }
+
+  public navigateToListOfChargingSpots(): void{
+    this.router.navigate([ChargingSpotRoutes.CHARGING_SPOT_LIST], {replaceUrl: true});
   }
 
   private populateExplanationParams(): void {

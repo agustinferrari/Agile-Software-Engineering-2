@@ -1,18 +1,26 @@
 <app-page-explanation [title]="explanationTitle" [explanation]="explanationDescription"></app-page-explanation>
-<div class="flex flex-row justify-around mt-6">
-  <div class="flex flex-col  w-2/3 bg-gray-300 rounded-2xl border-2 border-purple p-3">
-    <span class="h-3 w-3 flex">
-      <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
-    </span>
-    <p class="text-2xl text-indigo font-semibold text-center mb-8">Crea un punto de carga</p>
-    <div class="flex flex-row ml-2">
-      <p class="text-indigo font-semibold self-center">Nombre:</p>
-      <mat-form-field class="ml-3 self-start w-2/5" >
-        <mat-label>ej: Repsol Estación de carga</mat-label>
-        <input matInput (input)="setName($event.target.value)">
-      </mat-form-field>
-    </div>
+<div class="flex flex-col mt-4">
+  <div class="flex flex-row flex-start">
+    <button (click)="navigateToListOfChargingSpots()"
+      class="w-40 h-10 mt-2 self-center bg-indigo-700 hover:bg-white text-white font-semibold
+        hover:text-indigo p-2 border border-indigo rounded ml-2">
+      Volver
+    </button>
+  </div>
+  <div class="flex flex-row justify-around mt-6">
+    <div class="flex flex-col  w-2/3 bg-gray-300 rounded-2xl border-2 border-purple p-3">
+      <span class="h-3 w-3 flex">
+        <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
+      </span>
+      <p class="text-2xl text-indigo font-semibold text-center mb-8">Crea un punto de carga</p>
+      <div class="flex flex-row ml-2">
+        <p class="text-indigo font-semibold self-center">Nombre:</p>
+        <mat-form-field class="ml-3 self-start w-2/5" >
+          <mat-label>ej: Repsol Estación de carga</mat-label>
+          <input matInput (input)="setName($event.target.value)">
+        </mat-form-field>
+      </div>
     <div class="flex flex-row ml-2">
       <p class="text-indigo font-semibold self-center">Dirección:</p>
       <mat-form-field class="ml-3 self-start w-2/5" >
