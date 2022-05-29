@@ -6,5 +6,4 @@ export interface ChargingSpotBasicInfoModel {
   address: string;
   description: string;
   region: RegionBasicInfoModel;
-  regionName: string;
 }

@@ -2,7 +2,7 @@ import { ChargingSpotEndpoints } from '../endpoints';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ChargingSpotBasicInfoModel } from 'src/app/shared/models/out/charging-spot-basic-info-model';
+import { ChargingSpotBasicInfoModel } from 'src/app/shared/models/in/charging-spot-basic-info-model';
 import { ChargingSpotIntentModel } from 'src/app/shared/models/out/charging-spot-intent-model';
 
 @Injectable({
