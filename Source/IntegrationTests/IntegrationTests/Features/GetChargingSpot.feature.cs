@@ -145,11 +145,11 @@ namespace IntegrationTests.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Id", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "No charging spots in system")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "No hay ningún punto de carga registrado")]
         public void GetChargingSpotGivenNonExisting_1()
         {
 #line 8
- this.GetChargingSpotGivenNonExisting("1", "No charging spots in system", ((string[])(null)));
+ this.GetChargingSpotGivenNonExisting("1", "No hay ningún punto de carga registrado", ((string[])(null)));
 #line hidden
         }
         
