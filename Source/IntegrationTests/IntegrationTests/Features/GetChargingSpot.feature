@@ -4,7 +4,6 @@
 	So that I know where to charge my electric car
 
 	@mytag
-	@ignore
 	Scenario: Get charging spot given non existing
 		Given an existing region
 			| Id | Name     |
@@ -23,6 +22,7 @@
 		Given an existing region
 			| Id | Name                 |
 			| 1  | Región Metropolitana |
+		And no charging spots saved
 		And the charging spots
 			| Id | Name                 | Address        | RegionName           | Description      |
 			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga 1 |

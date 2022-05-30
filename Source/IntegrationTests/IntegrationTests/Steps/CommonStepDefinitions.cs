@@ -22,16 +22,7 @@ namespace IntegrationTests.Steps
         public void GivenALoggedInAdmin(Table admin)
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.Url("http://localhost:4200/");
-            IWebElement loginNavbar = helper.WaitForElement(By.Id("login-navbar"));
-            loginNavbar.Click();
-
-            IWebElement email = helper.WaitForElement(By.Id("email"));
-            email.SendKeys(admin.Rows[0]["Email"]);
-            IWebElement pass = helper.WaitForElement(By.Id("password"));
-            pass.SendKeys(admin.Rows[0]["Password"]);
-            IWebElement loginButton = helper.WaitForElement(By.Id("login-button"));
-            loginButton.Click();
+            helper.Login(admin.Rows[0]["Email"], admin.Rows[0]["Password"]);
         }
 
         [Given(@"an existing region")]
@@ -43,6 +34,34 @@ namespace IntegrationTests.Steps
             helper.WaitForElement(By.Id(regionId));
         }
 
+        [Given(@"no charging spots saved")]
+        public void GivenNoChargingSpotsSaved()
+        {
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            helper.LoginWithCredentials();
+
+            helper.Url("http://localhost:4200/explore/charging-spots");
+
+            IList<IWebElement> errorMessages = helper.WaitForElements(By.Name("error"));
+            bool found = false;
+            foreach (IWebElement errorMessage in errorMessages)
+            {
+                if (errorMessage.Text == "No charging spots in system")
+                {
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                IList<IWebElement> buttons = helper.WaitForElements(By.Name("delete"));
+                foreach (IWebElement button in buttons)
+                {
+                    helper.Click(button);
+                }
+            }
+            helper.Logout();
+        }
+
         [Then(@"the error (.*) should be raised")]
         public void ThenTheErrorShouldBeRaised(string error)
         {
@@ -51,7 +70,7 @@ namespace IntegrationTests.Steps
             bool found = false;
             foreach (IWebElement errorMessage in errorMessages)
             {
-                if(errorMessage.Text == error)
+                if (errorMessage.Text == error)
                 {
                     found = true;
                 }

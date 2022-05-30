@@ -34,30 +34,16 @@ namespace IntegrationTests.Steps
             IWebElement openFormButton = helper.WaitForElement(By.Id("charging-spot-form-button"));
             helper.Click(openFormButton);
 
-            FillForm();
+            string name = _scenarioContext.Get<string>("chargingSpotName");
+            string address = _scenarioContext.Get<string>("chargingSpotAddress");
+            string description = _scenarioContext.Get<string>("chargingSpotDescription");
+            int regionId = _scenarioContext.Get<int>("chargingSpotRegionId");
 
-            IWebElement createButton = helper.WaitForElement(By.Id("create-charging-spot-button"));
-            helper.Click(createButton);
+
+            helper.CreateChargingSpotInForm(name,address,description,regionId);
+
+
         }
-
-        #region Helpers
-
-        private void FillForm()
-        {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-
-            IWebElement name = helper.WaitForElement(By.Id("name"));
-            IWebElement address = helper.WaitForElement(By.Id("address"));
-            IWebElement description = helper.WaitForElement(By.Id("description"));
-            IWebElement regions = helper.WaitForElement(By.Id("regions"));
-
-            helper.FillTextBox(name, _scenarioContext.Get<string>("chargingSpotName"));
-            helper.FillTextBox(address, _scenarioContext.Get<string>("chargingSpotAddress"));
-            helper.FillTextBox(description, _scenarioContext.Get<string>("chargingSpotDescription"));
-            helper.SelectDropDownValue(regions, "region-"+_scenarioContext.Get<int>("chargingSpotRegionId").ToString());
-        }
-
-        #endregion
 
 
         #region ChargingSpot_by_Steps

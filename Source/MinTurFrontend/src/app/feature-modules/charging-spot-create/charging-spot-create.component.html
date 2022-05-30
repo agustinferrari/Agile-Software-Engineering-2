@@ -18,34 +18,35 @@
         <p class="text-indigo font-semibold self-center">Nombre:</p>
         <mat-form-field class="ml-3 self-start w-2/5" >
           <mat-label>ej: Repsol Estación de carga</mat-label>
-          <input matInput (input)="setName($event.target.value)">
+          <input id="name" matInput (input)="setName($event.target.value)">
         </mat-form-field>
       </div>
     <div class="flex flex-row ml-2">
       <p class="text-indigo font-semibold self-center">Dirección:</p>
       <mat-form-field class="ml-3 self-start w-2/5" >
         <mat-label>ej: Pl. del Conde del Valle de Súchil </mat-label>
-        <input matInput (input)="setAddress($event.target.value)">
+        <input id="address" matInput (input)="setAddress($event.target.value)">
       </mat-form-field>
     </div>
     <div class="flex flex-row ml-2">
       <p class="text-indigo font-semibold self-center">Descripción:</p>
       <mat-form-field class="ml-3 self-start w-4/5" >
         <mat-label>ej: Una solución adaptada a tu vehículo eléctrico para que nunca pares</mat-label>
-        <input type="text" matInput (input)="setDescription($event.target.value)">
+        <input id="description" type="text" matInput (input)="setDescription($event.target.value)">
       </mat-form-field>
     </div>
     <div class="flex flex-row ml-2">
       <p class="text-indigo font-semibold self-center">Región:</p>
       <mat-form-field class="ml-3 self-start w-2/5" >
         <mat-label>ej: Región Metropolitana...</mat-label>
-        <mat-select (selectionChange)="selectRegion($event.value)" class="form-select mt-1 block w-full">
+        <mat-select id="regions" (selectionChange)="selectRegion($event.value)" class="form-select mt-1 block w-full">
           <mat-option [id]="regionElementId(region)" [value]="region.id" *ngFor="let region of regions">{{region.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="mt-1 flex flex-col justify-around">
       <button (click)="createChargingSpot()"
+        id="create-charging-spot-button"
         class="w-40 h-10 mt-2 self-center bg-indigo-700 hover:bg-white text-white font-semibold
           hover:text-indigo p-2 border border-indigo rounded"
           id="create-charging-spot-button"

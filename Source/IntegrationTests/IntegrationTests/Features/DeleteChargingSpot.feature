@@ -7,7 +7,7 @@
 	@ignore
 	Scenario: Delete charging spot without being logged in.
 		Given an existing region
-			| Id | Name     |
+			| Id | Name                 |
 			| 1  | Región Metropolitana |
 		And a charging spot with id <Id>
 		When the user tries to delete the charging spot
@@ -23,9 +23,10 @@
 		Given a logged in admin
 			| Email            | Password |
 			| matias@admin.com | admin    |
+		And no charging spots saved
 		And an existing ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
-			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
+			| 0  | Cargar frente al mar | General Flores | 1        | Punto de carga |
 		And a charging spot with id <Id>
 		When the user tries to delete the charging spot
 		Then the error <Error> should be raised
