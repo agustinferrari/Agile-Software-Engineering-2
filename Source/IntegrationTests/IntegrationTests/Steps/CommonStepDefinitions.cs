@@ -4,6 +4,8 @@ using IntegrationTests.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System.Collections.Generic;
+using IntegrationTests.Models;
+using TechTalk.SpecFlow.Assist;
 
 namespace IntegrationTests.Steps
 {
@@ -23,22 +25,39 @@ namespace IntegrationTests.Steps
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             helper.Login(admin.Rows[0]["Email"], admin.Rows[0]["Password"]);
+            _scenarioContext.Set<bool>(true, "loginStatus");
         }
 
         [Given(@"an existing region")]
-        public void GivenAnExistingRegion(Table region)
+        public void GivenAnExistingRegion(Table regionTable)
         {
-            string regionId = $"region-{region.Rows[0]["Id"]}";
+            string regionId = $"region-{regionTable.Rows[0]["Id"]}";
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             helper.Url("http://localhost:4200/explore/regions");
             helper.WaitForElement(By.Id(regionId));
+
+
+            Region region = regionTable.CreateInstance<Region>();
+            _scenarioContext.Set<Region>(region);
         }
 
         [Given(@"no charging spots saved")]
         public void GivenNoChargingSpotsSaved()
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.LoginWithCredentials();
+            bool loginStatus = false;
+            try
+            {
+                loginStatus = _scenarioContext.Get<bool>("loginStatus");
+            }
+            catch (System.Collections.Generic.KeyNotFoundException e)
+            {
+
+            }
+            if (!loginStatus)
+            {
+                helper.LoginWithCredentials();
+            }
 
             helper.Url("http://localhost:4200/explore/charging-spots");
 
@@ -59,7 +78,10 @@ namespace IntegrationTests.Steps
                     helper.Click(button);
                 }
             }
-            helper.Logout();
+            if (!loginStatus)
+            {
+                helper.Logout();
+            }
         }
 
         [Then(@"the error (.*) should be raised")]

@@ -37,10 +37,10 @@ namespace IntegrationTests.Steps
             string name = _scenarioContext.Get<string>("chargingSpotName");
             string address = _scenarioContext.Get<string>("chargingSpotAddress");
             string description = _scenarioContext.Get<string>("chargingSpotDescription");
-            int regionId = _scenarioContext.Get<int>("chargingSpotRegionId");
+            string regionName = _scenarioContext.Get<string>("chargingSpotRegionName");
 
 
-            helper.CreateChargingSpotInForm(name,address,description,regionId);
+            helper.CreateChargingSpotInForm(name,address,description, regionName);
 
 
         }

@@ -154,16 +154,14 @@ namespace IntegrationTests.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Get all charging spots")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GetChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public void GetAllChargingSpots()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag",
-                    "ignore"};
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get all charging spots", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 21
+#line 20
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -179,10 +177,10 @@ namespace IntegrationTests.Features
                 table19.AddRow(new string[] {
                             "1",
                             "Región Metropolitana"});
-#line 22
+#line 21
   testRunner.Given("an existing region", ((string)(null)), table19, "Given ");
 #line hidden
-#line 25
+#line 24
   testRunner.And("no charging spots saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -203,13 +201,13 @@ namespace IntegrationTests.Features
                             "18 de julio",
                             "Región Metropolitana",
                             "Punto de carga 2"});
-#line 26
+#line 25
   testRunner.And("the charging spots", ((string)(null)), table20, "And ");
 #line hidden
-#line 30
+#line 29
   testRunner.When("the user requests the list of charging spots", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 31
+#line 30
   testRunner.Then("a list containing the charging spots should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

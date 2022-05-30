@@ -17,7 +17,6 @@
 			| 1  | No charging spots in system |
 
 	@mytag
-	@ignore
 	Scenario: Get all charging spots
 		Given an existing region
 			| Id | Name                 |
