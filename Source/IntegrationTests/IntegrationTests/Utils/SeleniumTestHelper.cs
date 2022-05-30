@@ -17,7 +17,7 @@ public class SeleniumTestHelper
     public SeleniumTestHelper()
     {
         ChromeOptions option = new ChromeOptions();
-        option.AddArguments("--headless");
+        //option.AddArguments("--headless");
         option.AddArguments("--window-size=1920,1080");
         new DriverManager().SetUpDriver(new ChromeConfig());
         Console.WriteLine("Setup");

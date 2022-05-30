@@ -61,15 +61,22 @@ namespace IntegrationTests.Steps
 
             helper.Url("http://localhost:4200/explore/charging-spots");
 
-            IList<IWebElement> errorMessages = helper.WaitForElements(By.Name("error"));
             bool found = false;
-            foreach (IWebElement errorMessage in errorMessages)
+            try
             {
-                if (errorMessage.Text == "No charging spots in system")
+                IList<IWebElement> errorMessages = helper.WaitForElements(By.Name("error"));
+                foreach (IWebElement errorMessage in errorMessages)
                 {
-                    found = true;
+                    if (errorMessage.Text == "No charging spots in system")
+                    {
+                        found = true;
+                    }
                 }
             }
+            catch(Exception e)
+            {
+            }
+
             if (!found)
             {
                 IList<IWebElement> buttons = helper.WaitForElements(By.Name("delete"));

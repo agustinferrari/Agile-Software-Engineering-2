@@ -48,8 +48,8 @@ namespace IntegrationTests.Features
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "GetChargingSpot", "\tAs a user\n\tI Want to know the data from charging spots\n\tSo that I know where to " +
-                    "charge my electric car", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "GetChargingSpot", "\tAs a user\r\n\tI Want to know the data from charging spots\r\n\tSo that I know where t" +
+                    "o charge my electric car", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -186,19 +186,16 @@ namespace IntegrationTests.Features
                 TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
-                            "Address",
                             "RegionName",
                             "Description"});
                 table20.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
-                            "General Flores",
                             "Región Metropolitana",
                             "Punto de carga 1"});
                 table20.AddRow(new string[] {
                             "2",
                             "Cargar dentro",
-                            "18 de julio",
                             "Región Metropolitana",
                             "Punto de carga 2"});
 #line 25

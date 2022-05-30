@@ -51,9 +51,12 @@ namespace IntegrationTests.Steps
 
             List<ChargingSpot> foundChargingSpots = new List<ChargingSpot>();
 
-            foreach (IWebElement row in rows)
+            for (int i = 1; i<rows.Count; i++)
             {
+                IWebElement row = rows[i];
                 IList<IWebElement> columns = row.FindElements(By.TagName("td"));
+                int count = columns.Count;
+                string test = columns[0].Text;
                 int idCell = columns[0].Text == "" ? 0 : int.Parse(columns[0].Text);
                 string name = columns[1].Text;
                 string description = columns[2].Text;
@@ -70,7 +73,7 @@ namespace IntegrationTests.Steps
                 });
             }
 
-            Assert.AreEqual(rows.Count, _scenarioContext.Get<List<ChargingSpot>>().Count);
+            Assert.AreEqual(_scenarioContext.Get<List<ChargingSpot>>().Count, rows.Count-1);
 
             CollectionAssert.AreEqual(_scenarioContext.Get<List<ChargingSpot>>(), foundChargingSpots);
         }
