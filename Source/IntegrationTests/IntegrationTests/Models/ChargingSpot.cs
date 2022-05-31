@@ -14,8 +14,8 @@ public class ChargingSpot
                Id == spot.Id &&
                Name == spot.Name &&
                Address == spot.Address &&
-               RegionId == spot.RegionId &&
-               RegionName == spot.RegionName &&
+               (RegionId == spot.RegionId ||
+               RegionName == spot.RegionName) &&
                Description == spot.Description;
     }
 

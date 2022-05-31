@@ -4,6 +4,8 @@ using IntegrationTests.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using System.Collections.Generic;
+using IntegrationTests.Models;
+using TechTalk.SpecFlow.Assist;
 
 namespace IntegrationTests.Steps
 {
@@ -22,25 +24,71 @@ namespace IntegrationTests.Steps
         public void GivenALoggedInAdmin(Table admin)
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.Url("http://localhost:4200/");
-            IWebElement loginNavbar = helper.WaitForElement(By.Id("login-navbar"));
-            loginNavbar.Click();
-
-            IWebElement email = helper.WaitForElement(By.Id("email"));
-            email.SendKeys(admin.Rows[0]["Email"]);
-            IWebElement pass = helper.WaitForElement(By.Id("password"));
-            pass.SendKeys(admin.Rows[0]["Password"]);
-            IWebElement loginButton = helper.WaitForElement(By.Id("login-button"));
-            loginButton.Click();
+            helper.Login(admin.Rows[0]["Email"], admin.Rows[0]["Password"]);
+            _scenarioContext.Set<bool>(true, "loginStatus");
         }
 
         [Given(@"an existing region")]
-        public void GivenAnExistingRegion(Table region)
+        public void GivenAnExistingRegion(Table regionTable)
         {
-            string regionId = $"region-{region.Rows[0]["Id"]}";
+            string regionId = $"region-{regionTable.Rows[0]["Id"]}";
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             helper.Url("http://localhost:4200/explore/regions");
             helper.WaitForElement(By.Id(regionId));
+
+
+            Region region = regionTable.CreateInstance<Region>();
+            _scenarioContext.Set<Region>(region);
+        }
+
+        [Given(@"no charging spots saved")]
+        public void GivenNoChargingSpotsSaved()
+        {
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            bool loginStatus = false;
+            try
+            {
+                loginStatus = _scenarioContext.Get<bool>("loginStatus");
+            }
+            catch (System.Collections.Generic.KeyNotFoundException e)
+            {
+
+            }
+            if (!loginStatus)
+            {
+                helper.LoginWithCredentials();
+            }
+
+            helper.Url("http://localhost:4200/explore/charging-spots");
+
+            bool found = false;
+            try
+            {
+                IList<IWebElement> errorMessages = helper.WaitForElements(By.Name("error"));
+                foreach (IWebElement errorMessage in errorMessages)
+                {
+                    if (errorMessage.Text == "No charging spots in system")
+                    {
+                        found = true;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+            }
+
+            if (!found)
+            {
+                IList<IWebElement> buttons = helper.WaitForElements(By.Name("delete"));
+                foreach (IWebElement button in buttons)
+                {
+                    helper.Click(button);
+                }
+            }
+            if (!loginStatus)
+            {
+                helper.Logout();
+            }
         }
 
         [Then(@"the error (.*) should be raised")]
@@ -51,7 +99,7 @@ namespace IntegrationTests.Steps
             bool found = false;
             foreach (IWebElement errorMessage in errorMessages)
             {
-                if(errorMessage.Text == error)
+                if (errorMessage.Text == error)
                 {
                     found = true;
                 }

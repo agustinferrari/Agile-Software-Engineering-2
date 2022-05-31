@@ -21,27 +21,25 @@ namespace IntegrationTests.Steps
             _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
         }
 
-        [Given(@"no charging spots saved")]
-        public void GivenNoChargingSpotsSaved()
-        {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.Url("http://localhost:4200/");
-        }
-
         [When(@"the user requests the list of charging spots")]
         public void WhentTheUserRequestsTheListOfChargingSpots()
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.Url("http://localhost:4200/charging-spot");
-            IWebElement chargingSpotNavbar = helper.WaitForElement(By.Id("charging-spot-navbar"));
-            chargingSpotNavbar.Click();
+            helper.Url("http://localhost:4200/explore/charging-spots");
         }
 
         [Given(@"the charging spots")]
         public void GivenTheChargingSpots(Table chargingSpots)
         {
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            helper.LoginWithCredentials();
             List<ChargingSpot> chargingSpotList = chargingSpots.CreateSet<ChargingSpot>().ToList();
             _scenarioContext.Set<List<ChargingSpot>>(chargingSpotList);
+
+            foreach(ChargingSpot c in chargingSpotList){
+                helper.Url("http://localhost:4200/admin/charging-spot-create");
+                helper.CreateChargingSpotInForm(c.Name,c.Address, c.Description, _scenarioContext.Get<Region>().Name);
+            }
         }
 
         [Then(@"a list containing the charging spots should be returned")]
@@ -53,9 +51,12 @@ namespace IntegrationTests.Steps
 
             List<ChargingSpot> foundChargingSpots = new List<ChargingSpot>();
 
-            foreach (IWebElement row in rows)
+            for (int i = 1; i<rows.Count; i++)
             {
+                IWebElement row = rows[i];
                 IList<IWebElement> columns = row.FindElements(By.TagName("td"));
+                int count = columns.Count;
+                string test = columns[0].Text;
                 int idCell = columns[0].Text == "" ? 0 : int.Parse(columns[0].Text);
                 string name = columns[1].Text;
                 string description = columns[2].Text;
@@ -66,12 +67,14 @@ namespace IntegrationTests.Steps
                 {
                     Id = idCell,
                     Name = name,
+                    Address=address,
                     Description = description,
                     RegionName = regionName
                 });
             }
 
-            Assert.AreEqual(rows.Count, _scenarioContext.Get<List<ChargingSpot>>().Count);
+            Assert.AreEqual(_scenarioContext.Get<List<ChargingSpot>>().Count, rows.Count-1);
+
             CollectionAssert.AreEqual(_scenarioContext.Get<List<ChargingSpot>>(), foundChargingSpots);
         }
     }

@@ -48,8 +48,8 @@ namespace IntegrationTests.Features
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "GetChargingSpot", "\tAs a user\n\tI Want to know the data from charging spots\n\tSo that I know where to " +
-                    "charge my electric car", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "GetChargingSpot", "\tAs a user\r\n\tI Want to know the data from charging spots\r\n\tSo that I know where t" +
+                    "o charge my electric car", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -95,8 +95,7 @@ namespace IntegrationTests.Features
         public virtual void GetChargingSpotGivenNonExisting(string id, string error, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "mytag",
-                    "ignore"};
+                    "mytag"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -106,7 +105,7 @@ namespace IntegrationTests.Features
             argumentsOfScenario.Add("Id", id);
             argumentsOfScenario.Add("Error", error);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get charging spot given non existing", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 8
+#line 7
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -122,16 +121,16 @@ namespace IntegrationTests.Features
                 table18.AddRow(new string[] {
                             "1",
                             "SurOeste"});
-#line 9
+#line 8
   testRunner.Given("an existing region", ((string)(null)), table18, "Given ");
 #line hidden
-#line 12
+#line 11
   testRunner.And("no charging spots saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 13
+#line 12
   testRunner.When("the user requests the list of charging spots", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 14
+#line 13
   testRunner.Then(string.Format("the error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -141,31 +140,28 @@ namespace IntegrationTests.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Get charging spot given non existing: 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GetChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Id", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "No hay ningún punto de carga registrado")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "No charging spots in system")]
         public void GetChargingSpotGivenNonExisting_1()
         {
-#line 8
- this.GetChargingSpotGivenNonExisting("1", "No hay ningún punto de carga registrado", ((string[])(null)));
+#line 7
+ this.GetChargingSpotGivenNonExisting("1", "No charging spots in system", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Get all charging spots")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "GetChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public void GetAllChargingSpots()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag",
-                    "ignore"};
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get all charging spots", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 22
+#line 20
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -181,34 +177,34 @@ namespace IntegrationTests.Features
                 table19.AddRow(new string[] {
                             "1",
                             "Región Metropolitana"});
-#line 23
+#line 21
   testRunner.Given("an existing region", ((string)(null)), table19, "Given ");
+#line hidden
+#line 24
+  testRunner.And("no charging spots saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
-                            "Address",
                             "RegionName",
                             "Description"});
                 table20.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
-                            "General Flores",
                             "Región Metropolitana",
                             "Punto de carga 1"});
                 table20.AddRow(new string[] {
                             "2",
                             "Cargar dentro",
-                            "18 de julio",
                             "Región Metropolitana",
                             "Punto de carga 2"});
-#line 26
+#line 25
   testRunner.And("the charging spots", ((string)(null)), table20, "And ");
 #line hidden
-#line 30
+#line 29
   testRunner.When("the user requests the list of charging spots", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 31
+#line 30
   testRunner.Then("a list containing the charging spots should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
