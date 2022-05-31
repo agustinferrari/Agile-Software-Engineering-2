@@ -17,7 +17,14 @@ namespace IntegrationTests.Steps
         public DeleteChargingSpotStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-            _scenarioContext.Set<SeleniumTestHelper>(SeleniumTestHelper.GetInstance());
+            try
+            {
+                _scenarioContext.Get<SeleniumTestHelper>();
+            }
+            catch (Exception e)
+            {
+                _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
+            }
         }
 
         [Given(@"an existing ChargingSpot")]
@@ -36,7 +43,7 @@ namespace IntegrationTests.Steps
         [When(@"the user deletes the charging spot")]
         public void WhenTheUserDeletesTheChargingSpot()
         {
-            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             helper.LoginWithCredentials();
             DeleteChargingSpot();
         }
@@ -46,7 +53,7 @@ namespace IntegrationTests.Steps
         [Then(@"the charging spot should be deleted from the database")]
         public void ThenTheChargingSpotShouldBeDeletedFromTheDatabase()
         {
-            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             List<ChargingSpot> foundChargingSpots = helper.GetChargingSpotsFromTable();
             ChargingSpot deletedChargingSpot = _scenarioContext.Get<ChargingSpot>();
 
@@ -65,7 +72,7 @@ namespace IntegrationTests.Steps
         
         private void DeleteChargingSpot()
         {
-            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             helper.Url("http://localhost:4200/explore/charging-spots");
 
             bool buttonFound = false;

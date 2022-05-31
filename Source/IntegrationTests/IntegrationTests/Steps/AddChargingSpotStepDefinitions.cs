@@ -13,7 +13,14 @@ namespace IntegrationTests.Steps
         public AddChargingSpotStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-            _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
+            try
+            {
+                _scenarioContext.Get<SeleniumTestHelper>();
+            }
+            catch (Exception e)
+            {
+                _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
+            }
         }
 
         [Then(@"the charging spot should be added successfully")]
@@ -41,8 +48,8 @@ namespace IntegrationTests.Steps
             string regionName = _scenarioContext.Get<string>("chargingSpotRegionName");
 
 
-            helper.CreateChargingSpotInForm(name,address,description, regionName);
-        
+            helper.CreateChargingSpotInForm(name, address, description, regionName);
+
 
         }
 
