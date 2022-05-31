@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using IntegrationTests.Models;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -24,6 +25,12 @@ public class SeleniumTestHelper
         Driver = new ChromeDriver(option);
 
         Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+    }
+
+    public void Quit()
+    {
+        Driver.Close();
+        Driver.Quit();
     }
 
     public IWebElement WaitForElement(By locator)
@@ -73,6 +80,7 @@ public class SeleniumTestHelper
 
     public void Url(string url)
     {
+        //Driver.Url = url;
         Driver.Navigate().GoToUrl(url);
     }
 
@@ -124,5 +132,76 @@ public class SeleniumTestHelper
     public void Setup()
     {
 
+    }
+
+    public List<ChargingSpot> GetChargingSpotsFromTable()
+    {
+        IWebElement table = this.WaitForElement(By.Id("charging-spot-table"));
+        IList<IWebElement> rows = table.FindElements(By.TagName("tr"));
+
+        List<ChargingSpot> foundChargingSpots = new List<ChargingSpot>();
+
+        for (int i = 1; i < rows.Count; i++)
+        {
+            IWebElement row = rows[i];
+            IList<IWebElement> columns = row.FindElements(By.TagName("td"));
+            int count = columns.Count;
+            string test = columns[0].Text;
+            int idCell = columns[0].Text == "" ? 0 : int.Parse(columns[0].Text);
+            string name = columns[1].Text;
+            string description = columns[2].Text;
+            string address = columns[3].Text;
+            string regionName = columns[4].Text;
+
+            foundChargingSpots.Add(new ChargingSpot
+            {
+                Id = idCell,
+                Name = name,
+                Address = address,
+                Description = description,
+                RegionName = regionName
+            });
+        }
+
+        return foundChargingSpots;
+    }
+
+    public void DeleteAllChargingSpots(bool loginStatus)
+    {
+        if (!loginStatus)
+        {
+            this.LoginWithCredentials();
+        }
+
+        this.Url("http://localhost:4200/explore/charging-spots");
+
+        bool found = false;
+        try
+        {
+            IList<IWebElement> errorMessages = this.WaitForElements(By.Name("error"));
+            foreach (IWebElement errorMessage in errorMessages)
+            {
+                if (errorMessage.Text == "No charging spots in system")
+                {
+                    found = true;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+        }
+
+        if (!found)
+        {
+            IList<IWebElement> buttons = this.WaitForElements(By.Name("delete"));
+            foreach (IWebElement button in buttons)
+            {
+                this.Click(button);
+            }
+        }
+        if (!loginStatus)
+        {
+            this.Logout();
+        }
     }
 }

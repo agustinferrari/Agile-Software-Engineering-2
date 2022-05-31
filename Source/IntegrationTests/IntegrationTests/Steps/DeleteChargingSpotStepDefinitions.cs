@@ -27,61 +27,63 @@ namespace IntegrationTests.Steps
             _scenarioContext.Set<ChargingSpot>(chargingSpot);
         }
 
-        [Given(@"a charging spot with id (.*)")]
-        public void GivenAChargingSpotWithId(int id)
-        {
-            _scenarioContext.Set(id, "chargingSpotId");
-        }
-
         [When(@"the user tries to delete the charging spot")]
         public void WhenTheUserTriesToDeleteTheChargingSpot()
         {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.Url("http://localhost:4200/explore/charging-spots");
-            int chargingSpotId = _scenarioContext.Get<int>("chargingSpotId");
-
-            IWebElement deleteChargingSpotButton = helper.WaitForElement(By.Id("delete-"+chargingSpotId));
-            helper.Click(deleteChargingSpotButton);
+            DeleteChargingSpot();
         }
+
+        [When(@"the user deletes the charging spot")]
+        public void WhenTheUserDeletesTheChargingSpot()
+        {
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            helper.LoginWithCredentials();
+            DeleteChargingSpot();
+        }
+
 
 
         [Then(@"the charging spot should be deleted from the database")]
         public void ThenTheChargingSpotShouldBeDeletedFromTheDatabase()
         {
-            List<ChargingSpot> foundChargingSpots = GetChargingSpotsFromTable();
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            List<ChargingSpot> foundChargingSpots = helper.GetChargingSpotsFromTable();
             ChargingSpot deletedChargingSpot = _scenarioContext.Get<ChargingSpot>();
 
             Assert.IsFalse(foundChargingSpots.Contains(deletedChargingSpot));
+            
+            //helper.Quit();
         }
 
-        #region helpers
-        private List<ChargingSpot> GetChargingSpotsFromTable()
+        [Then(@"no delete button should be found")]
+        public void ThenNoDeleteButtonShouldBeFound()
+        {
+            bool buttonFound = _scenarioContext.Get<bool>("buttonFound");
+
+            Assert.IsFalse(buttonFound);
+        }
+        
+        private void DeleteChargingSpot()
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            IWebElement table = helper.WaitForElement(By.Id("charging-spot-table"));
-            IList<IWebElement> rows = table.FindElements(By.TagName("tr"));
+            helper.Url("http://localhost:4200/explore/charging-spots");
 
-            List<ChargingSpot> foundChargingSpots = new List<ChargingSpot>();
-
-            foreach (IWebElement row in rows)
+            bool buttonFound = false;
+            try
             {
-                IList<IWebElement> columns = row.FindElements(By.TagName("td"));
-                int idCell = columns[0].Text == "" ? 0 : int.Parse(columns[0].Text);
-                string name = columns[1].Text;
-                string description = columns[2].Text;
-                string regionName = columns[3].Text;
-
-                foundChargingSpots.Add(new ChargingSpot
-                {
-                    Id = idCell,
-                    Name = name,
-                    Description = description,
-                    RegionName = regionName
-                });
+                IWebElement deleteButton = helper.WaitForElement(By.Name("delete"));
+                buttonFound = true;
+                helper.Click(deleteButton);
             }
-
-            return foundChargingSpots;
+            catch (Exception e)
+            {
+                buttonFound = false;
+            }
+            finally
+            {
+                _scenarioContext.Set(buttonFound, "buttonFound");
+            }            
         }
-        #endregion
+
     }
 }

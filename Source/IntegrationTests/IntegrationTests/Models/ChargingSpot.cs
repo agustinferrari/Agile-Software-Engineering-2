@@ -11,7 +11,7 @@ public class ChargingSpot
     public override bool Equals(object obj)
     {
         return obj is ChargingSpot spot &&
-               Id == spot.Id &&
+               /*Id == spot.Id &&*/
                Name == spot.Name &&
                Address == spot.Address &&
                (RegionId == spot.RegionId ||

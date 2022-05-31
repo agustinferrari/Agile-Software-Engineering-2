@@ -4,18 +4,15 @@
 	So that turists don't search a closed charging spot.
 
 	@mytag
-	@ignore
 	Scenario: Delete charging spot without being logged in.
 		Given an existing region
 			| Id | Name                 |
 			| 1  | Región Metropolitana |
-		And a charging spot with id <Id>
+		And the charging spots
+			| Id | Name                 | Address        | RegionName           | Description    |
+			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga |
 		When the user tries to delete the charging spot
-		Then the error <Error> should be raised
-
-		Examples:
-			| Id | Error                                |
-			| 1  | Please send your authorization token |
+		Then no delete button should be found
 
 	@mytag
 	@ignore
@@ -23,11 +20,9 @@
 		Given a logged in admin
 			| Email            | Password |
 			| matias@admin.com | admin    |
-		And no charging spots saved
 		And an existing ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
 			| 0  | Cargar frente al mar | General Flores | 1        | Punto de carga |
-		And a charging spot with id <Id>
 		When the user tries to delete the charging spot
 		Then the error <Error> should be raised
 
@@ -36,7 +31,6 @@
 			| 2  | Could not find specified charging spot |
 
 	@mytag
-	@ignore
 	Scenario: Delete charging spot with valid data
 		Given a logged in admin
 			| Email            | Password |
@@ -44,11 +38,13 @@
 		And an existing region
 			| Id | Name                 |
 			| 1  | Región Metropolitana |
-		And an existing ChargingSpot
-			| Id | Name                 | Address        | RegionId | Description    |
-			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
-		And a charging spot with id <Id>
-			| Id |
-			| 1  |
-		When the user tries to delete the charging spot
-		Then the charging spot should be deleted from the database
+		And the charging spots
+			| Id | Name                 | Address        | RegionName           | Description    |
+			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga |
+		When the user deletes the charging spot
+		Then the error <Error> should be raised
+
+		Examples:
+			| Error                       |
+			| No charging spots in system |
+		
