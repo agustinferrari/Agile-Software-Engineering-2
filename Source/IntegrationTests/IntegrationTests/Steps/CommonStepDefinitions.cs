@@ -17,13 +17,20 @@ namespace IntegrationTests.Steps
         public CommonStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-            _scenarioContext.Set<SeleniumTestHelper>(SeleniumTestHelper.GetInstance());
+            try
+            {
+                _scenarioContext.Get<SeleniumTestHelper>();
+            }
+            catch (Exception e)
+            {
+                _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
+            }
         }
 
         [Given(@"a logged in admin")]
         public void GivenALoggedInAdmin(Table admin)
         {
-            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             helper.Login(admin.Rows[0]["Email"], admin.Rows[0]["Password"]);
             _scenarioContext.Set<bool>(true, "loginStatus");
         }
@@ -32,7 +39,7 @@ namespace IntegrationTests.Steps
         public void GivenAnExistingRegion(Table regionTable)
         {
             string regionId = $"region-{regionTable.Rows[0]["Id"]}";
-            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             helper.Url("http://localhost:4200/explore/regions");
             helper.WaitForElement(By.Id(regionId));
 
@@ -44,7 +51,7 @@ namespace IntegrationTests.Steps
         [Then(@"the error (.*) should be raised")]
         public void ThenTheErrorShouldBeRaised(string error)
         {
-            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             IList<IWebElement> errorMessages = helper.WaitForElements(By.Name("error"));
             bool found = false;
             foreach (IWebElement errorMessage in errorMessages)
@@ -61,7 +68,7 @@ namespace IntegrationTests.Steps
         [Then(@"Cleanup")]
         public void ThenCleanup()
         {
-            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             bool loginStatus = false;
             try
             {
