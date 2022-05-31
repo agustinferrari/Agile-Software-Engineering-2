@@ -26,6 +26,7 @@ namespace MinTur.Models.Test.Out
 
             Assert.AreEqual(chargingSpot.Id, chargingSpotModel.Id);
             Assert.AreEqual(chargingSpot.Name, chargingSpotModel.Name);
+            Assert.AreEqual(chargingSpot.Address, chargingSpotModel.Address);
             Assert.AreEqual(chargingSpot.Description, chargingSpotModel.Description);
             Assert.AreEqual(chargingSpot.Region.Name, chargingSpotModel.RegionName);
         }

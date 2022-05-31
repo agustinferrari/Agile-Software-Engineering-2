@@ -10,6 +10,7 @@ namespace MinTur.Models.Out
         public int Id { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
+        public string Address { get; set; }
         public string RegionName { get; set; }
 
         public ChargingSpotDetailsModel(ChargingSpot chargingSpot) 
@@ -17,6 +18,7 @@ namespace MinTur.Models.Out
             Id = chargingSpot.Id;
             Name = chargingSpot.Name;
             Description = chargingSpot.Description;
+            Address = chargingSpot.Address;
             RegionName = chargingSpot.Region.Name;
         }
 
