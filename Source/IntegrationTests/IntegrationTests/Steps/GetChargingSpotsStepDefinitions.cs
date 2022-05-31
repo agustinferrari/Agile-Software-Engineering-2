@@ -18,20 +18,20 @@ namespace IntegrationTests.Steps
         public GetChargingSpotsStepDefinition(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-            _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
+            _scenarioContext.Set<SeleniumTestHelper>(SeleniumTestHelper.GetInstance());
         }
 
         [When(@"the user requests the list of charging spots")]
         public void WhentTheUserRequestsTheListOfChargingSpots()
         {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
             helper.Url("http://localhost:4200/explore/charging-spots");
         }
 
         [Given(@"the charging spots")]
         public void GivenTheChargingSpots(Table chargingSpots)
         {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
             bool loginStatus = false;
             try
             {
@@ -41,7 +41,6 @@ namespace IntegrationTests.Steps
             {
             }
             helper.DeleteAllChargingSpots(loginStatus);
-            helper.LoginWithCredentials();
             List<ChargingSpot> chargingSpotList = chargingSpots.CreateSet<ChargingSpot>().ToList();
             _scenarioContext.Set<List<ChargingSpot>>(chargingSpotList);
 
@@ -49,12 +48,13 @@ namespace IntegrationTests.Steps
                 helper.Url("http://localhost:4200/admin/charging-spot-create");
                 helper.CreateChargingSpotInForm(c.Name,c.Address, c.Description, _scenarioContext.Get<Region>().Name);
             }
+            helper.Logout();
         }
 
         [Then(@"a list containing the charging spots should be returned")]
         public void ThenAListContainingTheChargingSpotsShouldBeReturned()
         {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
             List<ChargingSpot> foundChargingSpots = helper.GetChargingSpotsFromTable();
 
             CollectionAssert.AreEqual(_scenarioContext.Get<List<ChargingSpot>>(), foundChargingSpots);

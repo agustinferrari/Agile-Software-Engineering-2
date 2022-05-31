@@ -17,13 +17,13 @@ namespace IntegrationTests.Steps
         public CommonStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-            _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
+            _scenarioContext.Set<SeleniumTestHelper>(SeleniumTestHelper.GetInstance());
         }
 
         [Given(@"a logged in admin")]
         public void GivenALoggedInAdmin(Table admin)
         {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
             helper.Login(admin.Rows[0]["Email"], admin.Rows[0]["Password"]);
             _scenarioContext.Set<bool>(true, "loginStatus");
         }
@@ -32,7 +32,7 @@ namespace IntegrationTests.Steps
         public void GivenAnExistingRegion(Table regionTable)
         {
             string regionId = $"region-{regionTable.Rows[0]["Id"]}";
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
             helper.Url("http://localhost:4200/explore/regions");
             helper.WaitForElement(By.Id(regionId));
 
@@ -44,7 +44,7 @@ namespace IntegrationTests.Steps
         [Then(@"the error (.*) should be raised")]
         public void ThenTheErrorShouldBeRaised(string error)
         {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
             IList<IWebElement> errorMessages = helper.WaitForElements(By.Name("error"));
             bool found = false;
             foreach (IWebElement errorMessage in errorMessages)
@@ -61,7 +61,7 @@ namespace IntegrationTests.Steps
         [Then(@"Cleanup")]
         public void ThenCleanup()
         {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            SeleniumTestHelper helper = SeleniumTestHelper.GetInstance();
             bool loginStatus = false;
             try
             {
