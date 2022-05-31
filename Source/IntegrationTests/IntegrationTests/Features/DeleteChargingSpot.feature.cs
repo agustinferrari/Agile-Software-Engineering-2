@@ -92,21 +92,17 @@ namespace IntegrationTests.Features
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void DeleteChargingSpotWithoutBeingLoggedIn_(string id, string error, string[] exampleTags)
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot without being logged in.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        public void DeleteChargingSpotWithoutBeingLoggedIn_()
         {
-            string[] @__tags = new string[] {
-                    "mytag",
-                    "ignore"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = new string[] {
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Id", id);
-            argumentsOfScenario.Add("Error", error);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot without being logged in.", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 8
+#line 7
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -122,42 +118,38 @@ namespace IntegrationTests.Features
                 table11.AddRow(new string[] {
                             "1",
                             "Región Metropolitana"});
-#line 9
+#line 8
   testRunner.Given("an existing region", ((string)(null)), table11, "Given ");
 #line hidden
-#line 12
-  testRunner.And(string.Format("a charging spot with id {0}", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 13
-  testRunner.When("the user tries to delete the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name",
+                            "Address",
+                            "RegionName",
+                            "Description"});
+                table12.AddRow(new string[] {
+                            "1",
+                            "Cargar frente al mar",
+                            "General Flores",
+                            "Región Metropolitana",
+                            "Punto de carga"});
+#line 11
+  testRunner.And("the charging spots", ((string)(null)), table12, "And ");
 #line hidden
 #line 14
-  testRunner.Then(string.Format("the error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.When("the user tries to delete the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 15
+  testRunner.Then("no delete button should be found", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot without being logged in.: 1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Id", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Please send your authorization token")]
-        public void DeleteChargingSpotWithoutBeingLoggedIn__1()
-        {
-#line 8
- this.DeleteChargingSpotWithoutBeingLoggedIn_("1", "Please send your authorization token", ((string[])(null)));
-#line hidden
-        }
-        
         public virtual void DeleteChargingSpotWithInvalidData_(string id, string error, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "mytag",
-                    "ignore"};
+                    "mytag"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -167,7 +159,7 @@ namespace IntegrationTests.Features
             argumentsOfScenario.Add("Id", id);
             argumentsOfScenario.Add("Error", error);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot with invalid data.", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 22
+#line 18
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -177,40 +169,34 @@ namespace IntegrationTests.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table12.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
-#line 23
-  testRunner.Given("a logged in admin", ((string)(null)), table12, "Given ");
+#line 19
+  testRunner.Given("a logged in admin", ((string)(null)), table13, "Given ");
 #line hidden
-#line 26
-  testRunner.And("no charging spots saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
                             "Address",
                             "RegionId",
                             "Description"});
-                table13.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "0",
                             "Cargar frente al mar",
                             "General Flores",
                             "1",
                             "Punto de carga"});
-#line 27
-  testRunner.And("an existing ChargingSpot", ((string)(null)), table13, "And ");
+#line 22
+  testRunner.And("an existing ChargingSpot", ((string)(null)), table14, "And ");
 #line hidden
-#line 30
-  testRunner.And(string.Format("a charging spot with id {0}", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 31
+#line 25
   testRunner.When("the user tries to delete the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 32
+#line 26
   testRunner.Then(string.Format("the error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -220,31 +206,30 @@ namespace IntegrationTests.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot with invalid data.: 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Id", "2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Could not find specified charging spot")]
         public void DeleteChargingSpotWithInvalidData__2()
         {
-#line 22
+#line 18
  this.DeleteChargingSpotWithInvalidData_("2", "Could not find specified charging spot", ((string[])(null)));
 #line hidden
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot with valid data")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        public void DeleteChargingSpotWithValidData()
+        public virtual void DeleteChargingSpotWithValidData(string error, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag",
-                    "ignore"};
+            string[] @__tags = new string[] {
+                    "mytag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Error", error);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 40
+#line 33
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -254,54 +239,60 @@ namespace IntegrationTests.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table14.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
-#line 41
-  testRunner.Given("a logged in admin", ((string)(null)), table14, "Given ");
-#line hidden
-                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Id",
-                            "Name"});
-                table15.AddRow(new string[] {
-                            "1",
-                            "Región Metropolitana"});
-#line 44
-  testRunner.And("an existing region", ((string)(null)), table15, "And ");
+#line 34
+  testRunner.Given("a logged in admin", ((string)(null)), table15, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
+                            "Name"});
+                table16.AddRow(new string[] {
+                            "1",
+                            "Región Metropolitana"});
+#line 37
+  testRunner.And("an existing region", ((string)(null)), table16, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
                             "Name",
                             "Address",
-                            "RegionId",
+                            "RegionName",
                             "Description"});
-                table16.AddRow(new string[] {
+                table17.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
-                            "1",
+                            "Región Metropolitana",
                             "Punto de carga"});
-#line 47
-  testRunner.And("an existing ChargingSpot", ((string)(null)), table16, "And ");
+#line 40
+  testRunner.And("the charging spots", ((string)(null)), table17, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Id"});
-                table17.AddRow(new string[] {
-                            "1"});
-#line 50
-  testRunner.And("a charging spot with id <Id>", ((string)(null)), table17, "And ");
+#line 43
+  testRunner.When("the user deletes the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 53
-  testRunner.When("the user tries to delete the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 54
-  testRunner.Then("the charging spot should be deleted from the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 44
+  testRunner.Then(string.Format("the error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot with valid data: No charging spots in system")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "No charging spots in system")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "No charging spots in system")]
+        public void DeleteChargingSpotWithValidData_NoChargingSpotsInSystem()
+        {
+#line 33
+ this.DeleteChargingSpotWithValidData("No charging spots in system", ((string[])(null)));
+#line hidden
         }
     }
 }

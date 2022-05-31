@@ -23,6 +23,7 @@ namespace IntegrationTests.Steps
 
             IWebElement succeedMessage = helper.WaitForElement(By.Name("succeed"));
             Assert.IsNotNull(succeedMessage);
+            //helper.Quit();
         }
 
         [When(@"the user tries to add the new charging spot")]
@@ -41,7 +42,7 @@ namespace IntegrationTests.Steps
 
 
             helper.CreateChargingSpotInForm(name,address,description, regionName);
-
+        
 
         }
 

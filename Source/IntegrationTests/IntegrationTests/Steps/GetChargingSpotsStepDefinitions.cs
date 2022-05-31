@@ -32,6 +32,15 @@ namespace IntegrationTests.Steps
         public void GivenTheChargingSpots(Table chargingSpots)
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            bool loginStatus = false;
+            try
+            {
+                loginStatus = _scenarioContext.Get<bool>("loginStatus");
+            }
+            catch (Exception)
+            {
+            }
+            helper.DeleteAllChargingSpots(loginStatus);
             helper.LoginWithCredentials();
             List<ChargingSpot> chargingSpotList = chargingSpots.CreateSet<ChargingSpot>().ToList();
             _scenarioContext.Set<List<ChargingSpot>>(chargingSpotList);
@@ -46,34 +55,7 @@ namespace IntegrationTests.Steps
         public void ThenAListContainingTheChargingSpotsShouldBeReturned()
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            IWebElement table = helper.WaitForElement(By.Id("charging-spot-table"));
-            IList<IWebElement> rows = table.FindElements(By.TagName("tr"));
-
-            List<ChargingSpot> foundChargingSpots = new List<ChargingSpot>();
-
-            for (int i = 1; i<rows.Count; i++)
-            {
-                IWebElement row = rows[i];
-                IList<IWebElement> columns = row.FindElements(By.TagName("td"));
-                int count = columns.Count;
-                string test = columns[0].Text;
-                int idCell = columns[0].Text == "" ? 0 : int.Parse(columns[0].Text);
-                string name = columns[1].Text;
-                string description = columns[2].Text;
-                string address = columns[3].Text;
-                string regionName = columns[4].Text;
-
-                foundChargingSpots.Add(new ChargingSpot
-                {
-                    Id = idCell,
-                    Name = name,
-                    Address=address,
-                    Description = description,
-                    RegionName = regionName
-                });
-            }
-
-            Assert.AreEqual(_scenarioContext.Get<List<ChargingSpot>>().Count, rows.Count-1);
+            List<ChargingSpot> foundChargingSpots = helper.GetChargingSpotsFromTable();
 
             CollectionAssert.AreEqual(_scenarioContext.Get<List<ChargingSpot>>(), foundChargingSpots);
         }

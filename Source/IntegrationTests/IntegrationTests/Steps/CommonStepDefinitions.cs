@@ -41,56 +41,6 @@ namespace IntegrationTests.Steps
             _scenarioContext.Set<Region>(region);
         }
 
-        [Given(@"no charging spots saved")]
-        public void GivenNoChargingSpotsSaved()
-        {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            bool loginStatus = false;
-            try
-            {
-                loginStatus = _scenarioContext.Get<bool>("loginStatus");
-            }
-            catch (System.Collections.Generic.KeyNotFoundException e)
-            {
-
-            }
-            if (!loginStatus)
-            {
-                helper.LoginWithCredentials();
-            }
-
-            helper.Url("http://localhost:4200/explore/charging-spots");
-
-            bool found = false;
-            try
-            {
-                IList<IWebElement> errorMessages = helper.WaitForElements(By.Name("error"));
-                foreach (IWebElement errorMessage in errorMessages)
-                {
-                    if (errorMessage.Text == "No charging spots in system")
-                    {
-                        found = true;
-                    }
-                }
-            }
-            catch(Exception e)
-            {
-            }
-
-            if (!found)
-            {
-                IList<IWebElement> buttons = helper.WaitForElements(By.Name("delete"));
-                foreach (IWebElement button in buttons)
-                {
-                    helper.Click(button);
-                }
-            }
-            if (!loginStatus)
-            {
-                helper.Logout();
-            }
-        }
-
         [Then(@"the error (.*) should be raised")]
         public void ThenTheErrorShouldBeRaised(string error)
         {
@@ -105,6 +55,23 @@ namespace IntegrationTests.Steps
                 }
             }
             Assert.IsTrue(found);
+            //helper.Quit();
         }
+
+        [Then(@"Cleanup")]
+        public void ThenCleanup()
+        {
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            bool loginStatus = false;
+            try
+            {
+                loginStatus = _scenarioContext.Get<bool>("loginStatus");
+            }
+            catch (Exception)
+            {
+            }
+            helper.DeleteAllChargingSpots(loginStatus);
+        }
+
     }
 }

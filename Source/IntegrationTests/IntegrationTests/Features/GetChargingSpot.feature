@@ -8,7 +8,8 @@
 		Given an existing region
 			| Id | Name     |
 			| 1  | SurOeste |
-		And no charging spots saved
+		And the charging spots
+			| Id | Name                 | Address        | RegionName           | Description      |
 		When the user requests the list of charging spots
 		Then the error <Error> should be raised
 
@@ -21,7 +22,6 @@
 		Given an existing region
 			| Id | Name                 |
 			| 1  | Región Metropolitana |
-		And no charging spots saved
 		And the charging spots
 			| Id | Name                 | Address        | RegionName           | Description      |
 			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga 1 |

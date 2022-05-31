@@ -5,7 +5,6 @@
 
 
 	@mytag
-	@ignore
 	Scenario: Add charging spot without being logged in.
 		Given a new ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
@@ -18,7 +17,6 @@
 			| 1  | Please send your authorization token |
 
 	@mytag
-	@ignore
 	Scenario: Add charging spot with invalid characters.
 		Given a logged in admin
 			| Email            | Password |
@@ -40,7 +38,6 @@
 			| Cargar parada 2     | General Flores    | 1        | Desc @[][]??   | the description must be alphanumeric with a maximum of 60 characters |
 
 	@mytag
-	@ignore
 	Scenario: Add charging spot with invalid data length.
 		Given a logged in admin
 			| Email            | Password |
@@ -62,7 +59,6 @@
 			| Cargar parada 2                   | General Flores                               | 1        | Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga | the description must be alphanumeric with a maximum of 60 characters |
 
 	@mytag
-	@ignore
 	Scenario: Add charging spot with a non-existent region.
 		Given a logged in admin
 			| Email            | Password |
@@ -82,7 +78,6 @@
 			| Cargar parada 2 | General Flores | 2        | Punto de carga | Could not find specified region |
 
 	@mytag
-	@ignore
 	Scenario: Add charging spot with valid data
 		Given a logged in admin
 			| Email            | Password |
