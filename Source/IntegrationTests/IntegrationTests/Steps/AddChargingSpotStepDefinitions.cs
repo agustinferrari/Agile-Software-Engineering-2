@@ -3,6 +3,9 @@ using TechTalk.SpecFlow;
 using IntegrationTests.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using IntegrationTests.Models;
+using TechTalk.SpecFlow.Assist;
+
 namespace IntegrationTests.Steps
 {
     [Binding]
@@ -37,7 +40,7 @@ namespace IntegrationTests.Steps
         public void WhenTheUserTriesToAddTheNewChargingSpot()
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.Url("http://localhost:4200/explore/charging-spot");
+            helper.Url("http://localhost:4200/explore/charging-spots");
 
             IWebElement openFormButton = helper.WaitForElement(By.Id("charging-spot-form-button"));
             helper.Click(openFormButton);
@@ -50,11 +53,27 @@ namespace IntegrationTests.Steps
 
             helper.CreateChargingSpotInForm(name, address, description, regionName);
 
-
         }
 
+        [Then(@"the alert (.*) should be shown")]
+        public void ThenTheErrorAlertShouldBeShown(string alert)
+        {
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            Assert.AreEqual(alert, helper.GetAlertText());
+        }
 
         #region ChargingSpot_by_Steps
+
+        [Given(@"a new ChargingSpot")]
+        public void GivenANewChargingSpot(Table table)
+        {
+            ChargingSpot chargingSpot = table.CreateInstance<ChargingSpot>();
+            _scenarioContext.Set(chargingSpot.Name, "chargingSpotName");
+            _scenarioContext.Set(chargingSpot.Address, "chargingSpotAddress");
+            _scenarioContext.Set(chargingSpot.RegionName, "chargingSpotRegionName");
+            _scenarioContext.Set(chargingSpot.Description, "chargingSpotDescription");
+        }
+
 
         [Given(@"a new ChargingSpot named (.*)")]
         public void GivenANewChargingSpotNamed(string name)
@@ -69,9 +88,9 @@ namespace IntegrationTests.Steps
         }
 
         [Given(@"in the region (.*)")]
-        public void GivenInTheRegion(int regionId)
+        public void GivenInTheRegion(string regionName)
         {
-            _scenarioContext.Set(regionId, "chargingSpotRegionId");
+            _scenarioContext.Set(regionName, "chargingSpotRegionName");
         }
 
         [Given(@"the description (.*)")]
