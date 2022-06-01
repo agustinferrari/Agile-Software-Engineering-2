@@ -140,6 +140,13 @@ public class SeleniumTestHelper
         webElement.Click();
     }
 
+    public string GetAlertText()
+    {
+        Wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
+
+        return Driver.SwitchTo().Alert().Text;
+    }
+
     public void Setup()
     {
 
