@@ -12,23 +12,25 @@
 			| Id | Name                 | Address        | RegionName           | Description    |
 			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga |
 		When the user tries to delete the charging spot
-		Then no delete button should be found
+			| Name                 |
+			| Cargar frente al mar |
+		Then the charging spot cannot be deleted
 
 	@mytag
-	@ignore
 	Scenario: Delete charging spot with invalid data.
 		Given a logged in admin
 			| Email            | Password |
 			| matias@admin.com | admin    |
-		And an existing ChargingSpot
-			| Id | Name                 | Address        | RegionId | Description    |
-			| 0  | Cargar frente al mar | General Flores | 1        | Punto de carga |
+		Given an existing region
+					| Id | Name                 |
+					| 1  | Región Metropolitana |
+		And the charging spots
+			| Id | Name                 | Address        | RegionName           | Description    |
+			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga |
 		When the user tries to delete the charging spot
-		Then the error <Error> should be raised
-
-		Examples:
-			| Id | Error                                  |
-			| 2  | Could not find specified charging spot |
+			| Name        |
+			| Inexistente |
+		Then the charging spots by those names cannot be deleted
 
 	@mytag
 	Scenario: Delete charging spot with valid data
@@ -47,4 +49,3 @@
 		Examples:
 			| Error                       |
 			| No charging spots in system |
-		

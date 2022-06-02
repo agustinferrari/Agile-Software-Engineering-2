@@ -6,6 +6,7 @@ using OpenQA.Selenium;
 using System.Collections.Generic;
 using IntegrationTests.Models;
 using TechTalk.SpecFlow.Assist;
+using System.Linq;
 
 namespace IntegrationTests.Steps
 {
@@ -35,9 +36,50 @@ namespace IntegrationTests.Steps
         }
 
         [When(@"the user tries to delete the charging spot")]
-        public void WhenTheUserTriesToDeleteTheChargingSpot()
+        public void WhenTheUserTriesToDeleteTheChargingSpot(Table names)
         {
-            DeleteChargingSpot();
+            List<string> namesList = names.CreateSet<string>().ToList();
+
+
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            helper.Url("http://localhost:4200/explore/charging-spots");
+
+            bool tableFound = false;
+            bool containsNameList = false;
+            bool buttonFound = false;
+            try
+            {
+                IWebElement chargingSpotTable = helper.WaitForElement(By.Id("charging-spot-table"));
+                tableFound = true;
+                IList<IWebElement> chargingSpots = helper.WaitForElements(By.XPath("//tr[]"));
+                List<string> chargingSpotNames = new List<string>();
+                foreach (IWebElement chargingSpot in chargingSpots)
+                {
+                    chargingSpotNames.Add(chargingSpot.FindElements(By.XPath("//td[]"))[1].Text);
+                }
+
+                foreach (string name in namesList)
+                {
+                    if (chargingSpotNames.Contains(name))
+                    {
+                        containsNameList = true;
+                    }
+                }
+
+                IWebElement deleteButton = helper.WaitForElement(By.Name("delete"));
+                buttonFound = true;
+                helper.Click(deleteButton);
+            }
+            catch (Exception e)
+            {
+                buttonFound = false;
+            }
+            finally
+            {
+                _scenarioContext.Set(containsNameList, "containsNameList");
+                _scenarioContext.Set(tableFound, "tableFound");
+                _scenarioContext.Set(buttonFound, "buttonFound");
+            }
         }
 
         [When(@"the user deletes the charging spot")]
@@ -58,26 +100,36 @@ namespace IntegrationTests.Steps
             ChargingSpot deletedChargingSpot = _scenarioContext.Get<ChargingSpot>();
 
             Assert.IsFalse(foundChargingSpots.Contains(deletedChargingSpot));
-            
+
             //helper.Quit();
         }
 
-        [Then(@"no delete button should be found")]
-        public void ThenNoDeleteButtonShouldBeFound()
+        [Then(@"the charging spot cannot be deleted")]
+        public void TheChargingSpotCannotBeDeleted()
         {
             bool buttonFound = _scenarioContext.Get<bool>("buttonFound");
-
             Assert.IsFalse(buttonFound);
         }
-        
+
+        [Then(@"the charging spots by those names cannot be deleted")]
+        public void TheChargingSpotByThoseNamesCannotBeDeleted()
+        {
+            bool tableFound = _scenarioContext.Get<bool>("tableFound");
+            bool containsNameList = _scenarioContext.Get<bool>("containsNameList");
+            Assert.IsTrue(tableFound && !containsNameList);
+        }
+
         private void DeleteChargingSpot()
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             helper.Url("http://localhost:4200/explore/charging-spots");
 
             bool buttonFound = false;
+            bool tableFound = false;
             try
             {
+                IWebElement chargingSpotTable = helper.WaitForElement(By.Id("charging-spot-table"));
+                tableFound = true;
                 IWebElement deleteButton = helper.WaitForElement(By.Name("delete"));
                 buttonFound = true;
                 helper.Click(deleteButton);
@@ -88,8 +140,9 @@ namespace IntegrationTests.Steps
             }
             finally
             {
+                _scenarioContext.Set(tableFound, "tableFound");
                 _scenarioContext.Set(buttonFound, "buttonFound");
-            }            
+            }
         }
 
     }

@@ -115,23 +115,23 @@ namespace IntegrationTests.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name"});
-                table18.AddRow(new string[] {
+                table21.AddRow(new string[] {
                             "1",
                             "SurOeste"});
 #line 8
-  testRunner.Given("an existing region", ((string)(null)), table18, "Given ");
+  testRunner.Given("an existing region", ((string)(null)), table21, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
                             "Address",
                             "RegionName",
                             "Description"});
 #line 11
-  testRunner.And("the charging spots", ((string)(null)), table19, "And ");
+  testRunner.And("the charging spots", ((string)(null)), table22, "And ");
 #line hidden
 #line 13
   testRunner.When("the user requests the list of charging spots", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -177,35 +177,35 @@ namespace IntegrationTests.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name"});
-                table20.AddRow(new string[] {
+                table23.AddRow(new string[] {
                             "1",
                             "Región Metropolitana"});
 #line 22
-  testRunner.Given("an existing region", ((string)(null)), table20, "Given ");
+  testRunner.Given("an existing region", ((string)(null)), table23, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
                             "Address",
                             "RegionName",
                             "Description"});
-                table21.AddRow(new string[] {
+                table24.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
                             "Región Metropolitana",
                             "Punto de carga 1"});
-                table21.AddRow(new string[] {
+                table24.AddRow(new string[] {
                             "2",
                             "Cargar dentro",
                             "18 de julio",
                             "Región Metropolitana",
                             "Punto de carga 2"});
 #line 25
-  testRunner.And("the charging spots", ((string)(null)), table21, "And ");
+  testRunner.And("the charging spots", ((string)(null)), table24, "And ");
 #line hidden
 #line 29
   testRunner.When("the user requests the list of charging spots", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
