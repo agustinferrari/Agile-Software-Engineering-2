@@ -13,14 +13,24 @@ namespace MinTur.Domain.Test.Reports
         [TestMethod]
         public void ValidInputPassesValidation()
         {
-            ReservationReportInput input = new ReservationReportInput()
+            Exception unexpectedException = null;
+            try
             {
-                InitialDate = new DateTime(2020, 10, 10),
-                FinalDate = new DateTime(2020, 11, 13),
-                TouristPointId = 3
-            };
+                ReservationReportInput input = new ReservationReportInput()
+                {
+                    InitialDate = new DateTime(2020, 10, 10),
+                    FinalDate = new DateTime(2020, 11, 13),
+                    TouristPointId = 3
+                };
 
-            input.ValidOrFail();
+                input.ValidOrFail();
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
         }
 
         [TestMethod]

@@ -30,3 +30,9 @@ dotnet_diagnostic.S125.severity = None
     
 # 'System.Exception' should not be thrown by user code
 dotnet_diagnostic.S112.severity = None
+
+# Conditions evaluate to false do to wrong null assumptions
+dotnet_diagnostic.S3885.severity = None
+
+# Require Assert in test
+dotnet_diagnostic.S2699.severity = None

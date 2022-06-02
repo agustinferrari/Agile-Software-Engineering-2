@@ -43,7 +43,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IRegionManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IRegionManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IRegionManager);
         }
 
         [TestMethod]
@@ -64,7 +64,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(ITouristPointManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(ITouristPointManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is ITouristPointManager);
         }
 
         [TestMethod]
@@ -85,7 +85,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(ICategoryManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(ICategoryManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is ICategoryManager);
         }
 
         [TestMethod]
@@ -106,7 +106,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IResortManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IResortManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IResortManager);
         }
 
         [TestMethod]
@@ -127,7 +127,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IReservationManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IReservationManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IReservationManager);
         }
 
         [TestMethod]
@@ -148,7 +148,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IAdministratorManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IAdministratorManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IAdministratorManager);
         }
 
         [TestMethod]
@@ -168,7 +168,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IResortPricingCalculator));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IResortPricingCalculator).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IResortPricingCalculator);
         }
 
         [TestMethod]
@@ -189,7 +189,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IAuthenticationManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IAuthenticationManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IAuthenticationManager);
         }
 
         [TestMethod]
@@ -210,7 +210,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IReviewManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IReviewManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IReviewManager);
         }
 
         [TestMethod]
@@ -231,7 +231,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IImporterManager));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IImporterManager).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IImporterManager);
         }
 
         private void RegisterAuthenticationManagerDependencies()

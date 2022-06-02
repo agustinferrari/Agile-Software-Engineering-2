@@ -20,10 +20,10 @@ namespace MyNamespace
     public class AddChargingSpotWithValidDataStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
-        private NaturalUruguayContext _dbContext;
-        private ChargingSpotController _chargingSpotController;
-        private IChargingSpotManager _chargingSpotManager;
-        private IRepositoryFacade _chargingSpotRepository;
+        private readonly NaturalUruguayContext _dbContext;
+        private readonly ChargingSpotController _chargingSpotController;
+        private readonly IChargingSpotManager _chargingSpotManager;
+        private readonly IRepositoryFacade _chargingSpotRepository;
 
         public AddChargingSpotWithValidDataStepDefinitions(ScenarioContext context)
         {

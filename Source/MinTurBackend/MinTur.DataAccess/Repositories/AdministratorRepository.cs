@@ -42,16 +42,16 @@ namespace MinTur.DataAccess.Repositories
             return administrator.Id;
         }
 
-        public void UpdateAdministrator(Administrator newAdministrator)
+        public void UpdateAdministrator(Administrator administrator)
         {
-            if (!AdministratorExists(newAdministrator.Id))
+            if (!AdministratorExists(administrator.Id))
                 throw new ResourceNotFoundException("Could not find specified administrator");
-            Administrator oldAdministrator = GetAdministratorById(newAdministrator.Id);
-            if (oldAdministrator.Email!=newAdministrator.Email && EmailAlreadyExists(newAdministrator.Email))
+            Administrator oldAdministrator = GetAdministratorById(administrator.Id);
+            if (oldAdministrator.Email!=administrator.Email && EmailAlreadyExists(administrator.Email))
                 throw new InvalidOperationException("Administrator with same email already registered");
 
-            Administrator retrievedAdministrator = Context.Set<Administrator>().Where(a => a.Id == newAdministrator.Id).FirstOrDefault();
-            retrievedAdministrator.Update(newAdministrator);
+            Administrator retrievedAdministrator = Context.Set<Administrator>().Where(a => a.Id == administrator.Id).FirstOrDefault();
+            retrievedAdministrator.Update(administrator);
             UpdateAdministratorInDb(retrievedAdministrator);
         }
 

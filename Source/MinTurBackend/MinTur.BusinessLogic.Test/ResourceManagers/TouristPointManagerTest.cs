@@ -33,7 +33,7 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
             Region region1 = new Region() { Id = 0, Name = "Metropolitana" };
             Region region2 = new Region() { Id = 1, Name = "Centro Sur" };
 
-            TouristPoint touristPoint1 = new TouristPoint()
+            new TouristPoint()
             {
                 Id = 0,
                 Name = "Punta Del Este",
@@ -43,7 +43,7 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
                 Region = region1,
             };
 
-            TouristPoint touristPoint2 = new TouristPoint()
+            new TouristPoint()
             {
                 Id = 1,
                 Name = "Cabo Polonio",
@@ -93,7 +93,7 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
 
 
         [TestMethod]
-        public void RegisterTouristPointReturnsAsExpected() 
+        public void RegisterTouristPointReturnsAsExpected()
         {
             int newTouristPointId = 94;
             TouristPoint createdTouristPoint = CreateTouristPointWithSpecificId(newTouristPointId);
@@ -111,7 +111,7 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
         }
 
         #region Helpers
-        public TouristPoint CreateTouristPointWithSpecificId(int touristPointId) 
+        public TouristPoint CreateTouristPointWithSpecificId(int touristPointId)
         {
             return new TouristPoint()
             {

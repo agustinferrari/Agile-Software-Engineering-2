@@ -11,12 +11,12 @@ namespace MinTur.JSONImporter
 {
     public class JSONImporter : IImporter
     {
-        private List<ImporterParameterDescription> _requiredParameters;
-        private string basePathForJsonFiles;
+        private readonly List<ImporterParameterDescription> _requiredParameters;
+        private readonly string basePathForJsonFiles;
 
         public JSONImporter(IConfiguration configuration)
         {
-            basePathForJsonFiles = configuration.GetSection("JSONFilesForImporter").Value;
+            basePathForJsonFiles = configuration.GetSection("JSONFilesForImporter").Value + "/";
 
             _requiredParameters = new List<ImporterParameterDescription>()
             {
@@ -47,7 +47,7 @@ namespace MinTur.JSONImporter
 
             try
             {
-                string jsonString = File.ReadAllText(basePathForJsonFiles + '/' + fileName);
+                string jsonString = File.ReadAllText(basePathForJsonFiles + fileName);
 
                 if (jsonString.StartsWith('['))
                     parsedResorts = JsonConvert.DeserializeObject<List<ImportedResort>>(jsonString);

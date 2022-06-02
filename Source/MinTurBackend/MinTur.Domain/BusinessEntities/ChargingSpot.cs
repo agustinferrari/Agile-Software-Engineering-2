@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 using System.Text.RegularExpressions;
 using MinTur.Exceptions;
 
@@ -53,6 +52,11 @@ namespace MinTur.Domain.BusinessEntities
 
             var chargingSpot = obj as ChargingSpot;
             return Id == chargingSpot.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
         }
     }
 

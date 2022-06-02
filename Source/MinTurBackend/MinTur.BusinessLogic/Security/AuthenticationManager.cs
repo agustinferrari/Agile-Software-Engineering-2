@@ -14,11 +14,11 @@ namespace MinTur.BusinessLogic.Security
             _repositoryFacade = repositoryFacade;
         }
 
-        public bool IsTokenValid(Guid id)
+        public bool IsTokenValid(Guid token)
         {
             try 
             {
-                AuthorizationToken token =  _repositoryFacade.GetAuthenticationTokenById(id);
+                _repositoryFacade.GetAuthenticationTokenById(token);
                 /*If there was further logic of durability, token belonging only to an admin and not another kind of user
                 it would all go here*/
                 return true;

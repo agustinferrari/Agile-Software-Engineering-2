@@ -16,7 +16,6 @@ namespace MinTur.BusinessLogic.Importing
     {
         private readonly IRepositoryFacade _repositoryFacade;
         private readonly IConfiguration _configuration;
-        private string _importersPath;
 
         public ImporterManager(IConfiguration configuration, IRepositoryFacade repositoryFacade)
         {
@@ -26,7 +25,7 @@ namespace MinTur.BusinessLogic.Importing
 
         public List<IImporterAdapter> GetImporters()
         {
-            _importersPath = _configuration.GetSection(@"ImportersDllDirectory").Value;
+            string _importersPath = _configuration.GetSection(@"ImportersDllDirectory").Value;
             List<IImporterAdapter> availableImporters = new List<IImporterAdapter>();
             string[] filePaths = Directory.GetFiles(_importersPath);
 
@@ -34,14 +33,14 @@ namespace MinTur.BusinessLogic.Importing
             {
                 if (FileIsDll(file))
                 {
-                    FileInfo dllFile  = new FileInfo(file);
+                    FileInfo dllFile = new FileInfo(file);
                     Assembly myAssembly = Assembly.LoadFile(dllFile.FullName);
 
                     foreach (Type type in myAssembly.GetTypes())
                     {
                         if (ImplementsRequiredInterface(type))
                         {
-                            IImporter instance = (IImporter)Activator.CreateInstance(type,_configuration);
+                            IImporter instance = (IImporter)Activator.CreateInstance(type, _configuration);
                             availableImporters.Add(new ImporterAdapter(instance));
                         }
                     }
@@ -56,7 +55,7 @@ namespace MinTur.BusinessLogic.Importing
             List<Resort> resortToStore = desiredImporter.RetrieveResorts(input.Parameters);
             ImportingResult result = new ImportingResult();
 
-            foreach(Resort resort in resortToStore)
+            foreach (Resort resort in resortToStore)
             {
                 TryRegisteringResort(resort, result);
             }
@@ -77,13 +76,13 @@ namespace MinTur.BusinessLogic.Importing
 
                 result.SuccesfulImportedResorts.Add(createdResort);
             }
-            catch(ResourceNotFoundException)
+            catch (ResourceNotFoundException)
             {
                 TryRegisteringResortsTouristPoint(resort, result);
             }
-            catch(InvalidRequestDataException e)
+            catch (InvalidRequestDataException e)
             {
-                result.FailedImportingResorts.Add(new KeyValuePair<Resort,string>(resort, e.Message));
+                result.FailedImportingResorts.Add(new KeyValuePair<Resort, string>(resort, e.Message));
             }
         }
 
@@ -103,7 +102,7 @@ namespace MinTur.BusinessLogic.Importing
                 result.SuccesfulImportedTouristPoints.Add(createdTouristPoint);
                 TryRegisteringResort(resort, result);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 result.FailedImportingResorts.Add(new KeyValuePair<Resort, string>(resort, e.Message));
             }
@@ -114,7 +113,7 @@ namespace MinTur.BusinessLogic.Importing
             List<IImporterAdapter> availableImporters = GetImporters();
             IImporterAdapter desiredImporter = null;
 
-            foreach(IImporterAdapter importer in availableImporters)
+            foreach (IImporterAdapter importer in availableImporters)
             {
                 if (importer.GetName() == input.ImporterName)
                     desiredImporter = importer;

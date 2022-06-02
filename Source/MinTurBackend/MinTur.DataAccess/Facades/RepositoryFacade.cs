@@ -11,29 +11,27 @@ namespace MinTur.DataAccess.Facades
     [ExcludeFromCodeCoverage]
     public class RepositoryFacade : IRepositoryFacade
     {
-        private readonly DbContext _context;
-        private RegionRepository _regionRepository;
-        private TouristPointRepository _touristPointRepository;
-        private CategoryRepository _categoryRepository;
-        private ChargingSpotRepository _chargingSpotRepository;
-        private ResortRepository _resortRepository;
-        private ReservationRepository _reservationRepository;
-        private AuthenticationTokenRepository _authenticationTokenRepository;
-        private AdministratorRepository _administratorRepository;
-        private ReviewRepository _reviewRepository;
+        private readonly RegionRepository _regionRepository;
+        private readonly TouristPointRepository _touristPointRepository;
+        private readonly CategoryRepository _categoryRepository;
+        private readonly ChargingSpotRepository _chargingSpotRepository;
+        private readonly ResortRepository _resortRepository;
+        private readonly ReservationRepository _reservationRepository;
+        private readonly AuthenticationTokenRepository _authenticationTokenRepository;
+        private readonly AdministratorRepository _administratorRepository;
+        private readonly ReviewRepository _reviewRepository;
 
         public RepositoryFacade(DbContext context)
         {
-            _context = context;
-            _regionRepository = new RegionRepository(_context);
-            _touristPointRepository = new TouristPointRepository(_context);
-            _categoryRepository = new CategoryRepository(_context);
-            _chargingSpotRepository = new ChargingSpotRepository(_context);
-            _resortRepository = new ResortRepository(_context);
-            _reservationRepository = new ReservationRepository(_context);
-            _authenticationTokenRepository = new AuthenticationTokenRepository(_context);
-            _administratorRepository = new AdministratorRepository(_context);
-            _reviewRepository = new ReviewRepository(_context);
+            _regionRepository = new RegionRepository(context);
+            _touristPointRepository = new TouristPointRepository(context);
+            _categoryRepository = new CategoryRepository(context);
+            _chargingSpotRepository = new ChargingSpotRepository(context);
+            _resortRepository = new ResortRepository(context);
+            _reservationRepository = new ReservationRepository(context);
+            _authenticationTokenRepository = new AuthenticationTokenRepository(context);
+            _administratorRepository = new AdministratorRepository(context);
+            _reviewRepository = new ReviewRepository(context);
         }
 
         public List<Category> GetAllCategories()
@@ -66,9 +64,9 @@ namespace MinTur.DataAccess.Facades
             return _reservationRepository.StoreReservation(reservation);
         }
 
-        public Reservation GetReservationById(Guid id)
+        public Reservation GetReservationById(Guid reservationId)
         {
-            return _reservationRepository.GetReservationById(id);
+            return _reservationRepository.GetReservationById(reservationId);
         }
 
         public List<Reservation> GetAllReservations()
@@ -81,9 +79,9 @@ namespace MinTur.DataAccess.Facades
             return _touristPointRepository.GetTouristPointById(touristPointId);
         }
 
-        public AuthorizationToken GetAuthenticationTokenById(Guid id)
+        public AuthorizationToken GetAuthenticationTokenById(Guid tokenId)
         {
-            return _authenticationTokenRepository.GetAuthenticationTokenById(id);
+            return _authenticationTokenRepository.GetAuthenticationTokenById(tokenId);
         }
 
         public Guid CreateNewAuthorizationTokenFor(Administrator administrator)

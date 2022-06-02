@@ -37,6 +37,9 @@ namespace MinTur.ImporterInterface.DTOs
                 && TouristPoint.Equals(resort.TouristPoint);
         }
 
-        
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name);
+        }
     }
 }
