@@ -19,7 +19,10 @@
           </button>
         </div>
 
-        <div *ngIf="chargingSpots.length" class="w-full overflow-hidden rounded-lg shadow-xs">
+        <div
+          *ngIf="chargingSpots.length"
+          class="w-full overflow-hidden rounded-lg shadow-xs"
+        >
           <div class="w-full overflow-x-auto">
             <table id="charging-spot-table" class="w-full whitespace-no-wrap">
               <thead>
@@ -62,7 +65,7 @@
                         class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                         aria-label="Delete"
                         name="delete"
-                        [id]="'delete-'+chargingSpot.id"
+                        [id]="'delete-' + chargingSpot.id"
                         (click)="deleteChargingSpot(chargingSpot.id)"
                       >
                         <svg
@@ -181,15 +184,33 @@
         </div>
 
         <div *ngIf="displayError" class="ml-10 mr-10 mt-6">
-          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <div
+            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+            role="alert"
+          >
             <strong class="font-bold">Error: </strong>
             <div class="flex flex-col">
-              <span name="error" *ngFor="let error of errorMessages" class="block sm:inline ml-2">
-                {{error}}
+              <span
+                name="error"
+                *ngFor="let error of errorMessages"
+                class="block sm:inline ml-2"
+              >
+                {{ error }}
               </span>
             </div>
             <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                <svg (click)="closeError()" class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+              <svg
+                (click)="closeError()"
+                class="fill-current h-6 w-6 text-red-500"
+                role="button"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <title>Close</title>
+                <path
+                  d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+                />
+              </svg>
             </span>
           </div>
         </div>
