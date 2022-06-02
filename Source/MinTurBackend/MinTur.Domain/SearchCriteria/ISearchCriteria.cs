@@ -1,6 +1,6 @@
 ﻿namespace MinTur.Domain.SearchCriteria
 {
-    public interface ISearchCriteria<T>
+    public interface ISearchCriteria<in T>
     {
         bool MatchesCriteria(T businessEntity);
     }

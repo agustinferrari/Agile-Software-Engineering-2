@@ -8,49 +8,82 @@ namespace MinTur.Domain.Test.BusinessEntities
     [TestClass]
     public class AccommodationTest
     {
-        private DateTime currentTime = new DateTime(2020,9,27); 
+        private readonly DateTime currentTime = new DateTime(2020, 9, 27);
 
         [TestMethod]
-        public void ValidAccommodationWithAdultsAndRetiredGuestsPassesValidation() 
+        public void ValidAccommodationWithAdultsAndRetiredGuestsPassesValidation()
         {
-            Accommodation accommodation = new Accommodation()
+            Exception unexpectedException = null;
+            try
             {
-                CheckIn = new DateTime(2020, 9, 27),
-                CheckOut = new DateTime(2020, 9, 30)
-            };
-            accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Adult.ToString(), Amount = 4 });
-            accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Kid.ToString(), Amount = 3 });
-            accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Retired.ToString(), Amount = 2 });
+                Accommodation accommodation = new Accommodation()
+                {
+                    CheckIn = new DateTime(2020, 9, 27),
+                    CheckOut = new DateTime(2020, 9, 30)
+                };
+                accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Adult.ToString(), Amount = 4 });
+                accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Kid.ToString(), Amount = 3 });
+                accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Retired.ToString(), Amount = 2 });
 
-            accommodation.ValidOrFail(currentTime);
+                accommodation.ValidOrFail(currentTime);
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
         }
 
         [TestMethod]
         public void ValidAccommodationWithRetiredGuestsPassesValidation()
         {
-            Accommodation accommodation = new Accommodation()
+            Exception unexpectedException = null;
+            try
             {
-                CheckIn = new DateTime(2020, 9, 27),
-                CheckOut = new DateTime(2020, 9, 30)
-            };
-            accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Kid.ToString(), Amount = 3 });
-            accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Retired.ToString(), Amount = 2 });
+                Accommodation accommodation = new Accommodation()
+                {
+                    CheckIn = new DateTime(2020, 9, 27),
+                    CheckOut = new DateTime(2020, 9, 30)
+                };
+                accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Kid.ToString(), Amount = 3 });
+                accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Retired.ToString(), Amount = 2 });
 
-            accommodation.ValidOrFail(currentTime);
+                accommodation.ValidOrFail(currentTime);
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
+
         }
 
         [TestMethod]
         public void ValidAccommodationWithAdultsGuestsPassesValidation()
         {
-            Accommodation accommodation = new Accommodation()
-            {
-                CheckIn = new DateTime(2020, 9, 27),
-                CheckOut = new DateTime(2020, 9, 30)
-            };
-            accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Adult.ToString(), Amount = 4 });
-            accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Kid.ToString(), Amount = 3 });
 
-            accommodation.ValidOrFail(currentTime);
+            Exception unexpectedException = null;
+            try
+            {
+                Accommodation accommodation = new Accommodation()
+                {
+                    CheckIn = new DateTime(2020, 9, 27),
+                    CheckOut = new DateTime(2020, 9, 30)
+                };
+                accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Adult.ToString(), Amount = 4 });
+                accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Kid.ToString(), Amount = 3 });
+
+                accommodation.ValidOrFail(currentTime);
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
+
         }
 
         [TestMethod]

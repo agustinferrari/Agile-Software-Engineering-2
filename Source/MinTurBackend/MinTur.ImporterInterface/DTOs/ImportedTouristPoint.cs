@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MinTur.ImporterInterface.DTOs
@@ -26,6 +27,11 @@ namespace MinTur.ImporterInterface.DTOs
             return Name == touristPoint.Name && Id == touristPoint.Id && Description == touristPoint.Description
                 && Image == touristPoint.Image && RegionId == touristPoint.RegionId
                 && CategoriesId.SequenceEqual(touristPoint.CategoriesId);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
         }
     }
 }

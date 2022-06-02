@@ -22,7 +22,7 @@ namespace IntegrationTests.Steps
             {
                 _scenarioContext.Get<SeleniumTestHelper>();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
             }
@@ -70,7 +70,7 @@ namespace IntegrationTests.Steps
                 buttonFound = true;
                 helper.Click(deleteButton);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 buttonFound = false;
             }
@@ -134,7 +134,7 @@ namespace IntegrationTests.Steps
                 buttonFound = true;
                 helper.Click(deleteButton);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 buttonFound = false;
             }

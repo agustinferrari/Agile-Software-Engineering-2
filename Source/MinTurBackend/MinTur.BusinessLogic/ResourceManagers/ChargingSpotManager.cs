@@ -9,7 +9,7 @@ namespace MinTur.BusinessLogic.ResourceManagers
 {
     public class ChargingSpotManager : IChargingSpotManager
     {
-        IRepositoryFacade _repositoryFacade;
+        readonly IRepositoryFacade _repositoryFacade;
         public ChargingSpotManager(IRepositoryFacade repositoryFacade){
             _repositoryFacade  = repositoryFacade;
         }

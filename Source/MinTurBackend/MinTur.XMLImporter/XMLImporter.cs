@@ -12,12 +12,12 @@ namespace MinTur.XMLImporter
 {
     public class XMLImporter : IImporter
     {
-        private List<ImporterParameterDescription> _requiredParameters;
-        private string basePathForXMLFiles;
+        private readonly List<ImporterParameterDescription> _requiredParameters;
+        private readonly string basePathForXMLFiles;
 
         public XMLImporter(IConfiguration configuration)
         {
-            basePathForXMLFiles = configuration.GetSection("XMLFilesForImporter").Value;
+            basePathForXMLFiles = configuration.GetSection("XMLFilesForImporter").Value + "/";
 
             _requiredParameters = new List<ImporterParameterDescription>()
             {
@@ -48,7 +48,7 @@ namespace MinTur.XMLImporter
 
             try
             {
-                string xmlString = File.ReadAllText(basePathForXMLFiles + '/' + fileName);
+                string xmlString = File.ReadAllText(basePathForXMLFiles + fileName);
                 XmlDocument xmlDocument = new XmlDocument();
                 xmlDocument.LoadXml(xmlString);
 

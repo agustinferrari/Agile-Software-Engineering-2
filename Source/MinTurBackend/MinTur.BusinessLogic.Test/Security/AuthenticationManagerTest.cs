@@ -68,7 +68,7 @@ namespace MinTur.BusinessLogic.Test.Security
             administratorMock.Setup(a => a.ValidOrFail()).Throws(new InvalidRequestDataException(""));
             AuthenticationManager authenticationManager = new AuthenticationManager(repositoryMock.Object);
 
-            Guid retrievedGuid = authenticationManager.Login(administratorMock.Object);
+            authenticationManager.Login(administratorMock.Object);
             administratorMock.VerifyAll();
         }
 
@@ -83,7 +83,7 @@ namespace MinTur.BusinessLogic.Test.Security
                 Throws(new ResourceNotFoundException(""));
             AuthenticationManager authenticationManager = new AuthenticationManager(repositoryMock.Object);
 
-            Guid retrievedGuid = authenticationManager.Login(administratorMock.Object);
+            authenticationManager.Login(administratorMock.Object);
             administratorMock.VerifyAll();
             repositoryMock.VerifyAll();
         }

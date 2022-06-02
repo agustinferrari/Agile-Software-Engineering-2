@@ -9,8 +9,8 @@ namespace MinTur.BusinessLogic.Importing
 {
     public class ImporterAdapter : IImporterAdapter
     {
-        private IImporter _importer;
-        private ImportingDTOMapper _mapper;
+        private readonly IImporter _importer;
+        private readonly ImportingDTOMapper _mapper;
 
         public ImporterAdapter(IImporter importer)
         {

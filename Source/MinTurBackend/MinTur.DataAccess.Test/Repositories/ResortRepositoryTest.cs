@@ -126,12 +126,23 @@ namespace MinTur.DataAccess.Test.Repositories
         [TestMethod]
         public void DeleteResortReturnsAsExpected()
         {
-            Resort resortToBeDeleted = CreateResort();
-            _context.Set<TouristPoint>().Add(resortToBeDeleted.TouristPoint);
-            _context.Set<Resort>().Add(resortToBeDeleted);
-            _context.SaveChanges();
+            Exception unexpectedException = null;
+            try
+            {
 
-            _repository.DeleteResort(resortToBeDeleted);
+                Resort resortToBeDeleted = CreateResort();
+                _context.Set<TouristPoint>().Add(resortToBeDeleted.TouristPoint);
+                _context.Set<Resort>().Add(resortToBeDeleted);
+                _context.SaveChanges();
+
+                _repository.DeleteResort(resortToBeDeleted);
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
         }
 
         [TestMethod]

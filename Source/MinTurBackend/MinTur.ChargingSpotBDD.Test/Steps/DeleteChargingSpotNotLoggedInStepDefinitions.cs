@@ -10,8 +10,6 @@ using MinTur.DataAccess.Contexts;
 using MinTur.DataAccess.Facades;
 using MinTur.DataAccessInterface.Facades;
 using MinTur.Domain.BusinessEntities;
-using MinTur.Domain.BusinessEntities;
-using MinTur.Models.In;
 using MinTur.WebApi.Controllers;
 using MinTur.WebApi.Filters;
 using Moq;
@@ -27,11 +25,10 @@ namespace MinTur.ChargingSpotBDD.Test
     {
 
         private readonly ScenarioContext _scenarioContext;
-        private ChargingSpotController _chargingSpotController;
-        private IChargingSpotManager _chargingSpotManager;
-        private IRepositoryFacade _chargingSpotRepository;
+        private readonly ChargingSpotController _chargingSpotController;
+        private readonly IChargingSpotManager _chargingSpotManager;
+        private readonly IRepositoryFacade _chargingSpotRepository;
 
-        private Exception _actualException;
 
         public RemoveChargingSpotNotLoggedInStepDefinitions(ScenarioContext context)
         {
@@ -67,19 +64,17 @@ namespace MinTur.ChargingSpotBDD.Test
         {
             string expectedAuthErrorMessage = "Please send your authorization token";
             IActionResult authFilterResult = _scenarioContext.Get<IActionResult>();
-            JsonResult parsedResult = authFilterResult as JsonResult;
+            JsonResult parsedResult = (JsonResult)authFilterResult;
             Assert.IsNotNull(parsedResult, "No error was raised");
             Assert.IsTrue(parsedResult.StatusCode == StatusCodes.Status401Unauthorized);
             Assert.AreEqual(parsedResult.Value, expectedAuthErrorMessage);
-
-            _actualException = null;
         }
 
         #region
         private void RunFilterWithoutAdminToken()
         {
             Mock<IAuthenticationManager> authenticationManagerMock = new Mock<IAuthenticationManager>();
-            AdministratorAuthorizationFilter filter = new AdministratorAuthorizationFilter(authenticationManagerMock.Object);
+            new AdministratorAuthorizationFilter(authenticationManagerMock.Object);
 
             Mock<IServiceProvider> serviceProviderMock = new Mock<IServiceProvider>();
             Mock<HttpContext> httpContextMock = new Mock<HttpContext>();

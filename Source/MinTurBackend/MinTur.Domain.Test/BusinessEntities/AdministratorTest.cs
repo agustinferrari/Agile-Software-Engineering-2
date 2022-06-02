@@ -1,6 +1,7 @@
 ﻿using MinTur.Domain.BusinessEntities;
 using MinTur.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace MinTur.Domain.Test.BusinessEntities
 {
@@ -9,7 +10,7 @@ namespace MinTur.Domain.Test.BusinessEntities
     {
         [TestMethod]
         [ExpectedException(typeof(InvalidRequestDataException))]
-        public void AdministratorWithInvalidEmailFailsValidation() 
+        public void AdministratorWithInvalidEmailFailsValidation()
         {
             Administrator administrator = new Administrator()
             {
@@ -34,23 +35,33 @@ namespace MinTur.Domain.Test.BusinessEntities
         [TestMethod]
         public void ValidAdministratorPassesValidation()
         {
-            Administrator administrator = new Administrator()
+            Exception unexpectedException = null;
+            try
             {
-                Email = "valid@email.com",
-                Password = "ufihweuifhw"
-            };
-            administrator.ValidOrFail();
+                Administrator administrator = new Administrator()
+                {
+                    Email = "valid@email.com",
+                    Password = "ufihweuifhw"
+                };
+                administrator.ValidOrFail();
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
         }
 
         [TestMethod]
-        public void UpdateWithNewAttributesDoesAsExpected() 
+        public void UpdateWithNewAttributesDoesAsExpected()
         {
             Administrator administrator = new Administrator()
             {
                 Id = 5,
                 Email = "valid@email.com",
                 Password = "ufihweuifhw"
-            }; 
+            };
             Administrator newAdministrator = new Administrator()
             {
                 Id = 9,

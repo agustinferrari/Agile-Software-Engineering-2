@@ -86,7 +86,7 @@ namespace MinTur.DataAccess.Test.Repositories
         [ExpectedException(typeof(ResourceNotFoundException))]
         public void GetReservationByIdWhichDoesntExistThrowsException()
         {
-            _repository.GetReservationById(new Guid());
+            _repository.GetReservationById(Guid.NewGuid());
         }
 
         [TestMethod]
@@ -173,6 +173,7 @@ namespace MinTur.DataAccess.Test.Repositories
                 Surname = "Perez",
                 Email = "pedroPerez@gmail.com",
                 TotalPrice = 500,
+                Id=reservationId,
                 Accommodation = new Accommodation()
                 {
                     CheckIn = new DateTime(2020, 9, 29),

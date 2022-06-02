@@ -14,9 +14,9 @@ namespace MinTur.ChargingSpotBDD.Test.Steps
     public class AddChargingSpotWithInvalidDataStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
-        private ChargingSpotManager _chargingSpotManager;
-        private IRepositoryFacade _chargingSpotRepository;
-        private ChargingSpotController _chargingSpotController;
+        private readonly ChargingSpotManager _chargingSpotManager;
+        private readonly IRepositoryFacade _chargingSpotRepository;
+        private readonly ChargingSpotController _chargingSpotController;
 
         public AddChargingSpotWithInvalidDataStepDefinitions(ScenarioContext context)
         {

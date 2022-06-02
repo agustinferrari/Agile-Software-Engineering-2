@@ -12,7 +12,7 @@ namespace MinTur.Domain.Test.BusinessEntities
     {
         [TestMethod]
         [ExpectedException(typeof(InvalidRequestDataException))]
-        public void ImageWithoutDataFailsValidation() 
+        public void ImageWithoutDataFailsValidation()
         {
             Image image = new Image();
             image.ValidOrFail();
@@ -21,8 +21,18 @@ namespace MinTur.Domain.Test.BusinessEntities
         [TestMethod]
         public void ValidImagePassesValidation()
         {
-            Image image = new Image() { Data = "fhewuihgfuiwe" };
-            image.ValidOrFail();
+            Exception unexpectedException = null;
+            try
+            {
+                Image image = new Image() { Data = "fhewuihgfuiwe" };
+                image.ValidOrFail();
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
         }
     }
 }

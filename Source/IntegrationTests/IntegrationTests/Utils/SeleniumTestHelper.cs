@@ -15,8 +15,6 @@ public class SeleniumTestHelper
 {
     public IWebDriver Driver { get; set; }
     public WebDriverWait Wait { get; set; }
-    private static SeleniumTestHelper _instance;
-
     public SeleniumTestHelper()
     {
         ChromeOptions option = new ChromeOptions();
@@ -27,15 +25,6 @@ public class SeleniumTestHelper
         Driver = new ChromeDriver(option);
 
         Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(3));
-    }
-
-    public static SeleniumTestHelper GetInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new SeleniumTestHelper();
-        }
-        return _instance;
     }
 
     public void Quit()
@@ -205,7 +194,7 @@ public class SeleniumTestHelper
                 }
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
         }
 
