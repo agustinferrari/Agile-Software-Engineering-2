@@ -105,34 +105,25 @@ public class SeleniumTestHelper
         IWebElement nameInput = this.WaitForElement(By.Id("name"));
         IWebElement addressInput = this.WaitForElement(By.Id("address"));
         IWebElement descriptionInput = this.WaitForElement(By.Id("description"));
-        IWebElement regionsInput = this.WaitForElement(By.Id("regions"));
+        IWebElement dropDown = this.WaitForElement(By.CssSelector("mat-select"));
 
-        IWebElement field = this.WaitForElement(By.CssSelector("mat-select"));
-
-        // Click to open the dropdown.
-        field.Click();
-
-        // Query for options in the DOM. These exist outside of the mat-select component.
-        IList<IWebElement> options = this.WaitForElements(By.CssSelector("mat-option"));
-
-        // Find the option with the text that matches the one you are looking for.
-        options.First(element => element.Text == regionName)
-            // Click it to select it.
-            .Click();
+        this.SelectDropDownValue(dropDown, regionName);
 
         this.FillTextBox(nameInput, name);
         this.FillTextBox(addressInput, address);
         this.FillTextBox(descriptionInput, description);
-        //this.SelectDropDownValue(regionsInput, "region-" + regionId.ToString());
 
         IWebElement createButton = this.WaitForElement(By.Id("create-charging-spot-button"));
         this.Click(createButton);
     }
 
-    public void SelectDropDownValue(IWebElement dropDown, string id)
+    public void SelectDropDownValue(IWebElement dropDown, string value)
     {
-        Click(dropDown);
-        var selectElement = new SelectElement(Driver.FindElement(By.Id(id)));
+        dropDown.Click();
+
+        IList<IWebElement> options = this.WaitForElements(By.CssSelector("mat-option"));
+
+        options.First(element => element.Text == value).Click();
     }
 
     public void Click(IWebElement webElement)
