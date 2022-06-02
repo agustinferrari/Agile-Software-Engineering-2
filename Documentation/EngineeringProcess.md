@@ -23,6 +23,7 @@ Algunos nombres de ramas:
 - “fix/[ejemplo-Y]” sería una rama que arregla uno o más bugs asociados a Y.
 - “style/[ejemplo-X]” sería una rama que no modifica código, unicamente estilos y/o configuración de linters.
 - “docs/[ejemplo-Z]” sería una rama que agrega documentación sobre el aspecto Z.
+- “test/[ejemplo-N]” sería una rama en la que unicamente se realizan tests.
 
 
 ### Criterios de Commit
