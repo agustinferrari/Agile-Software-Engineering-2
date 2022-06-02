@@ -5,13 +5,12 @@
 
 
 	@mytag
-	@ignore
 	Scenario: Add charging spot without being logged in.
 		Given a new ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
 			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
 		When the user tries to add the new charging spot
-		Then the error <Error> should be raised
+		Then the user is not allowed to create the charging spot
 
 		Examples:
 			| Id | Error                                |
@@ -60,7 +59,6 @@
 			| Cargar parada 2                   | General Flores                               | Región Metropolitana        | Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga | the description must be alphanumeric with a maximum of 60 characters |
 
 	@mytag
-	@ignore
 	Scenario: Add charging spot with a non-existent region.
 		Given a logged in admin
 			| Email            | Password |
@@ -73,7 +71,7 @@
 		And in the region <RegionId>
 		And the description <Description>
 		When the user tries to add the new charging spot
-		Then the should not be listed
+		Then the charging spot couldnt be created
 
 		Examples:
 			| Name            | Address        | RegionId | Description    |

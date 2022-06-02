@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using IntegrationTests.Models;
 using TechTalk.SpecFlow.Assist;
+using System.Collections.Generic;
 
 namespace IntegrationTests.Steps
 {
@@ -39,20 +40,27 @@ namespace IntegrationTests.Steps
         [When(@"the user tries to add the new charging spot")]
         public void WhenTheUserTriesToAddTheNewChargingSpot()
         {
-            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
-            helper.Url("http://localhost:4200/explore/charging-spots");
+            try
+            {
+                SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+                helper.Url("http://localhost:4200/explore/charging-spots");
 
-            IWebElement openFormButton = helper.WaitForElement(By.Id("charging-spot-form-button"));
-            helper.Click(openFormButton);
+                IWebElement openFormButton = helper.WaitForElement(By.Id("charging-spot-form-button"));
+                helper.Click(openFormButton);
 
-            string name = _scenarioContext.Get<string>("chargingSpotName");
-            string address = _scenarioContext.Get<string>("chargingSpotAddress");
-            string description = _scenarioContext.Get<string>("chargingSpotDescription");
-            string regionName = _scenarioContext.Get<string>("chargingSpotRegionName");
+                string name = _scenarioContext.Get<string>("chargingSpotName");
+                string address = _scenarioContext.Get<string>("chargingSpotAddress");
+                string description = _scenarioContext.Get<string>("chargingSpotDescription");
+                string regionName = _scenarioContext.Get<string>("chargingSpotRegionName");
 
 
-            helper.CreateChargingSpotInForm(name, address, description, regionName);
+                helper.CreateChargingSpotInForm(name, address, description, regionName);
 
+            }
+            catch(Exception e)
+            {
+                _scenarioContext.Set(e, "exception");
+            }
         }
 
         [Then(@"the alert (.*) should be shown")]
@@ -60,6 +68,18 @@ namespace IntegrationTests.Steps
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
             Assert.AreEqual(alert, helper.GetAlertText());
+        }
+
+        [Then(@"the user is not allowed to create the charging spot")]
+        public void ThenTheUserIsNotAllowedToCreateTheChargingSpot()
+        {
+            Assert.AreEqual(new WebDriverTimeoutException().GetType(), _scenarioContext.Get<Exception>("exception").GetType());
+        }
+
+        [Then(@"the charging spot couldnt be created")]
+        public void ThenTheChargingSpotCouldntBeCreated()
+        {
+            Assert.AreEqual(new InvalidOperationException().GetType(), _scenarioContext.Get<Exception>("exception").GetType());
         }
 
         #region ChargingSpot_by_Steps
@@ -73,7 +93,6 @@ namespace IntegrationTests.Steps
             _scenarioContext.Set(chargingSpot.RegionName, "chargingSpotRegionName");
             _scenarioContext.Set(chargingSpot.Description, "chargingSpotDescription");
         }
-
 
         [Given(@"a new ChargingSpot named (.*)")]
         public void GivenANewChargingSpotNamed(string name)
