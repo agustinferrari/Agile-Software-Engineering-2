@@ -22,8 +22,8 @@
 			| Email            | Password |
 			| matias@admin.com | admin    |
 		Given an existing region
-					| Id | Name                 |
-					| 1  | Región Metropolitana |
+			| Id | Name                 |
+			| 1  | Región Metropolitana |
 		And the charging spots
 			| Id | Name                 | Address        | RegionName           | Description    |
 			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga |
