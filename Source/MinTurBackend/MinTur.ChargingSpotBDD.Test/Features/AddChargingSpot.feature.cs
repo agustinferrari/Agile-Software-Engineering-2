@@ -92,16 +92,18 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot without being logged in.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        public void AddChargingSpotWithoutBeingLoggedIn_()
+        public virtual void AddChargingSpotWithoutBeingLoggedIn(string error, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "mytag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot without being logged in.", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("Error", error);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot without being logged in", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -114,30 +116,55 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
+                            "Name"});
+                table1.AddRow(new string[] {
+                            "1",
+                            "SurOeste"});
+#line 8
+  testRunner.And("the existing region", ((string)(null)), table1, "And ");
+#line hidden
+#line 11
+  testRunner.Given("a non-logged in admin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
                             "Name",
                             "Address",
                             "RegionId",
                             "Description"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "1",
                             "Cargar frente al mar",
                             "General Flores",
                             "1",
                             "Punto de carga"});
-#line 8
-  testRunner.Given("a new ChargingSpot:", ((string)(null)), table1, "Given ");
-#line hidden
-#line 11
-  testRunner.When("the user tries to add the new charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 12
-  testRunner.Then("an error \'Please send your authorization token\' should be raised", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.And("a new ChargingSpot", ((string)(null)), table2, "And ");
+#line hidden
+#line 15
+  testRunner.When("the user tries to add the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 16
+  testRunner.Then(string.Format("the error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        public virtual void AddChargingSpotWithInvalidData_(string name, string address, string regionId, string description, string error, string[] exampleTags)
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot without being logged in: Please send your authorization token")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Please send your authorization token")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Please send your authorization token")]
+        public void AddChargingSpotWithoutBeingLoggedIn_PleaseSendYourAuthorizationToken()
+        {
+#line 7
+ this.AddChargingSpotWithoutBeingLoggedIn("Please send your authorization token", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void AddChargingSpotWithInvalidCharacters(string name, string address, string regionId, string description, string error, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "mytag"};
@@ -152,8 +179,8 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             argumentsOfScenario.Add("RegionId", regionId);
             argumentsOfScenario.Add("Description", description);
             argumentsOfScenario.Add("Error", error);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot with invalid data.", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot with invalid characters", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 23
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -163,30 +190,129 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             else
             {
                 this.ScenarioStart();
-#line 16
+#line 24
   testRunner.Given(string.Format("a new ChargingSpot named {0}", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 17
+#line 25
   testRunner.And(string.Format("located in {0}", address), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 26
   testRunner.And(string.Format("in the region {0}", regionId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 27
   testRunner.And(string.Format("the description {0}", description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 20
-  testRunner.When("the user tries to add the new charging spot with invalid data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+  testRunner.When("the user tries to add the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
-  testRunner.Then(string.Format("the following error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 29
+  testRunner.Then(string.Format("the error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data.: Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid characters: Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada @$#%#")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the name must be alphanumeric with a maximum of 20 characters")]
+        public void AddChargingSpotWithInvalidCharacters_Variant0()
+        {
+#line 23
+ this.AddChargingSpotWithInvalidCharacters("Cargar parada @$#%#", "General Flores", "1", "Punto de carga", "the name must be alphanumeric with a maximum of 20 characters", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid characters: Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "Direccion @2 !..%")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the address must be alphanumeric with a maximum of 30 characters")]
+        public void AddChargingSpotWithInvalidCharacters_Variant1()
+        {
+#line 23
+ this.AddChargingSpotWithInvalidCharacters("Cargar parada 2", "Direccion @2 !..%", "1", "Punto de carga", "the address must be alphanumeric with a maximum of 30 characters", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid characters: Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Desc @[][]??")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the description must be alphanumeric with a maximum of 60 characters")]
+        public void AddChargingSpotWithInvalidCharacters_Variant2()
+        {
+#line 23
+ this.AddChargingSpotWithInvalidCharacters("Cargar parada 2", "General Flores", "1", "Desc @[][]??", "the description must be alphanumeric with a maximum of 60 characters", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void AddChargingSpotWithInvalidDataLength(string name, string address, string regionId, string description, string error, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "mytag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Name", name);
+            argumentsOfScenario.Add("Address", address);
+            argumentsOfScenario.Add("RegionId", regionId);
+            argumentsOfScenario.Add("Description", description);
+            argumentsOfScenario.Add("Error", error);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot with invalid data length", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 38
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 39
+  testRunner.Given(string.Format("a new ChargingSpot named {0}", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 40
+  testRunner.And(string.Format("located in {0}", address), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 41
+  testRunner.And(string.Format("in the region {0}", regionId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 42
+  testRunner.And(string.Format("the description {0}", description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 43
+  testRunner.When("the user tries to add the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 44
+  testRunner.Then(string.Format("the error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data length: Variant 0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
@@ -195,112 +321,109 @@ namespace MinTur.ChargingSpotBDD.Test.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the name must be alphanumeric with a maximum of 20 characters")]
-        public void AddChargingSpotWithInvalidData__Variant0()
+        public void AddChargingSpotWithInvalidDataLength_Variant0()
         {
-#line 15
- this.AddChargingSpotWithInvalidData_("Cargar parada 223 mas de 20 chars", "General Flores", "1", "Punto de carga", "the name must be alphanumeric with a maximum of 20 characters", ((string[])(null)));
+#line 38
+ this.AddChargingSpotWithInvalidDataLength("Cargar parada 223 mas de 20 chars", "General Flores", "1", "Punto de carga", "the name must be alphanumeric with a maximum of 20 characters", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data.: Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data length: Variant 1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada @$#%#")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the name must be alphanumeric with a maximum of 20 characters")]
-        public void AddChargingSpotWithInvalidData__Variant1()
-        {
-#line 15
- this.AddChargingSpotWithInvalidData_("Cargar parada @$#%#", "General Flores", "1", "Punto de carga", "the name must be alphanumeric with a maximum of 20 characters", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data.: Variant 2")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores General Flores General Flores")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the address must be alphanumeric with a maximum of 30 characters")]
-        public void AddChargingSpotWithInvalidData__Variant2()
+        public void AddChargingSpotWithInvalidDataLength_Variant1()
         {
-#line 15
- this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores General Flores General Flores", "1", "Punto de carga", "the address must be alphanumeric with a maximum of 30 characters", ((string[])(null)));
+#line 38
+ this.AddChargingSpotWithInvalidDataLength("Cargar parada 2", "General Flores General Flores General Flores", "1", "Punto de carga", "the address must be alphanumeric with a maximum of 30 characters", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data.: Variant 3")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data length: Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada 2")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "Direccion @2 !..%")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the address must be alphanumeric with a maximum of 30 characters")]
-        public void AddChargingSpotWithInvalidData__Variant3()
-        {
-#line 15
- this.AddChargingSpotWithInvalidData_("Cargar parada 2", "Direccion @2 !..%", "1", "Punto de carga", "the address must be alphanumeric with a maximum of 30 characters", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data.: Variant 4")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 4")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada 2")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "0")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Could not find specified region")]
-        public void AddChargingSpotWithInvalidData__Variant4()
-        {
-#line 15
- this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores", "0", "Punto de carga", "Could not find specified region", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data.: Variant 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 5")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the description must be alphanumeric with a maximum of 60 characters")]
-        public void AddChargingSpotWithInvalidData__Variant5()
+        public void AddChargingSpotWithInvalidDataLength_Variant2()
         {
-#line 15
- this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores", "1", "Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga", "the description must be alphanumeric with a maximum of 60 characters", ((string[])(null)));
+#line 38
+ this.AddChargingSpotWithInvalidDataLength("Cargar parada 2", "General Flores", "1", "Punto de carga Punto de carga Punto de carga Punto de carga Punto de carga", "the description must be alphanumeric with a maximum of 60 characters", ((string[])(null)));
 #line hidden
         }
         
+        public virtual void AddChargingSpotWithANon_ExistentRegion(string name, string address, string regionId, string description, string error, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "mytag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Name", name);
+            argumentsOfScenario.Add("Address", address);
+            argumentsOfScenario.Add("RegionId", regionId);
+            argumentsOfScenario.Add("Description", description);
+            argumentsOfScenario.Add("Error", error);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot with a non-existent region", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 53
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 54
+  testRunner.Given(string.Format("a new ChargingSpot named {0}", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 55
+  testRunner.And(string.Format("located in {0}", address), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 56
+  testRunner.And(string.Format("in the region {0}", regionId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 57
+  testRunner.And(string.Format("the description {0}", description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 58
+  testRunner.When("the user tries to add the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 59
+  testRunner.Then(string.Format("the error {0} should be raised", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with invalid data.: Variant 6")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Add charging spot with a non-existent region: Cargar parada 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "AddChargingSpot")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 6")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Cargar parada 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Name", "Cargar parada 2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Address", "General Flores")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Desc @[][]??")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "the description must be alphanumeric with a maximum of 60 characters")]
-        public void AddChargingSpotWithInvalidData__Variant6()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:RegionId", "0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Punto de carga")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Error", "Could not find specified region")]
+        public void AddChargingSpotWithANon_ExistentRegion_CargarParada2()
         {
-#line 15
- this.AddChargingSpotWithInvalidData_("Cargar parada 2", "General Flores", "1", "Desc @[][]??", "the description must be alphanumeric with a maximum of 60 characters", ((string[])(null)));
+#line 53
+ this.AddChargingSpotWithANon_ExistentRegion("Cargar parada 2", "General Flores", "0", "Punto de carga", "Could not find specified region", ((string[])(null)));
 #line hidden
         }
         
@@ -314,7 +437,7 @@ namespace MinTur.ChargingSpotBDD.Test.Features
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add charging spot with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 34
+#line 66
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -324,41 +447,41 @@ namespace MinTur.ChargingSpotBDD.Test.Features
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table2.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "matias@admin.com",
                             "admin"});
-#line 35
-  testRunner.Given("an existing, logged in admin", ((string)(null)), table2, "Given ");
-#line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Id",
-                            "Name"});
-                table3.AddRow(new string[] {
-                            "2",
-                            "SurOeste"});
-#line 38
-  testRunner.And("the existing region:", ((string)(null)), table3, "And ");
+#line 67
+  testRunner.Given("a logged in admin", ((string)(null)), table3, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name"});
+                table4.AddRow(new string[] {
+                            "2",
+                            "SurOeste"});
+#line 70
+  testRunner.And("the existing region", ((string)(null)), table4, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Address",
                             "RegionId",
                             "Description"});
-                table4.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Cargar parada 1",
                             "General Flores",
                             "2",
                             "Punto de carga"});
-#line 41
-  testRunner.Given("a new ChargingSpot with valid data to add:", ((string)(null)), table4, "Given ");
+#line 73
+  testRunner.Given("a new ChargingSpot", ((string)(null)), table5, "Given ");
 #line hidden
-#line 44
+#line 76
   testRunner.When("the user tries to add the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 45
+#line 77
   testRunner.Then("the charging spot should be added to the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

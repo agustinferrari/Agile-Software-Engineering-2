@@ -4,33 +4,42 @@
 	So that turists don't search a closed charging spot.
 
 	@mytag
-	Scenario: Delete charging spot without being logged in.
-		Given an existing ChargingSpot:
+	Scenario: Delete charging spot without being logged in
+		Given a non-logged in admin
+		And the existing ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
 			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
-		When the user tries to delete the existing charging spot
-		Then the error 'Please send your authorization token' should be raised
+		When the user tries to delete the charging spot
+		Then the error <Error> should be raised
+
+		Examples:
+			| Error 								|
+			| Please send your authorization token  |
 
 	@mytag
-	Scenario: Delete charging spot with invalid data.
-		Given an existing, logged user
+	Scenario: Delete charging spot with invalid data
+		Given a logged in admin
 			| Email            | Password |
 			| matias@admin.com | admin    |
-		And a not existing ChargingSpot:
+		And a non-existing ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
 			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
-		When the user tries to delete the not existing charging spot
-		Then the error 'Could not find specified charging spot' should be raised
+		When the user tries to delete the charging spot
+		Then the error <Error> should be raised
+
+		Examples:
+			| Error 								 |
+			| Could not find specified charging spot |
 
 	@mytag
 	Scenario: Delete charging spot with valid data
-		Given an existing, logged admin
+		Given a logged in admin
 			| Email            | Password |
 			| matias@admin.com | admin    |
-		And the existing Region:
+		And the existing region
 			| Id | Name     |
 			| 1  | SurOeste |
-		And the existing ChargingSpot:
+		And the existing ChargingSpot
 			| Id | Name                 | Address        | RegionId | Description    |
 			| 1  | Cargar frente al mar | General Flores | 1        | Punto de carga |
 		When the user tries to delete the charging spot
