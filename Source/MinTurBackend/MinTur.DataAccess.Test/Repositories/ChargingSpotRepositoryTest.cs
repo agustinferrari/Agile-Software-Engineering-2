@@ -48,14 +48,16 @@ namespace MinTur.DataAccess.Test.Repositories
         [ExpectedException(typeof(ResourceNotFoundException))]
         public void DeleteChargingSpotWhichDoesntExist()
         {
-            _repository.DeleteChargingSpotById(-4);
+            int inexistentChargingSpot = -4;
+            _repository.DeleteChargingSpotById(inexistentChargingSpot);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ResourceNotFoundException))]
         public void GetChargingSpotByIdWhichDoesntExistThrowsException()
         {
-            _repository.GetChargingSpotById(-3);
+            int inexistentChargingSpot = -3;
+            _repository.GetChargingSpotById(inexistentChargingSpot);
         }
 
         [TestMethod]

@@ -29,7 +29,8 @@ namespace MinTur.WebApi.Controllers
         {
             ChargingSpot createdChargingSpot = _chargingSpotManager.RegisterChargingSpot(chargingSpotIntentModel.ToEntity());
             ChargingSpotConfirmationModel confirmation = new ChargingSpotConfirmationModel(createdChargingSpot);
-            return Created("api/chargingSpots/" + createdChargingSpot.Id, confirmation);
+            string route = "api/chargingSpots/";
+            return Created(route + createdChargingSpot.Id, confirmation);
         }
 
         [HttpDelete("{id:int}")]
