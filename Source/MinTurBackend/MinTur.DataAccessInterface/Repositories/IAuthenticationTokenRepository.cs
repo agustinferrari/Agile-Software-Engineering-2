@@ -5,7 +5,7 @@ namespace MinTur.DataAccessInterface.Repositories
 {
     public interface IAuthenticationTokenRepository
     {
-        AuthorizationToken GetAuthenticationTokenById(Guid id);
+        AuthorizationToken GetAuthenticationTokenById(Guid tokenId);
         Guid CreateNewAuthorizationTokenFor(Administrator administrator);
     }
 }

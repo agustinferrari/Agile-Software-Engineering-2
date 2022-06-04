@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.Domain.BusinessEntities;
 using MinTur.Exceptions;
 
@@ -10,15 +11,25 @@ namespace MinTur.Domain.Test.BusinessEntities
         [TestMethod]
         public void ValidReviewPassesTest()
         {
-            Review review = new Review()
+            Exception unexpectedException = null;
+            try
             {
-                Name = "Pedro",
-                Surname = "Perez",
-                Stars = 3,
-                Text = "text"
-            };
+                Review review = new Review()
+                {
+                    Name = "Pedro",
+                    Surname = "Perez",
+                    Stars = 3,
+                    Text = "text"
+                };
 
-            review.ValidOrFail();
+                review.ValidOrFail();
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
         }
 
         [TestMethod]

@@ -6,6 +6,7 @@ using MinTur.DataAccess.Contexts;
 using MinTur.DataAccess.Facades;
 using MinTur.DataAccessInterface.Facades;
 using MinTur.Domain.BusinessEntities;
+using MinTur.Models.In;
 using MinTur.WebApi.Controllers;
 using System;
 using System.Collections.Generic;
@@ -19,15 +20,16 @@ namespace MinTur.ChargingSpotBDD.Test
     public class DeleteChargingSpotStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
+        private readonly NaturalUruguayContext _dbContext;
         private readonly ChargingSpotController _chargingSpotController;
         private readonly IChargingSpotManager _chargingSpotManager;
         private readonly IRepositoryFacade _chargingSpotRepository;
-        private readonly NaturalUruguayContext _dbContext;
 
         public DeleteChargingSpotStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
-            _chargingSpotRepository = new RepositoryFacade(ContextFactory.GetNewContext(ContextType.Memory));
+            _dbContext = ContextFactory.GetNewContext(ContextType.Memory);
+            _chargingSpotRepository = new RepositoryFacade(_dbContext);
             _chargingSpotManager = new ChargingSpotManager(_chargingSpotRepository);
             _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
             _dbContext = ContextFactory.GetNewContext(ContextType.Memory);

@@ -21,7 +21,7 @@ namespace IntegrationTests.Steps
             {
                 _scenarioContext.Get<SeleniumTestHelper>();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _scenarioContext.Set<SeleniumTestHelper>(new SeleniumTestHelper());
             }

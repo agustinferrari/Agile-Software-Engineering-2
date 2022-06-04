@@ -38,7 +38,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(DbContext));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(DbContext).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is DbContext);
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace MinTur.ServiceRegistration.Test.ServiceRegistrators
             object service = serviceProvider.GetService(typeof(IRepositoryFacade));
 
             Assert.IsTrue(service != null);
-            Assert.IsTrue(typeof(IRepositoryFacade).IsAssignableFrom(service.GetType()));
+            Assert.IsTrue(service is IRepositoryFacade);
         }
 
         #region Helpers

@@ -47,22 +47,22 @@ namespace MinTur.ServiceRegistration.Test.Dummies
             throw new NotImplementedException();
         }
 
-        public AuthorizationToken GetAuthenticationTokenById(Guid id)
+        public AuthorizationToken GetAuthenticationTokenById(Guid tokenId)
         {
             throw new NotImplementedException();
         }
 
-        public Category GetCategoryById(int id)
+        public Category GetCategoryById(int categoryId)
         {
             throw new NotImplementedException();
         }
 
-        public Region GetRegionById(int id)
+        public Region GetRegionById(int regionId)
         {
             throw new NotImplementedException();
         }
 
-        public Reservation GetReservationById(Guid id)
+        public Reservation GetReservationById(Guid reservationId)
         {
             throw new NotImplementedException();
         }

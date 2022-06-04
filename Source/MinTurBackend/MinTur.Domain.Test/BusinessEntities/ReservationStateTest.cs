@@ -1,6 +1,7 @@
 ﻿using MinTur.Domain.BusinessEntities;
 using MinTur.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace MinTur.Domain.Test.BusinessEntities
 {
@@ -8,10 +9,21 @@ namespace MinTur.Domain.Test.BusinessEntities
     public class ReservationStateTest
     {
         [TestMethod]
-        public void InitialReservationStateIsValid() 
+        public void InitialReservationStateIsValid()
         {
-            ReservationState reservationState = new ReservationState();
-            reservationState.ValidOrFail();
+            Exception unexpectedException = null;
+            try
+            {
+                Assert.IsNull(unexpectedException);
+                ReservationState reservationState = new ReservationState();
+                reservationState.ValidOrFail();
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+            Assert.IsNull(unexpectedException);
+
         }
 
         [TestMethod]
@@ -28,10 +40,10 @@ namespace MinTur.Domain.Test.BusinessEntities
 
         [TestMethod]
         [ExpectedException(typeof(InvalidRequestDataException))]
-        public void ReservationStateWithInvalidPossibleState() 
+        public void ReservationStateWithInvalidPossibleState()
         {
             ReservationState reservationState = new ReservationState()
-            { 
+            {
                 State = "Not a valid State"
             };
             reservationState.ValidOrFail();

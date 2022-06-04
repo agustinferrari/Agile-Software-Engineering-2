@@ -79,7 +79,7 @@ namespace MinTur.DataAccess.Test.Repositories
         [ExpectedException(typeof(ResourceNotFoundException))]
         public void GetRegionByIdWhichDoesntExistThrowsException()
         {
-            Region retrievedRegion = _repository.GetRegionById(-3);
+            _repository.GetRegionById(-3);
         }
 
         #region Helpers

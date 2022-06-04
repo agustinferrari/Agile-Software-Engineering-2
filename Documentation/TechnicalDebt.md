@@ -1,6 +1,7 @@
 # Análisis deuda técnica
+###### tags: `Sprint 1`
 ## Análisis con NDepend
-Para analizar la deuda técnica del proyecto utilizamos la herramienta NDepend junto a estádisticas de Visual Studio sobre los tests.
+Para analizar la deuda técnica del proyecto utilizamos la herramienta NDepend junto a estadísticas de Visual Studio sobre los tests.
 En un principio notamos que la cobertura de código descrita en la documentación coincidía con el de Visual Studio pero en NDepend este no era el mismo. Asumimos que esto es porque NDepend no toma en cuenta los tags de ignorar partes de código para la cobertura.
 
 ### Métricas
@@ -63,3 +64,27 @@ Esto no quita que algunas reglas según NDepend se rompan, pero en el contexto d
 
 En la siguiente foto se muestra reglas de NDepend que no fueron respetadas y la deuda
 ![](https://media.discordapp.net/attachments/972236844907515964/972251201074765915/unknown.png?width=960&height=443)
+
+## Análisis de código y material recibido:
+
+El análisis de código y material recibido fue efectuado continuamente a medida que se desarrollaba el proyecto y no en una instancia especifica en un principio.
+Luego decidimos hacer una instancia de 30 minutos para hacer un analisis de codigo y reportar todos los issues que encontremos.
+Esto nos permitió poder reportar errores o incoherencias a medida que las encontrabamos, algunos de los principales fueron:
+
+#### Generales:
+- No se detalla ningun estándar de codificación utilizado.
+- Manejo de errores en diferentes lenguajes [#23](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/23) y [#31](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/31)
+- Diferentes puertos de conexión configurados para conexión entre backend y frontend [#16](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/16)
+- Ausencia de limite de columnas dificulta legibilidad [#108](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/108)
+
+### Backend:
+- Comentarios innecesarios [#112](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/112)
+- Numeros mágicos [#111](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/111)
+- DLLs y datos de prueba de importadores en paquete WebApi [#109](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/109)
+- Tests no incluidos (No tienen TestMethod por lo cual no se ejecutan) [#43](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/43)
+- Dependencias de paquetes innecesarias en backend [#13](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/13)
+- Datos innecesarios en la base de datos [#34](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/34)
+- Espacios en blanco innecesarios en código [#110](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/110)
+
+### Frontend:
+- Enumeradores usan capitalización inconvencional para nombres de variables [#107](https://github.com/ORT-ISA2-2022S1/obligatorio-decuadra_ferrari_meerhoff/issues/107)

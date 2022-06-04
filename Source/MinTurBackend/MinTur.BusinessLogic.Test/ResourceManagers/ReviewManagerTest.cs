@@ -30,7 +30,6 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
             int reviewId = 6;
             Guid reservationId = Guid.NewGuid();
             Reservation retrievedReservation = CreateReservation();
-            Resort retrievedResort = CreateResortWithSpecificId(retrievedReservation.Resort.Id);
             Review createdReview = CreateReview(reviewId, retrievedReservation);
 
             _reviewMock.SetupAllProperties();
@@ -74,14 +73,6 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
                 {
                     Id = 3
                 }
-            };
-        }
-        private Resort CreateResortWithSpecificId(int id)
-        {
-            return new Resort()
-            {
-                Id = id,
-                Stars = 4
             };
         }
         #endregion

@@ -43,7 +43,7 @@ namespace MinTur.DataAccess.Test.Repositories
         [ExpectedException(typeof(ResourceNotFoundException))]
         public void GetAuthenticationTokenByIdWhichDoesntExist()
         {
-            _repository.GetAuthenticationTokenById(new Guid());
+            _repository.GetAuthenticationTokenById(Guid.NewGuid());
         }
 
 

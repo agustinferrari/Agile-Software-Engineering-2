@@ -3,6 +3,7 @@ using MinTur.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace MinTur.Domain.Test.BusinessEntities
 {
@@ -52,7 +53,7 @@ namespace MinTur.Domain.Test.BusinessEntities
 
         [TestMethod]
         [ExpectedException(typeof(InvalidRequestDataException))]
-        public void TouristPointWithInvalidNameFailsValidation() 
+        public void TouristPointWithInvalidNameFailsValidation()
         {
             TouristPoint touristPoint = new TouristPoint()
             {
@@ -72,7 +73,7 @@ namespace MinTur.Domain.Test.BusinessEntities
             TouristPoint touristPoint = new TouristPoint()
             {
                 Name = "Punta del Este",
-                Description = new string('a',2001),
+                Description = new string('a', 2001),
                 Image = new Image() { Data = "iufhewuihgfew" },
                 RegionId = 2
             };
@@ -126,15 +127,26 @@ namespace MinTur.Domain.Test.BusinessEntities
         [TestMethod]
         public void ValidTouristPointPassesValidation()
         {
-            TouristPoint touristPoint = new TouristPoint()
+            Exception unexpectedException = null;
+            try
             {
-                Name = "Tacuarembó",
-                Description = "Valid description",
-                Image = new Image() { Data = "iufhewuihgfew" },
-                RegionId = 2
-            };
-            touristPoint.AddCategory(new Category() { Name = "Playas" });
-            touristPoint.ValidOrFail();
+                TouristPoint touristPoint = new TouristPoint()
+                {
+                    Name = "Tacuarembó",
+                    Description = "Valid description",
+                    Image = new Image() { Data = "iufhewuihgfew" },
+                    RegionId = 2
+                };
+                touristPoint.AddCategory(new Category() { Name = "Playas" });
+                touristPoint.ValidOrFail();
+            }
+            catch (Exception e)
+            {
+                unexpectedException = e;
+            }
+
+            Assert.IsNull(unexpectedException);
+
         }
     }
 }

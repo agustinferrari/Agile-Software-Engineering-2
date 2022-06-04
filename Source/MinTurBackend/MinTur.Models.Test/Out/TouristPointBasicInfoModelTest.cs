@@ -34,8 +34,8 @@ namespace MinTur.Models.Test.Out
             Assert.IsTrue(touristPoint.Image.Data == touristPointBasicInfoModel.Image.Data);
             Assert.IsTrue(touristPointBasicInfoModel.Region.Id == touristPoint.Region.Id);
             Assert.IsTrue(touristPoint.TouristPointCategory.Count == touristPointBasicInfoModel.Categories.Count);
-            Assert.IsTrue(touristPoint.TouristPointCategory.Select(tc => tc.CategoryId).
-                Except(touristPointBasicInfoModel.Categories.Select(c => c.Id)).Count() == 0);
+            Assert.IsFalse(touristPoint.TouristPointCategory.Select(tc => tc.CategoryId).
+                Except(touristPointBasicInfoModel.Categories.Select(c => c.Id)).Any());
         }
     }
 }

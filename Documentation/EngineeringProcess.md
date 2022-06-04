@@ -21,9 +21,9 @@ Algunos nombres de ramas:
 - “feature/[ejemplo-X]” sería una rama que implementa la funcionalidad X.
 - “refactor/[ejemplo-X]” sería una rama que modifica código pero no arregla ningún bug ni agrega ninguna feature.
 - “fix/[ejemplo-Y]” sería una rama que arregla uno o más bugs asociados a Y.
-- “style/[ejemplo-X]” sería una rama que no modifica código, unicamente estilos y/o configuración de linters.
+- “style/[ejemplo-X]” sería una rama que no modifica código, únicamente estilos y/o configuración de linters.
 - “docs/[ejemplo-Z]” sería una rama que agrega documentación sobre el aspecto Z.
-
+- “test/[ejemplo-N]” sería una rama en la que unicamente se realizan tests.
 
 ### Criterios de Commit
 
@@ -49,7 +49,7 @@ Los Code Reviews lo consideramos una herramienta para circunstancias especiales 
 Al igual que para los pull requests, consideramos que el crear un issue debería ser sencillo para favorecer el reporte constante de los problemas que se encuentren. Por lo tanto, también utilizamos un [template](/.github/ISSUE_TEMPLATE/bug_report.md) para los issues, basado en el template de github con modificaciones realizadas por nosotros.
 
 
-###  Labels
+### Criterios de Labels
 
 Para los labels decidimos crear dos tipos:
 - type
@@ -63,6 +63,47 @@ Para los labels decidimos crear dos tipos:
     - low
     - medium
     - high
+
+### Criterios de Programación
+
+Ya que no había un estándar de programación presentado en un principio por el material del obligatorio, se tuvo que presentar estándares para el frontend y backend.
+
+#### Backend
+
+Aprovechando la presencia del linter Sonarlint, se hace uso de las [convenciones de programacion de Microsoft para C#](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions). Algunos de los aspectos principales:
+
+
+| Atributo                                           | Estándar                               | Descripción o Ejemplo  | Solución                                |
+|:-------------------------------------------------- |:-------------------------------------- |:---------------------- |:--------------------------------------- |
+| Nombre de clases                                   | Pascal case                            | Data Service           | DataService                             |
+| Nombre de interfaces                               | I + Pascal case                        | Worker Queue Interface | IWorkerQueue                            |
+| Nombre atributos publicos                          | Pascal Case                            | User Name              | UserName                                |
+| Nombre de variables locales                        | Camel case                             | Current Number         | currentNumber                           |
+| Nombre de variables privadas, estáticas o internal | _ + Camel case                         | Worker Queue           | _workerQueue                            |
+| Uso de tipo var para variables                     | Solo cuando es claro por la asignación | Variable `"hola"`      | ` var1 = "This is clearly a string."; ` |
+| Nombre de proyectos en la solución MinTur          | MinTur. + Pascal case                  | Charging Spot          | MinTur.ChargingSpot                     |
+
+#### Frontend
+
+El estándar del frontend se realizo a partir del estado del código presente en el material de obligatorio. Esto llevo a seguir los siguientes aspectos:
+
+| Atributo                         | Estándar              | Descripción o Ejemplo    | Solución               |
+|:-------------------------------- |:--------------------- |:------------------------ |:---------------------- |
+| Nombre de clases                 | Pascal case           | Data Service            | DataService            |
+| Nombre de interfaces             | I + Pascal case       | Worker Queue Interface   | IWorkerQueue           |
+| Nombre atributos publicos        | Pascal Case           | User Name                | UserName               |
+| Nombre de métodos publicos       | Camel Case            | Delete One Administrator | deleteOneAdministrator |
+| Nombre de variables locales      | Camel Case            | New Administrator        | newAdministrator       |
+| Nombres de carpetas y archivos   | Kebab Case            | Charging Spot List       | ./charging-spot-list   |
+| Nombres de archivos de servicios | Kebab Case + .service | Admin Service            | admin.service.ts       |
+
+
+#### Comentarios
+
+Se planteó presentar un estándar de columnas por línea pero por la variedad en largo por todo el código del material, no se ha definido un estándar.
+
+
+
 
 ## Ceremonias
 
@@ -94,19 +135,22 @@ La Sprint Retrospective será realizada siguiendo el formato DAKI y basándose e
     - Prioridad de actividad en el sprint
 
 ## Herramientas y Frameworks
-- Commitizen
-- HackMD
-- Visual Studio
-- Docker
-- Visual Studio Code
-- Selenium
-- Specflow
-- Angular
-- Dotnet Core
-- Azure Data Studio y SSMS (SQL Server Manager Studio)
-- Linters
-    - ESLint
-    - SonarLint
-    - StyleCop
 
 
+
+| Herramienta                      | Descripción                                                                           |
+|:-------------------------------- |:------------------------------------------------------------------------------------- |
+| Commitizen                       | Ayuda a mantener estándares en commits                                                |
+| HackMD                           | Colaboración como Google Docs para archivos Markdown                                  |
+| Visual Studio                    | IDE                                                                                   |
+| Visual Studio Code               | IDE                                                                                   |
+| Docker                           | Levantar contenedores con imágen de base de datos SQL Server                          |
+| Selenium                         | Automatización de pruebas funcionales en el frontend                                  |
+| SpecFlow                         | Desarrollo en BDD                                                                     |
+| Angular                          | Framework usado para el desarrollo del Frontend                                       |
+| Dotnet Core                      | Framework usado para el desarrollo del Backend                                        |
+| SQL Server Manager Studio (SSMS) | Consultas y manejo de datos de prueba en base de datos SQL server                     |
+| Azure Data Studio                | Consultas y manejo de datos de prueba en base de datos SQL server en MacOS            |
+| Linter: ESLint                   | Linter utilizado en Frontend                                                          |
+| Linter: SonarLint                | Linter utilizado en Backend                                                           |
+| Github Copilot                   | Asistente de Github para pair programming que recomienda código a partir del contexto |
