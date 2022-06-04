@@ -51,7 +51,6 @@ namespace MinTur.ChargingSpotBDD.Test.Steps
         private void RunFilterWithoutAdminToken()
         {
             Mock<IAuthenticationManager> authenticationManagerMock = new Mock<IAuthenticationManager>();
-
             Mock<IServiceProvider> serviceProviderMock = new Mock<IServiceProvider>();
             Mock<HttpContext> httpContextMock = new Mock<HttpContext>();
             httpContextMock.SetupGet(context => context.RequestServices)
