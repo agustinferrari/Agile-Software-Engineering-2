@@ -119,6 +119,23 @@ namespace IntegrationTests.Steps
             Assert.IsTrue(tableFound && !containsNameList);
         }
 
+        [Then(@"the charging spot should be deleted")]
+        public void TheChargingSpotShouldBeDeleted()
+        {
+            string expectedMessage = "No charging spots in system";
+            SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();
+            IList<IWebElement> errorMessages = helper.WaitForElements(By.Name("error"));
+            bool found = false;
+            foreach (IWebElement errorMessage in errorMessages)
+            {
+                if (errorMessage.Text == expectedMessage)
+                {
+                    found = true;
+                }
+            }
+            Assert.IsTrue(found);
+        }
+
         private void DeleteChargingSpot()
         {
             SeleniumTestHelper helper = _scenarioContext.Get<SeleniumTestHelper>();

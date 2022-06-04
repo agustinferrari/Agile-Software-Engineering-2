@@ -211,13 +211,6 @@
         | Id  | Nombre               | Dirección      | Region               | Descripción    |
         | --- | -------------------- | -------------- | -------------------- | -------------- |
         | 1   | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga |
-        
-    + **Y** un punto de carga a borrar con id {Id}
-        **Datos de Prueba**
-        | Id  |
-        | --- |
-        | 1   |
-        
     * **Cuando** intenta eliminar el punto de carga
     * **Entonces** debería eliminarse de la lista de puntos de carga
 ---
