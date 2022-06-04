@@ -180,8 +180,8 @@ De todos modos al trabajar con Trunk Based Development, las funcionalidades se f
 
 **Cuentas**
 
-$$ Lead \space Time \space to \space Review \space promedio = {T*{task1} + T*{task2} + ... T*{taskn} \over n} $$
-$$ Cycle \space Time \space to \space Review \space promedio = {T*{task1} + T*{task2} + ... T*{taskn} \over n} $$
+$$ {Lead} \space {Time} \space {to} \space {Review} \space {promedio} = {T_{task1} + T_{task2} + ... T_{taskn} \over n} $$
+$$ {Cycle} \space {Time} \space {to} \space {Review} \space {promedio} = {T_{task1} + T_{task2} + ... T_{taskn} \over n} $$
 
 ### Sprint 2
 
@@ -196,7 +196,7 @@ $$ Cycle \space Time \space to \space Review \space promedio = {T*{task1} + T*{t
 
 ##### Resultado
 
-$$ Lead \space Time \space to \space Review \space promedio = {T*{agregar} + T*{eliminar} + T*{Issue 25} + T*{Issue 28} \over 4} = 7 $$
+$$ {Lead} \space {Time} \space {to} \space {Review} \space {promedio} = {T_{agregar} + T_{eliminar} + T_{Issue 25} + T_{Issue 28} \over 4} = 7 $$
 
 ##### Conclusiones
 
@@ -213,7 +213,7 @@ El segundo sprint sirve como base para medir el siguiente, ya que fue el primero
 
 ##### Resultado
 
-$$ Cycle \space Time \space to \space Review \space promedio = {T*{agregar} + T*{eliminar} + T*{Issue 25} + T*{Issue 28} \over 4} = 2.75=> 3 $$
+$$ {Cycle} \space {Time} \space {to} \space {Review} \space {promedio} = {T_{agregar} + T_{eliminar} + T_{Issue 25} + T_{Issue 28} \over 4} = 2.75=> 3 $$
 
 ##### Conclusiones
 
@@ -259,7 +259,7 @@ gantt
 
 ##### Resultado
 
-$$ Lead \space Time \space to \space Review \space promedio = {T*{agregar} + T*{eliminar} + T*{obtener} + T*{Issue 12} + T*{Issue 80} + T*{Issue 83} + T\_{Issue 99} \over 7} = 4.14 => 5 $$
+$$ {Lead} \space {Time} \space {to} \space {Review} \space {promedio} = {T_{agregar} + T_{eliminar} + T_{obtener} + T_{Issue 12} + T_{Issue 80} + T_{Issue 83} + T_{Issue 99} \over 7} = 4.14 => 5 $$
 
 ##### Conclusiones
 
@@ -281,7 +281,7 @@ Esto llevo a que se pudiera temprano en la iteración comenzar a avanzar con las
 
 ##### Resultado
 
-$$ Cycle \space Time \space to \space Review \space promedio = {T*{agregar} + T*{eliminar} + T*{obtener} + T*{Issue 12} + T*{Issue 80} + T*{Issue 83} + T\_{Issue 99} \over 7} = 2.56 => 3 $$
+$$ {Cycle} \space {Time} \space {to} \space {Review} \space {promedio} = {T_{agregar} + T_{eliminar} + T_{obtener} + T_{Issue 12} + T_{Issue 80} + T_{Issue 83} + T_{Issue 99} \over 7} = 2.56 => 3 $$
 
 ##### Conclusiones
 
