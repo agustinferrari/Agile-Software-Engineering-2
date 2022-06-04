@@ -17,40 +17,31 @@ using TechTalk.SpecFlow.Assist;
 namespace MinTur.ChargingSpotBDD.Test
 {
     [Binding]
-    public class DeleteChargingSpotValidDataStepDefinitions
+    public class DeleteChargingSpotStepDefinitions
     {
-
         private readonly ScenarioContext _scenarioContext;
         private readonly NaturalUruguayContext _dbContext;
         private readonly ChargingSpotController _chargingSpotController;
         private readonly IChargingSpotManager _chargingSpotManager;
         private readonly IRepositoryFacade _chargingSpotRepository;
 
-        public DeleteChargingSpotValidDataStepDefinitions(ScenarioContext context)
+        public DeleteChargingSpotStepDefinitions(ScenarioContext context)
         {
             _scenarioContext = context;
             _dbContext = ContextFactory.GetNewContext(ContextType.Memory);
             _chargingSpotRepository = new RepositoryFacade(_dbContext);
             _chargingSpotManager = new ChargingSpotManager(_chargingSpotRepository);
             _chargingSpotController = new ChargingSpotController(_chargingSpotManager);
+            _dbContext = ContextFactory.GetNewContext(ContextType.Memory);
         }
 
-
-        [Given(@"an existing, logged admin")]
-        public void GivenAnExistingLoggedUser(Table table)
+        [Given(@"a non-existing ChargingSpot")]
+        public void GivenANotExistingChargingSpot(Table table)
         {
-            _scenarioContext.Set(table.CreateInstance<AdministratorIntentModel>);
+            _scenarioContext.Set(table.CreateInstance<ChargingSpot>);
         }
 
-        [Given(@"the existing Region:")]
-        public void GivenTheExistingRegion(Table table)
-        {
-            Region region = table.CreateInstance<Region>();
-            _dbContext.Set<Region>().Add(region);
-            _dbContext.SaveChanges();
-        }
-
-        [Given(@"the existing ChargingSpot:")]
+        [Given(@"the existing ChargingSpot")]
         public void GivenTheExistingChargingSpot(Table table)
         {
             ChargingSpot charingSpot = table.CreateInstance<ChargingSpot>();
@@ -62,11 +53,26 @@ namespace MinTur.ChargingSpotBDD.Test
         }
 
         [When(@"the user tries to delete the charging spot")]
-        public void WhenTheUserTriesToDeleteTheNotExistingChargingSpot()
+        public void WhenTheUserTriesToDeleteTheChargingSpot()
         {
             ChargingSpot existing = _scenarioContext.Get<ChargingSpot>();
-            IActionResult result = _chargingSpotController.DeleteChargingSpot(existing.Id);
-            _scenarioContext.Set(result);
+            try
+            {
+                IActionResult auth = _scenarioContext.Get<IActionResult>("auth");
+                JsonResult parsedResult = (JsonResult)auth;
+                _scenarioContext.Set(parsedResult.Value, "result");
+            }
+            catch
+            {
+                try
+                {
+                    _chargingSpotController.DeleteChargingSpot(existing.Id);
+                }
+                catch (Exception e)
+                {
+                    _scenarioContext.Set(e.Message, "result");
+                }
+            }
         }
 
         [Then(@"the charging spot should be deleted from the database")]

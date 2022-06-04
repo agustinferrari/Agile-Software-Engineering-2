@@ -4,7 +4,7 @@
 	So that turists don't search a closed charging spot.
 
 	@mytag
-	Scenario: Delete charging spot without being logged in.
+	Scenario: Delete charging spot without being logged in
 		Given an existing region
 			| Id | Name                 |
 			| 1  | Región Metropolitana |
@@ -17,7 +17,7 @@
 		Then the charging spot cannot be deleted
 
 	@mytag
-	Scenario: Delete charging spot with invalid data.
+	Scenario: Delete charging spot with invalid data
 		Given a logged in admin
 			| Email            | Password |
 			| matias@admin.com | admin    |
@@ -40,7 +40,7 @@
 		And an existing region
 			| Id | Name                 |
 			| 1  | Región Metropolitana |
-		And the charging spots
+		And the charging spot
 			| Id | Name                 | Address        | RegionName           | Description    |
 			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga |
 		When the user deletes the charging spot

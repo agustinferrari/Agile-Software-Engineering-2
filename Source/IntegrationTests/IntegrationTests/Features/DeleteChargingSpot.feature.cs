@@ -93,15 +93,15 @@ namespace IntegrationTests.Features
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot without being logged in.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot without being logged in")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        public void DeleteChargingSpotWithoutBeingLoggedIn_()
+        public void DeleteChargingSpotWithoutBeingLoggedIn()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot without being logged in.", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot without being logged in", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -151,15 +151,15 @@ namespace IntegrationTests.Features
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot with invalid data.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Delete charging spot with invalid data")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "DeleteChargingSpot")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        public void DeleteChargingSpotWithInvalidData_()
+        public void DeleteChargingSpotWithInvalidData()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot with invalid data.", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete charging spot with invalid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 20
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -270,7 +270,7 @@ namespace IntegrationTests.Features
                             "Región Metropolitana",
                             "Punto de carga"});
 #line 43
-  testRunner.And("the charging spots", ((string)(null)), table20, "And ");
+  testRunner.And("the charging spot", ((string)(null)), table20, "And ");
 #line hidden
 #line 46
   testRunner.When("the user deletes the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
