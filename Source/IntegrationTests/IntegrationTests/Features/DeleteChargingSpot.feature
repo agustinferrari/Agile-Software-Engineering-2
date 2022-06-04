@@ -44,8 +44,4 @@
 			| Id | Name                 | Address        | RegionName           | Description    |
 			| 1  | Cargar frente al mar | General Flores | Región Metropolitana | Punto de carga |
 		When the user deletes the charging spot
-		Then the error <Error> should be raised
-
-		Examples:
-			| Error                       |
-			| No charging spots in system |
+		Then the charging spot should be deleted
