@@ -52,9 +52,10 @@ namespace IntegrationTests.Steps
             List<ChargingSpot> chargingSpotList = chargingSpots.CreateSet<ChargingSpot>().ToList();
             _scenarioContext.Set<List<ChargingSpot>>(chargingSpotList);
 
-            foreach(ChargingSpot c in chargingSpotList){
+            foreach (ChargingSpot c in chargingSpotList)
+            {
                 helper.Url("http://localhost:4200/admin/charging-spot-create");
-                helper.CreateChargingSpotInForm(c.Name,c.Address, c.Description, _scenarioContext.Get<Region>().Name);
+                helper.CreateChargingSpotInForm(c.Name, c.Address, c.Description, _scenarioContext.Get<Region>().Name);
             }
             helper.Logout();
         }

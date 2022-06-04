@@ -270,7 +270,7 @@ namespace IntegrationTests.Features
                             "Región Metropolitana",
                             "Punto de carga"});
 #line 43
-  testRunner.And("the charging spot", ((string)(null)), table20, "And ");
+  testRunner.And("the charging spots", ((string)(null)), table20, "And ");
 #line hidden
 #line 46
   testRunner.When("the user deletes the charging spot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
