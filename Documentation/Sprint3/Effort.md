@@ -4,15 +4,15 @@
 
 ### Resumen:
 | Rango de días       | Horas persona totales | Horas persona de Planificación | Horas persona de Ejecución | Horas persona de Control |
-|:------------------- |:---------------------:|:------------------------------:|:--------------------------:|:------------------------:|
-| 25/05/22 - 02/06/22 |         65.95          |               12               |           ~53.95            |            X             |
+|:------------------- |:---------------------:|:------------------------------:|:--------------------------:| ------------------------ |
+| 25/05/22 - 02/06/22 |         67.25         |               12               |           ~57.55           | ~11                      |
 
 ---
 
 ### Esfuerzo:
 
 | Fecha                          | Horas persona | Integrantes       | Tags                         | Actividad                                                                                   |
-|:------------------------------ |:------------- |:----------------- | ---------------------------- | ------------------------------------------------------------------------------------------- |
+|:------------------------------ | ------------- |:----------------- | ---------------------------- | ------------------------------------------------------------------------------------------- |
 | Miércoles 25/05/22 14:00-16:00 | 6             | Todos             | Documentación                | Sprint Planning                                                                             |
 | Viernes 27/05/22 18:00-20:00   | 6             | Todos             | Documentación, Desarrollo    | Charging Spot BDD Gherkin, Step Definition                                                  |
 | Sábado 28/05/22 8:30-9:30      | 3             | Todos             | Desarrollo, Mantenimiento    | Organización y diseño de frontend                                                           |
@@ -41,3 +41,8 @@
 | Viernes 3/06/22 14:00-15:30    | 1.5           | Joaquín           | Documentación                | Documentar estándares de programación                                                       |
 | Viernes 3/06/22 14:00-15:00    | 1             | Sofía             | Mantenimiento                | Arreglar pruebas de BDD sin Selenium                                                        |
 | Viernes 3/06/22 18:30-19:20    | 0.8           | Joaquín           | Documentación                | Arreglar definición de requerimientos de Sprint 3                                           |
+| Viernes 3/06/22 19:20-20:00    | 1.3           | Joaquín y Agustín | Mantenimiento                | Reporte de issues a github y actualización de deuda tecnica                                 |
+| Viernes 3/06/22 20:00-21:00    | 2             | Joaquín y Agustín | Documentación                | Análisis de métricas                                                                        |
+| Viernes 3/06/22 18:30-21:00    | 1.5           | Sofía             | Mantenimiento                | Arreglar pruebas de BDD sin Selenium                                                        |
+| Sábado 4/06/22 10:50-12:50     | 6             | Todos             | Documentación                | Análisis de métricas                                                                        |
+| Sábado 4/06/22 13:45-15:45     | 3             | Todos             | Documentación                | Análisis de métricas                                                                        |
