@@ -1,16 +1,16 @@
 # Esfuerzo sprint 3
-
+ 
 ###### tags: `Sprint 3`
-
+ 
 ### Resumen:
 | Rango de días       | Horas persona totales | Horas persona de Planificación | Horas persona de Ejecución | Horas persona de Control |
 |:------------------- |:---------------------:|:------------------------------:|:--------------------------:|:------------------------:|
 | 25/05/22 - 02/06/22 |         89.65          |               12               |           57.55           |          26.5            |
-
+ 
 ---
-
+ 
 ### Esfuerzo:
-
+ 
 | Fecha                          | Horas persona | Integrantes       | Tags                         | Actividad                                                                                   |
 |:------------------------------ | ------------- |:----------------- | ---------------------------- | ------------------------------------------------------------------------------------------- |
 | Miércoles 25/05/22 14:00-16:00 | 6             | Todos             | Documentación, Gestión       | Sprint Planning                                                                             |
@@ -37,11 +37,11 @@
 | Jueves 2/06/22 17:10-20:30     | 3.3           | Agustín           | Documentación, Mantenimiento | Actualización de guía de pipeline, template de pull requests y checklist                    |
 | Jueves 2/06/22 19:00-20:30     | 1.5           | Sofía             | Desarrollo                   | Arreglar pruebas de BDD sin Selenium                                                        |
 | Viernes 3/06/22 13:15-14:00    | 2.25          | Todos             | Mantenimiento                | Actualizar template de effort                                                               |
-| Viernes 3/06/22 14:00-15:00    | 1             | Agustín           | Desarrollo                   | Análizar si se sigue Clean Code en el código                                                |
+| Viernes 3/06/22 14:00-15:00    | 1             | Agustín           | Desarrollo                   | Analizar si se sigue Clean Code en el código                                                |
 | Viernes 3/06/22 14:00-15:30    | 1.5           | Joaquín           | Documentación                | Documentar estándares de programación                                                       |
 | Viernes 3/06/22 14:00-15:00    | 1             | Sofía             | Mantenimiento                | Arreglar pruebas de BDD sin Selenium                                                        |
 | Viernes 3/06/22 18:30-19:20    | 0.8           | Joaquín           | Documentación                | Arreglar definición de requerimientos de Sprint 3                                           |
-| Viernes 3/06/22 19:20-20:00    | 1.3           | Joaquín y Agustín | Mantenimiento                | Reporte de issues a github y actualización de deuda tecnica                                 |
+| Viernes 3/06/22 19:20-20:00    | 1.3           | Joaquín y Agustín | Mantenimiento                | Reporte de issues a github y actualización de deuda técnica                                 |
 | Viernes 3/06/22 20:00-21:00    | 2             | Joaquín y Agustín | Documentación                | Análisis de métricas                                                                        |
 | Viernes 3/06/22 18:30-21:00    | 1.5           | Sofía             | Mantenimiento                | Arreglar pruebas de BDD sin Selenium                                                        |
 | Sábado 4/06/22 10:50-12:50     | 6             | Todos             | Documentación                | Análisis de métricas                                                                        |
