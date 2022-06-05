@@ -15,11 +15,13 @@ The main focus of the project is to put in practice DevOps concepts taught throu
 - [Getting started](#getting-started)
   - [Frontend](#frontend)
   - [Backend](#backend)
+  - [Integration tests](#integration-tests)
   - [Utilities](#utilities)
     - [Database](#database)
     - [Commitizen](#commitizen)
 - [Sprint 1](#sprint-1)
 - [Sprint 2](#sprint-2)
+- [Sprint 3](#sprint-3)
 - [Original Project](#original-project)
 
 ## Folder distribution
@@ -33,7 +35,7 @@ The three main folders are:
 - Utilities:
   Tools and test data for our code
 
-**Structure:**
+**General Structure:**
 
 - [Documentation](./Documentation)
   - [Previous documentation](./Documentation/PreviousDocumentation/)
@@ -41,6 +43,9 @@ The three main folders are:
     - [Original documentation's diagrams](./Documentation/PreviousDocumentation/Diagramas%20UML/)
   - [Engineering process](./Documentation/EngineeringProcess.md)
   - [Technical debt](./Documentation/TechnicalDebt.md)
+  - [BDD  Guide](./Documentation/BDDGuide.md)
+  - [Metrics Analysis](./Documentation/MetricsAnalysis.md)
+  - [Pipeline Guide](./Documentation/PipelineGuide.md)
   - [Sprint 1](./Documentation/Sprint1/)
     - [Planning meeting](./Documentation/Sprint1/PlanningMeeting.md)
     - [Retrospective](./Documentation/Sprint1/Retrospective.md)
@@ -49,8 +54,10 @@ The three main folders are:
     - [Planning meeting](./Documentation/Sprint2/PlanningMeeting.md)
     - [Retrospective](./Documentation/Sprint2/Retrospective.md)
     - [Report](./Documentation/Sprint2/Report.pdf)
-    - [BDD Development Guide](./Documentation/Sprint2/BDDDevelopmentGuide.md)
-    - [Backend Pipeline Configuration](./Documentation/Sprint2/BackendPipelineConfiguration.md)
+  - [Sprint 3](./Documentation/Sprint3/)
+    - [Planning meeting](./Documentation/Sprint3/PlanningMeeting.md)
+    - [Retrospective](./Documentation/Sprint3/Retrospective.md)
+    - [Report](./Documentation/Sprint3/Report.pdf)
 - [Source code](./Source)
   - [Backend](./Source/MinTurBackend/)
   - [Frontend](./Source/MinTurFrontend/)
@@ -59,6 +66,7 @@ The three main folders are:
 
 ## Getting started
 
+---
 ### Frontend
 
 **Run:**
@@ -94,11 +102,21 @@ cd ./Source/MinTurBackend
 dotnet bulid
 ```
 
+### Integration tests
+
+**Run:**
+
+```bash
+cd ./Source/IntegrationTests
+dotnet restore
+dotnet test
+```
 ### Utilities
 
 #### Database
 
 Create a new database named 'NaturalUruguayDB' and import the data from [Filled script](./Utilities/DatabaseScripts/Filled/NaturalUruguayDBFilled.sql).
+
 
 #### Commitizen
 
@@ -156,13 +174,37 @@ The second sprint consisted on development following BDD, issue fixing and backe
 
 - [Documentation](./Documentation)
   - [Sprint 2](./Documentation/Sprint2/)
-    - [Effort](./Documentation/Sprint2/Effort.md)
     - [BDD Development Guide](./Documentation/Sprint2/BDDDevelopmentGuide.md)
     - [Backend Pipeline Configuration](./Documentation/Sprint2/BackendPipelineConfiguration.md)
+    - [Effort](./Documentation/Sprint2/Effort.md)
     - [Planning meeting](./Documentation/Sprint2/PlanningMeeting.md)
-    - [Retrospective](./Documentation/Sprint2/Retrospective.md)
     - [Report](./Documentation/Sprint2/Report.pdf)
+    - [Retrospective](./Documentation/Sprint2/Retrospective.md)
+    - [Requirements Definition](./Documentation/Sprint2/RequirementsDefinition.md)
     - [Video Review](https://youtu.be/xDyq6rzCfdE)
+
+
+## Sprint 3
+
+The third sprint consisted on frontend development following BDD with Selenium, updating BDD guide and Pipeline guide, and continuing maintenance.
+
+### Documentation: <!-- omit in toc -->
+
+- [Documentation](./Documentation/)
+  - [Sprint 3](./Documentation/Sprint3/)
+      - [Effort](./Documentation/Sprint3/Effort.md)
+      - [Planning meeting](./Documentation/Sprint3/PlanningMeeting.md)
+      - [Report](./Documentation/Sprint3/Report.pdf)
+      - [Retrospective](./Documentation/Sprint3/Retrospective.md)
+      - [Requirements Definition](./Documentation/Sprint3/RequirementsDefinition.md)
+      - [Video Review](https://www.youtube.com/watch?v=e0VnvqfJmUA)
+  - [BDD Guide](./Documentation/BDDGuide.md)
+  - [Pipeline Guide](./Documentation/PipelineGuide.md)
+  - [Metrics Analysis](./Documentation/MetricsAnalysis.md)
+  - [Updates to Engineering Process](./Documentation/EngineeringProcess.md)
+  - [Updates to Technical Debt](./Documentation/TechnicalDebt.md)
+
+
 ---
 
 ## Original Project

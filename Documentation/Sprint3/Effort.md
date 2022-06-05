@@ -5,7 +5,7 @@
 ### Resumen:
 | Rango de días       | Horas persona totales | Horas persona de Planificación | Horas persona de Ejecución | Horas persona de Control |
 |:------------------- |:---------------------:|:------------------------------:|:--------------------------:|:------------------------:|
-| 25/05/22 - 02/06/22 |         89.65          |               12               |           57.55           |          ~20.5           |
+| 25/05/22 - 02/06/22 |         89.65          |               12               |           57.55           |          26.5            |
 
 ---
 
@@ -48,3 +48,4 @@
 | Sábado 4/06/22 13:45-15:45     | 3             | Todos             | Documentación                | Análisis de métricas                                                                        |
 | Sábado 4/06/22 17:00-18:10     | 3.5           | Todos             | Documentación, Gestión       | Sprint Review                                                                               |
 | Sábado 4/06/22 19:00-21:00     | 6             | Todos             | Documentación, Gestión       | Sprint Retrospective                                                                        |
+| Domingo 5/06/22 09:00-11:00    | 6             | Todos             | Documentación, Gestión       | Sprint Report                                                                               |

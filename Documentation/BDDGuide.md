@@ -38,3 +38,9 @@ Logramos hacerlo correr en dotnet core 3.1 con MSTest a pesar de que en un princ
 A partir del sprint 3 se comenzó a desarrollar haciendo automatizaciones de testing funcional siguiendo BDD. Para esto se combinó el uso de SpecFlow de la iteración 2 con la herramiente Selenium en C# en una nueva solución [IntegrationTests](../Source/IntegrationTests/) dentro de la carpeta Source, que al estar aislada de la solución del backend, decidimos utilizar dotnet 6.0 para las pruebas, ya que teníamos mayor experiencia de utilizar selenium con el mismo. Esta sería la solución para pruebas de testing funcional de BDD de ahora en adelante y las pruebas previas en la solución de backend se dejarían a modo de histórico de lo realizado además de pruebas del backend completo. 
 
 Se define que la narrativa de las funcionalidades junto a sus escenarios debe previamente definirse en un documento .md del sprint, y luego pasado a gherkin en el proyecto de tests de integración. Estos tests deben incluir un Como, Quiero, Para como narrativa de la funcionalidad.
+
+La estructura de la solución de pruebas de integración es la siguiente:
+- Un directorio "/Features" donde se encuentran los archivos .feature de los tests de funcionalidad
+- Un directorio "/Steps" donde se encuentran todos los step definitions para los tests de funcionalidad, incluyendo uno por cada funcionalidad y un common donde se implementaron pasos utilizados por varias funcionalidades.
+- Un directorio "./Models" donde se encuentran modelos de entidades para poder convertir facilmente lo recibido en las tablas de examples de los .feature.
+- Utils que contiene herramientas para facilitar la creación de pruebas, donde esta contenido el SeleniumTestHelper al que le designamos la responsabilidad de esperar por elementos, hacer click sobre elementos, y algunas acciones que se veían repetidas en pasos diferentes como llenar forms.
