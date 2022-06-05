@@ -4,7 +4,7 @@
 
 ### Tablero de Miro DAKI
 
-![Imágen DAKI sprint 3](https://media.discordapp.net/attachments/972236844907515964/982784232193658900/unknown.png)
+![Imagen DAKI sprint 3](https://media.discordapp.net/attachments/972236844907515964/982784232193658900/unknown.png)
 
 ### Drop
 
@@ -44,13 +44,13 @@
 
 ## Análisis de esfuerzo
 
-![Imágen tabla sprint 3](https://cdn.discordapp.com/attachments/972236844907515964/982796943401025566/unknown.png)
+![Imagen tabla sprint 3](https://cdn.discordapp.com/attachments/972236844907515964/982796943401025566/unknown.png)
 
 | Etapa       | Estimación         | Real                |
 | :---------- | ------------------ | :------------------ |
 | Planifación | 9 horas persona    | 12 horas persona    |
 | Ejecución   | 15 horas persona   | 57.55 horas persona |
-| Control     | 16.5 horas persona | ~20.5 horas persona\* |
+| Control     | 16.5 horas persona | 26.5 horas persona  |
 
 **Análisis**
 En esta iteración se estimó por debajo el esfuerzo necesario para completar las funcionalidades de agregar y eliminar puntos de carga a lo largo de todo el proyecto.
@@ -61,6 +61,3 @@ Un factor que también tuvo influencia sobre el esfuerzo real, fue el feedback q
 Se terminó teniendo que realizar un esfuerzo de 280% más de lo esperado en la etapa de ejecución, ya que se esperaba un esfuerzo de 15 horas y se terminó desarrollando por 57.55 horas. Es importante tomar en cuenta que estas horas incluyen mantenimiento, documentación y algunos otros aspectos del proyecto que quizas en un principio no tuvimos en cuenta para las 15 horas planificadas.
 
 Con respecto a la planificación, se trabajo un 33.33% más de lo esperado, ya que se esperaba un esfuerzo de 9 horas y se terminó planificando por 12 horas.
-
----
-*Aún no se terminó el sprint 3 por lo cual no se puede calcular el tiempo real todavía.

@@ -118,10 +118,10 @@ En principio se habían definido un conjunto más acotado de categorías ya que 
 
 ### Sprint 3
 
-- **Creados: 38**
+- **Creados: 44**
 - **Abiertos: 0**
-- **Cerrados: 38**
-  ![](https://cdn.discordapp.com/attachments/982428929317019709/982665145853558874/Captura_de_Pantalla_2022-06-04_a_las_12.20.18.png)
+- **Cerrados: 44**
+  ![](https://cdn.discordapp.com/attachments/982428929317019709/983004587957043240/Captura_de_Pantalla_2022-06-05_a_las_10.42.45.png)
 
   En el tercer sprint se agregaron las funcionalidades del sprint anterior al frontend, a su vez utilizando Selenium para realizar pruebas funcionales. Es por ello que hubo una cantidad razonable de pull requests categorizados como enhancement y test. Cabe destacar también que, por primera vez, se utilizó la categoría refactor. Esto se debe a que mejoramos código de sprints anteriores y por el mantenimiento de la aplicación en general, donde encontramos que en varios lugares no se seguía con Clean Code y estándares de codificación. La documentación, al igual que en los sprints anteriores, se fue actualizando a medida que avanzábamos en el obligatorio.
 
