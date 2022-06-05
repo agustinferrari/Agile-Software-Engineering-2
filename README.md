@@ -12,7 +12,7 @@ The main focus of the project is to put in practice DevOps concepts taught throu
 ## Table of contents <!-- omit in toc -->
 
 - [Folder distribution](#folder-distribution)
-- [## Getting started](#-getting-started)
+- [Getting started](#getting-started)
   - [Frontend](#frontend)
   - [Backend](#backend)
   - [Integration tests](#integration-tests)
@@ -65,6 +65,7 @@ The three main folders are:
   - [Database scripts](./Utilities/DatabaseScripts/)
 
 ## Getting started
+
 ---
 ### Frontend
 
@@ -185,7 +186,7 @@ The second sprint consisted on development following BDD, issue fixing and backe
 
 ## Sprint 3
 
-The second sprint consisted on development following BDD, issue fixing and backend pipeline configuration using github actions and github project beta.
+The third sprint consisted on frontend development following BDD with Selenium, updating BDD guide and Pipeline guide, and continuing maintenance.
 
 ### Documentation: <!-- omit in toc -->
 
@@ -196,7 +197,7 @@ The second sprint consisted on development following BDD, issue fixing and backe
       - [Report](./Documentation/Sprint3/Report.pdf)
       - [Retrospective](./Documentation/Sprint3/Retrospective.md)
       - [Requirements Definition](./Documentation/Sprint3/RequirementsDefinition.md)
-      - [Video Review](https://youtu.be/xDyq6rzCfdE)
+      - [Video Review](https://www.youtube.com/watch?v=e0VnvqfJmUA)
   - [BDD Guide](./Documentation/BDDGuide.md)
   - [Pipeline Guide](./Documentation/PipelineGuide.md)
   - [Metrics Analysis](./Documentation/MetricsAnalysis.md)
