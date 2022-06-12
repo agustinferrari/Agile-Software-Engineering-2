@@ -16,6 +16,8 @@ Se tuvo problemas en algunos casos que llevaron a tener que reinstalar angular o
 | NPM         | 8.5.5                               |
 | Angular     | 10.2.0 (local al proyecto frontend) |
  
+Se decidió utilizar dotnet 6.0 en vez de 3.1 ya que es retrocompatible con versiones anteriores y porque dotnet 6.0 es la primera versión que incluye una version ARM64 compatible con Apple Silicon que era necesario para un miembro del equipo.
+
 ## Gestión de datos para escenarios
  
 Las pruebas unitarias corridas de forma local o por la github action no requieren de un ambiente preparado por fuera por correrse en memoria.
