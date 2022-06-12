@@ -16,7 +16,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.0.202
+          dotnet-version: 3.1.x
       - name: Dotnet coverage
         run: dotnet tool install --global dotnet-coverage
       - name: Restore dependencies
