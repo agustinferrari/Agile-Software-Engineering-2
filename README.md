@@ -77,6 +77,14 @@ npm install --force
 npm run start
 ```
 
+**Build:**
+
+```bash
+cd ./Source/MinTurFrontend
+npm install --force
+npm run build:prod
+```
+
 **Lint:**
 
 ```bash
@@ -92,17 +100,29 @@ npm run lint
 ```bash
 cd ./Source/MinTurBackend
 dotnet restore
+dotnet build
+cd ./MinTur.WebAPI
 dotnet run
+```
+
+**Build:**
+
+```bash
+cd ./Source/MinTurBackend
+dotnet restore
+dotnet build
 ```
 
 **Lint:** (After build warnings and errors are shown)
 
 ```bash
 cd ./Source/MinTurBackend
-dotnet bulid
+dotnet build
 ```
 
 ### Integration tests
+
+Requirements: DB filled script should be loaded before integration tests.
 
 **Run:**
 
