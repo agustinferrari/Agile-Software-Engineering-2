@@ -38,6 +38,7 @@ The three main folders are:
 **General Structure:**
 
 - [Documentation](./Documentation)
+  - [Academic Report](./Documentation/AcademicReport.pdf)
   - [Previous documentation](./Documentation/PreviousDocumentation/)
     - [Original documentation](./Documentation/PreviousDocumentation/Documentacion.pdf)
     - [Original documentation's diagrams](./Documentation/PreviousDocumentation/Diagramas%20UML/)
